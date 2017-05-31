@@ -9,7 +9,8 @@ public class NpcManager : MonoBehaviour
     {
         IDLE_STATE,
         LOSE_STATE,
-        MOVE_STATE
+        MOVE_STATE,
+        DIALOGUE_STATE
     }
     public states startState;
 
@@ -58,6 +59,12 @@ public class NpcManager : MonoBehaviour
         else if(_stateSelect == 1)
         {
             SetAnimLose();
+            _navMeshAgent.enabled = false;
+        }
+        else if (_stateSelect == 3)
+        {
+            int temp = Random.Range(0, 3);
+            Invoke("SetAnimDialogue", temp);
             _navMeshAgent.enabled = false;
         }
         else
@@ -123,6 +130,21 @@ public class NpcManager : MonoBehaviour
         _anim.SetBool("Lose2", false);
         _anim.SetBool("Victory", true);
         Invoke("SetStandardAnim", 0.5f);
+    }
+
+    void SetAnimDialogue()
+    {
+        int temp = Random.Range(0, 4);
+        if (temp == 0)
+            _anim.SetBool("Conversation", true);
+        else if (temp == 1)
+            _anim.SetBool("NoGesture", true);
+        else if (temp == 2)
+            _anim.SetBool("Shurug", true);
+        else if (temp == 3)
+            _anim.SetBool("YesGesture", true);
+        Invoke("SetStandardAnim", 1);
+        Invoke("SetAnimDialogue", 4);
     }
 
     void SetStandardAnim()
