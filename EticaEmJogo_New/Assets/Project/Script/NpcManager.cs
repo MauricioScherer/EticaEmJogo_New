@@ -140,7 +140,7 @@ public class NpcManager : MonoBehaviour
         else if (temp == 1)
             _anim.SetBool("NoGesture", true);
         else if (temp == 2)
-            _anim.SetBool("Shurug", true);
+            _anim.SetBool("Shrug", true);
         else if (temp == 3)
             _anim.SetBool("YesGesture", true);
         Invoke("SetStandardAnim", 1);

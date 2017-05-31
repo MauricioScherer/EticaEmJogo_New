@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] quest;
     public GameObject help;
     public GameObject score;
+    public GameObject phone;
     public GameObject painelPause;
     public GameObject[] poolAvatar;
     public MovePlayer player;
@@ -67,10 +68,7 @@ public class GameManager : MonoBehaviour
                 _numberPointsForLevel += 5;
                 quest[p_numQuest].SetActive(true);
                 StayQuest();
-                if (p_numQuest == 0)
-                {
-                    ActivateAndDeactivateHud();
-                }                     
+                ActivateAndDeactivateHud();
             }
         }
         else
@@ -133,16 +131,18 @@ public class GameManager : MonoBehaviour
     }
 
     void ActivateAndDeactivateHud()
-    {        
+    {
         if(score.activeSelf)
         {
             score.SetActive(false);
-            help.SetActive(false);            
+            help.SetActive(false);
+            phone.SetActive(false);          
         }
         else
         {
             score.SetActive(true);
             help.SetActive(true);
+            phone.SetActive(true);
         }        
     }
     

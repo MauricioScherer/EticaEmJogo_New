@@ -41,13 +41,13 @@ public class MovePlayer : MonoBehaviour
                 {                    
                     hit.collider.GetComponent<NpcManager>().questResolved = true;
                     _numberQuestSelect = hit.collider.GetComponent<NpcManager>().GetQuestStay();
-                    Invoke("ActivateClickNpc", 1);
+                    Invoke("ActivateClickNpc", 0.1f);
                 }
                 else if(hit.collider.CompareTag("Wallet"))
                 {                    
                     _numberQuestSelect = 0;
                     _objTemp = hit.collider.gameObject;
-                    Invoke("ActivateClickWallet", 1);
+                    Invoke("ActivateClickWallet", 0.1f);
                 }
                 else
                 {
