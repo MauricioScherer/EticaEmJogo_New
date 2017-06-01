@@ -35,12 +35,13 @@ public class NpcManager : MonoBehaviour
     private Animator _anim;
     private NavMeshAgent _navMeshAgent;
     private bool _waveActive;
-    private bool _randomSelectPath;
-    public bool questResolved;
+    private bool _randomSelectPath;    
     private int _sort;
     private int _stateSelect;
     private int _stateQuest;
 
+    public int numberQuestActive;
+    public bool questResolved;
     public GameObject exclamation;
     public GameObject ballonWallet;
     public GameManager gameManager;
@@ -96,12 +97,15 @@ public class NpcManager : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if(!questResolved && !_waveActive && _stateSelect == 0)
+        if(numberQuestActive == gameManager.numberQuestResolve)
         {
-            _waveActive = true;
-            _anim.SetBool("Wave", _waveActive);
-            exclamation.SetActive(true);
-            Invoke("SetWaveActivated", 1f);
+            if (!questResolved && !_waveActive && _stateSelect == 0)
+            {
+                _waveActive = true;
+                _anim.SetBool("Wave", _waveActive);
+                exclamation.SetActive(true);
+                Invoke("SetWaveActivated", 1f);
+            }
         }
     }
 
