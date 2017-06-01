@@ -15,16 +15,19 @@ public class MovePlayer : MonoBehaviour
     private bool _inDirectionPersonWallet;
     private int _numberQuestSelect;
     private GameObject _objTemp;
+    private Transform particleClikPosition;
 
     public GameManager gameManager;
     public Transform avatarWallet;
     public bool deliverWallet;
+    public ParticleSystem particleClick;
 
     void Awake ()
     {
         _anim = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _canWalk = true;
+        particleClikPosition = particleClick.gameObject.transform;
     }
 	
 	void Update ()
@@ -56,6 +59,8 @@ public class MovePlayer : MonoBehaviour
                     _getWallet = false;
                 }
                 _navMeshAgent.destination = hit.point;
+                particleClikPosition.position = new Vector3(hit.point.x, hit.point.y + 0.05f, hit.point.z);
+                particleClick.Play();
                 _navMeshAgent.Resume();
             }
         }

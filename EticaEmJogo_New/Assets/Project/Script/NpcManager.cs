@@ -99,7 +99,7 @@ public class NpcManager : MonoBehaviour
     {
         if(numberQuestActive == gameManager.numberQuestResolve)
         {
-            if (!questResolved && !_waveActive && _stateSelect == 0)
+            if (!questResolved && !_waveActive && _stateSelect == 0 && _stateQuest != 0)
             {
                 _waveActive = true;
                 _anim.SetBool("Wave", _waveActive);
