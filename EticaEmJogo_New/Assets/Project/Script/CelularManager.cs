@@ -34,8 +34,12 @@ public class CelularManager : MonoBehaviour
 
     public void DeactiveView()
     {
-        celularView.SetActive(false);
-        _stayCelular = false;
+        if (_stayCelular)
+        {
+            celularView.SetActive(false);
+            _stayCelular = false;
+            WalkState();
+        }
     }
 
     public void WalkState()

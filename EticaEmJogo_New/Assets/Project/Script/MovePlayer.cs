@@ -57,6 +57,7 @@ public class MovePlayer : MonoBehaviour
                     _npcClicked = false;
                     _itemSelect = false;
                     _getWallet = false;
+                    _canWalk = true;
                 }
                 _navMeshAgent.destination = hit.point;
                 particleClikPosition.position = new Vector3(hit.point.x, hit.point.y + 0.05f, hit.point.z);
@@ -120,6 +121,7 @@ public class MovePlayer : MonoBehaviour
     public void SetValues()
     {
         _npcClicked = false;
+        _canWalk = true;
         _itemSelect = false;
         _stayQuest = false;
         if (_objTemp != null)

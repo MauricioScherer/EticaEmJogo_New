@@ -69,7 +69,6 @@ public class GameManager : MonoBehaviour
                 _numberQuestStay = p_numQuest;
                 _numberPointsForLevel += 5;
                 celularManager.DeactiveView();
-                celularManager.WalkState();
                 quest[p_numQuest].SetActive(true);
                 StayQuest();
                 ActivateAndDeactivateHud();
