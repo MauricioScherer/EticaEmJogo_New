@@ -32,6 +32,12 @@ public class CelularManager : MonoBehaviour
         }
     }
 
+    public void DeactiveView()
+    {
+        celularView.SetActive(false);
+        _stayCelular = false;
+    }
+
     public void WalkState()
     {
         if(!_stayCelular)
@@ -44,6 +50,14 @@ public class CelularManager : MonoBehaviour
     {
         GetComponent<AudioSource>().Play();
         _anim.SetBool("Walk", true);
-        mensage[p_mensageActive - 1].SetActive(true);
+        mensage[p_mensageActive].SetActive(true);
+    }
+
+    public void CleanMensage()
+    {
+        for(int i = 0; i < mensage.Length; i++)
+        {
+            mensage[i].SetActive(false);
+        }
     }
 }

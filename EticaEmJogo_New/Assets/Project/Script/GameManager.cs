@@ -9,8 +9,10 @@ public class GameManager : MonoBehaviour
     private bool _stayQuest;
     private int _numberQuestStay;
     private int _numberPointsForLevel;
+    private int _numberMensagePhone;
 
     public int numberQuestResolve;
+    public ManagerLevel managerLevel;
     public GameObject[] quest;
     public GameObject help;
     public GameObject score;
@@ -66,6 +68,8 @@ public class GameManager : MonoBehaviour
             {
                 _numberQuestStay = p_numQuest;
                 _numberPointsForLevel += 5;
+                celularManager.DeactiveView();
+                celularManager.WalkState();
                 quest[p_numQuest].SetActive(true);
                 StayQuest();
                 ActivateAndDeactivateHud();
@@ -79,7 +83,7 @@ public class GameManager : MonoBehaviour
 
     public void StayQuest()
     {
-        _stayQuest = !_stayQuest;
+        _stayQuest = !_stayQuest;        
     }
 
     public void CorrectAnswer()
@@ -149,18 +153,24 @@ public class GameManager : MonoBehaviour
     float ScoreCalculation()
     {
         quest[_numberQuestStay].SetActive(false);
-        player.SetValues();        
+        player.SetValues();
+        if (managerLevel)
+        {
+            managerLevel.SetEvent(numberQuestResolve);
+        }
+        numberQuestResolve++;
         return _Score / _numberPointsForLevel;
     }
 
-    public void SetNumberQuestResolve(int p_time)
-    {        
-        Invoke("TimeInvokeNewMensage", p_time);
-        numberQuestResolve++;
+    public void SelectMensagePhone(int p_numberMensage, int p_time)
+    {
+        _numberMensagePhone = p_numberMensage;
+        Invoke("InvokeNewMensage", p_time);
     }
 
-    void TimeInvokeNewMensage()
+    void InvokeNewMensage()
     {
-        celularManager.SetMensage(numberQuestResolve);
+        celularManager.CleanMensage();
+        celularManager.SetMensage(_numberMensagePhone);
     }
 }

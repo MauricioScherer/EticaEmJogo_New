@@ -22,6 +22,5 @@ public class QuestOptionsManager : MonoBehaviour
     public void WalletCorrect(bool p_isCorrect)
     {
         player.player.deliverWallet = p_isCorrect;
-        player.SetNumberQuestResolve(10);
     }
 }
