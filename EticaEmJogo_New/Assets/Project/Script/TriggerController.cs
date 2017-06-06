@@ -14,7 +14,7 @@ public class TriggerController : MonoBehaviour
             {
                 if(managerLevel.ResolveTotalQuests())
                 {
-                    Debug.Log("mostrar feedback");
+                    managerLevel.ViewFeedback();
                     gameObject.SetActive(false);
                 }
             }
