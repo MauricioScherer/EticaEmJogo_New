@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private int _Score;
+    private float _Score;
     private bool _stayQuest;
     private int _numberQuestStay;
     private int _numberPointsForLevel;
@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
         celularManager.SetMensage(_numberMensagePhone);
     }
 
-    public int GetScore()
+    public float GetScore()
     {
         return _Score;
     }

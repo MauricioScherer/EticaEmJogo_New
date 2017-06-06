@@ -113,7 +113,7 @@ public class ManagerLevel : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    void PagDefine(int p_points)
+    void PagDefine(float p_points)
     {
         if (p_points >= 12)
             pagCurrent = new GameObject[3] {pag[0],pag[1], pag[2] };
@@ -173,5 +173,24 @@ public class ManagerLevel : MonoBehaviour
             }
             _numberPag--;
         }
+    }
+
+    public void ButtonContinue()
+    {
+        string[] tempArray = new string[20];
+        tempArray = PlayerPrefsUtility.GetStringArray("cpfArray");
+
+        int[] tempPoint = new int[20];
+        tempPoint = PlayerPrefsUtility.GetIntArray("pointsArray");
+        for (int i = 0; i < tempArray.Length; i++)
+        {
+            if(tempArray[i] == PlayerPrefs.GetString("cpfSelect"))
+            {
+                tempPoint[i] = (int)gameManager.GetScore();
+                PlayerPrefsUtility.SetIntArray("pointsArray", tempPoint);
+                break;
+            }
+        }
+        SceneManager.LoadScene("Menu");
     }
 }

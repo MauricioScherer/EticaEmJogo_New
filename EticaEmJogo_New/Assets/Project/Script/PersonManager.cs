@@ -21,6 +21,7 @@ public class PersonManager : MonoBehaviour
     public string[] nameplayerArray;
     public string[] cpfplayerArray;
     public int[] avatarPlayerArray;
+    public int[] pointsPlayerArray;
     public GameObject[] poolAvatar;
 
     public Texture2D cursorTextureStandard;
@@ -45,15 +46,18 @@ public class PersonManager : MonoBehaviour
             nameplayerArray = new string[20];
             cpfplayerArray = new string[20];
             avatarPlayerArray = new int[20];
+            pointsPlayerArray = new int[20];
             for(int i = 0; i < cpfplayerArray.Length; i++)
             {
                 nameplayerArray[i] = "name";
                 cpfplayerArray[i] = "0";
                 avatarPlayerArray[i] = 99;
+                pointsPlayerArray[i] = 0;
             }
             PlayerPrefsUtility.SetStringArray("cpfArray", cpfplayerArray);
             PlayerPrefsUtility.SetStringArray("nameArray", nameplayerArray);
             PlayerPrefsUtility.SetIntArray("avatarArray", avatarPlayerArray);
+            PlayerPrefsUtility.SetIntArray("pointsArray", pointsPlayerArray);
         }
 	}
 
@@ -85,9 +89,11 @@ public class PersonManager : MonoBehaviour
                 PlayerPrefsUtility.SetStringArray("cpfArray", cpfplayerArray);
                 PlayerPrefsUtility.SetStringArray("nameArray", nameplayerArray);
                 PlayerPrefsUtility.SetIntArray("avatarArray", avatarPlayerArray);
+                PlayerPrefsUtility.SetIntArray("pointsArray", pointsPlayerArray);
                 PlayerPrefs.SetInt("avatarSelect", avatarPlayerArray[i]);
                 PlayerPrefs.SetString("cpfSelect", cpfplayerArray[i]);
                 PlayerPrefs.SetString("nameSelect", nameplayerArray[i]);
+                PlayerPrefs.SetInt("pointsSelect", pointsPlayerArray[i]);
                 dadosPlayerManager.SetvalueInputs();
                 break;
             }
@@ -99,16 +105,18 @@ public class PersonManager : MonoBehaviour
         cpfplayerArray = PlayerPrefsUtility.GetStringArray("cpfArray");
         nameplayerArray = PlayerPrefsUtility.GetStringArray("nameArray");
         avatarPlayerArray = PlayerPrefsUtility.GetIntArray("avatarArray");
+        pointsPlayerArray = PlayerPrefsUtility.GetIntArray("pointsArray");
         PlayerPrefs.SetInt("avatarSelect", 0);
         PlayerPrefs.SetString("cpfSelect", "");
         PlayerPrefs.SetString("nameSelect", "");
+        PlayerPrefs.SetInt("pointsSelect", 0);
     }
 
     public void SelectStatusPlayer(int p_numberPlayerArray)
     {
         scene[1].SetActive(false);
         scene[7].SetActive(true);
-        statusPlayerManager.SetStatus(cpfplayerArray[p_numberPlayerArray], nameplayerArray[p_numberPlayerArray], 999, avatarPlayerArray[p_numberPlayerArray]);
+        statusPlayerManager.SetStatus(cpfplayerArray[p_numberPlayerArray], nameplayerArray[p_numberPlayerArray], pointsPlayerArray[p_numberPlayerArray], avatarPlayerArray[p_numberPlayerArray]);
     }
 
     public void ReturnAdminScreen()
@@ -129,16 +137,19 @@ public class PersonManager : MonoBehaviour
                     cpfplayerArray[i] = cpfplayerArray[i + 1];
                     nameplayerArray[i] = nameplayerArray[i + 1];
                     avatarPlayerArray[i] = avatarPlayerArray[i + 1];
+                    pointsPlayerArray[i] = pointsPlayerArray[i + 1];
 
                     nameplayerArray[i + 1] = "name";
                     cpfplayerArray[i + 1] = "0";
                     avatarPlayerArray[i + 1] = 99;
+                    pointsPlayerArray[i + 1] = 0;
                 }
             }
         }
         PlayerPrefsUtility.SetStringArray("cpfArray", cpfplayerArray);
         PlayerPrefsUtility.SetStringArray("nameArray", nameplayerArray);
         PlayerPrefsUtility.SetIntArray("avatarArray", avatarPlayerArray);
+        PlayerPrefsUtility.SetIntArray("pointsArray", pointsPlayerArray);
         LoadArrayPlayers();
     }
 
