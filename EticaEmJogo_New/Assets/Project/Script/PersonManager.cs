@@ -10,6 +10,7 @@ public class PersonManager : MonoBehaviour
     private string _nameTemp;
     private string _cpfTemp;
     private int _avatarTemp;
+    private bool _saveNewPlayer;
 
     public SceneAdminManager adminManager;
     public SceneDadosPlayerManager dadosPlayerManager;
@@ -24,10 +25,9 @@ public class PersonManager : MonoBehaviour
     public int[] pointsPlayerArray;
     public GameObject[] poolAvatar;
 
-    public Texture2D cursorTextureStandard;
-    public Vector2 hotSpot = Vector2.zero;
-    public CursorMode cursorMode = CursorMode.Auto;
-    private bool _saveNewPlayer;
+    //public Texture2D cursorTextureStandard;
+    //public Vector2 hotSpot = Vector2.zero;
+    //public CursorMode cursorMode = CursorMode.Auto;    
 
     void Awake()
     {
@@ -36,7 +36,7 @@ public class PersonManager : MonoBehaviour
 
     void Start ()
     {
-        Cursor.SetCursor(cursorTextureStandard, hotSpot, cursorMode);
+        //Cursor.SetCursor(cursorTextureStandard, hotSpot, cursorMode);
     }
 	
 	void Update ()
