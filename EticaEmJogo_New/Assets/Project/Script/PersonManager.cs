@@ -25,18 +25,9 @@ public class PersonManager : MonoBehaviour
     public int[] pointsPlayerArray;
     public GameObject[] poolAvatar;
 
-    //public Texture2D cursorTextureStandard;
-    //public Vector2 hotSpot = Vector2.zero;
-    //public CursorMode cursorMode = CursorMode.Auto;    
-
     void Awake()
     {
         LoadArrayPlayers();
-    }
-
-    void Start ()
-    {
-        //Cursor.SetCursor(cursorTextureStandard, hotSpot, cursorMode);
     }
 	
 	void Update ()

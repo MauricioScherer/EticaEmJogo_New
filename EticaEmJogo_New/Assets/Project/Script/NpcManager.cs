@@ -107,6 +107,11 @@ public class NpcManager : MonoBehaviour
                 Invoke("SetWaveActivated", 1f);
             }
         }
+
+        if(_stateSelect == 1 && _stateQuest == 0)
+        {
+            exclamation.SetActive(true);
+        }
     }
 
     void OnMouseExit()
