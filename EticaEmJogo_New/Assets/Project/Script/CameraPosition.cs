@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraPosition : MonoBehaviour
 {
-    public Transform audioListenerPosition;
     public Transform playerPosition;
     public float distanciaEmZ;
     public float speed;
@@ -12,7 +11,5 @@ public class CameraPosition : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(playerPosition.position.x, transform.position.y, playerPosition.position.z - distanciaEmZ);
-        audioListenerPosition.position = Vector3.MoveTowards(audioListenerPosition.position, playerPosition.position, speed * Time.deltaTime);
-
     }
 }

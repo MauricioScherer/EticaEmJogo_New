@@ -39,6 +39,8 @@ public class NpcManager : MonoBehaviour
     private int _sort;
     private int _stateSelect;
     private int _stateQuest;
+    private bool _dialogueBalonActive;
+    private AudioSource _voice;
 
     public int numberQuestActive;
     public bool questResolved;
@@ -51,6 +53,7 @@ public class NpcManager : MonoBehaviour
     {
         _anim = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _voice = GetComponent<AudioSource>();
         _stateSelect = (int)startState;
         _stateQuest = (int)questStay;
         if (_stateSelect == 2)
@@ -95,22 +98,45 @@ public class NpcManager : MonoBehaviour
         }
 	}
 
+    public void ViewBalonDialogue()
+    {
+        if(!_dialogueBalonActive)
+        {
+            ballonWallet.SetActive(true);
+            exclamation.SetActive(false);
+            _dialogueBalonActive = true;
+            _voice.Play();
+            Invoke("ResetBalonDialogue", 3);
+        }
+    }
+
+    void ResetBalonDialogue()
+    {
+        ballonWallet.SetActive(false);
+        _dialogueBalonActive = false;
+    }
+
     void OnMouseEnter()
     {
         if(numberQuestActive == gameManager.numberQuestResolve)
         {
-            if (!questResolved && !_waveActive && _stateSelect == 0 && _stateQuest != 0)
+            if(!questResolved)
             {
-                _waveActive = true;
-                _anim.SetBool("Wave", _waveActive);
-                exclamation.SetActive(true);
-                Invoke("SetWaveActivated", 1f);
+                if (_stateSelect == 0 && !_waveActive && _stateQuest != 0)
+                {
+                    _waveActive = true;
+                    _anim.SetBool("Wave", _waveActive);
+                    exclamation.SetActive(true);
+                    Invoke("SetWaveActivated", 1f);
+                }
             }
+
         }
 
         if(_stateSelect == 1 && _stateQuest == 0)
         {
-            exclamation.SetActive(true);
+            if(!_dialogueBalonActive && !questResolved)
+                exclamation.SetActive(true);
         }
     }
 
@@ -190,5 +216,10 @@ public class NpcManager : MonoBehaviour
     public int GetQuestStay()
     {
         return _stateQuest;
+    }
+
+    public int GetStateCurrent()
+    {
+        return _stateSelect;
     }
 }

@@ -36,6 +36,7 @@ public class ManagerLevel : MonoBehaviour
             painel.SetActive(true);
             instruction[0].SetActive(true);
             Time.timeScale = 0;
+            PlayerNoWalk();
         }
     }
 
@@ -87,6 +88,7 @@ public class ManagerLevel : MonoBehaviour
         painel.SetActive(true);
         instruction[1].SetActive(true);
         Time.timeScale = 0;
+        PlayerNoWalk();
     }
 
     public void ReturnToGame()
@@ -97,6 +99,17 @@ public class ManagerLevel : MonoBehaviour
         }
         painel.SetActive(false);
         Time.timeScale = 1;
+        Invoke("PlayerCanWalk", 0.5f);
+    }
+
+    void PlayerNoWalk()
+    {
+        gameManager.player.CanWalk();
+    }
+
+    void PlayerCanWalk()
+    {
+        gameManager.player.SetValues();
     }
 
     public bool ResolveTotalQuests()

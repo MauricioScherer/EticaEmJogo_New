@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private int _numberQuestStay;
     private int _numberPointsForLevel;
     private int _numberMensagePhone;
+    private GameObject _avatarQuestCurrent;
 
     public int numberQuestResolve;
     public ManagerLevel managerLevel;
@@ -18,8 +19,9 @@ public class GameManager : MonoBehaviour
     public GameObject score;
     public GameObject phone;
     public GameObject painelPause;
-    public GameObject[] poolAvatar;
+    public GameObject[] poolAvatar;    
     public MovePlayer player;
+    public GameObject[] poolAvatarQuest;
     public CelularManager celularManager;
     public Image scoreBar;
     public AudioSource music;
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
         {
             int __tempNumberPool = PlayerPrefs.GetInt("avatarSelect");
             poolAvatar[__tempNumberPool].SetActive(true);
+            _avatarQuestCurrent = poolAvatarQuest[__tempNumberPool];
             player = poolAvatar[__tempNumberPool].GetComponent<MovePlayer>();
             camPosition.playerPosition = poolAvatar[__tempNumberPool].transform;
         }
@@ -70,6 +73,7 @@ public class GameManager : MonoBehaviour
                 _numberPointsForLevel += 5;
                 celularManager.DeactiveView();
                 quest[p_numQuest].SetActive(true);
+                _avatarQuestCurrent.SetActive(true);
                 StayQuest();
                 ActivateAndDeactivateHud();
             }
@@ -119,6 +123,7 @@ public class GameManager : MonoBehaviour
             {
                 _numberQuestStay = i;
                 quest[i].SetActive(false);
+                _avatarQuestCurrent.SetActive(false);
                 break;
             }
         }
@@ -130,7 +135,10 @@ public class GameManager : MonoBehaviour
         painelPause.SetActive(false);
         ActivateAndDeactivateHud();
         if(_stayQuest)
+        {
             quest[_numberQuestStay].SetActive(true);
+            _avatarQuestCurrent.SetActive(true);
+        }            
     }
 
     void ActivateAndDeactivateHud()
@@ -152,6 +160,7 @@ public class GameManager : MonoBehaviour
     float ScoreCalculation()
     {
         quest[_numberQuestStay].SetActive(false);
+        _avatarQuestCurrent.SetActive(false);
         player.SetValues();
         if (managerLevel)
         {
