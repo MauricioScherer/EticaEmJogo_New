@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public CelularManager celularManager;
     public Image scoreBar;
     public AudioSource music;
+    public AudioSource effect;
+    public AudioClip[] clipEffect;
     public Slider controllerMusic;
     public CameraPosition camPosition;
 
@@ -80,8 +82,13 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            player.SetValues();
+            Invoke("InvokeSetValue", 0.3f);            
         }
+    }
+
+    void InvokeSetValue()
+    {
+        player.SetValues();
     }
 
     public void StayQuest()
@@ -117,6 +124,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         painelPause.SetActive(true);
         ActivateAndDeactivateHud();
+        if (!_stayQuest)
+            player.CanWalk();
         for (int i = 0; i < quest.Length; i++)
         {
             if(quest[i].activeSelf)
@@ -138,7 +147,11 @@ public class GameManager : MonoBehaviour
         {
             quest[_numberQuestStay].SetActive(true);
             _avatarQuestCurrent.SetActive(true);
-        }            
+        }
+        else
+        {
+            player.SetValues();
+        }         
     }
 
     void ActivateAndDeactivateHud()
@@ -185,5 +198,16 @@ public class GameManager : MonoBehaviour
     public float GetScore()
     {
         return _Score;
+    }
+
+    public void PlayEffect(int p_clip)
+    {
+        effect.clip = clipEffect[p_clip];
+        effect.Play();
+    }
+
+    public bool isPlayEffect()
+    {
+        return effect.isPlaying;
     }
 }

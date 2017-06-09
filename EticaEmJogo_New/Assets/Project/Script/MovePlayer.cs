@@ -17,7 +17,6 @@ public class MovePlayer : MonoBehaviour
     private bool _inDirectionPersonWallet;
     private bool _dialogueBalon;
     private int _numberQuestSelect;
-    private AudioSource _click;
 
     public GameManager gameManager;
     public Transform avatarWallet;
@@ -28,7 +27,6 @@ public class MovePlayer : MonoBehaviour
     {
         _anim = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        _click = GetComponent<AudioSource>();
         _canWalk = true;
         particleClikPosition = particleClick.gameObject.transform;
     }
@@ -58,9 +56,9 @@ public class MovePlayer : MonoBehaviour
                         else if(__stateCurrent == 1)
                         {
                             _objTemp = hit.collider.gameObject;
-                            _dialogueBalon = true;
+                            Invoke("ActiveClickDialogue", 0.1f);
                         }
-                    }
+                    }                    
                 }
                 else if(hit.collider.CompareTag("Wallet"))
                 {                    
@@ -75,13 +73,12 @@ public class MovePlayer : MonoBehaviour
                     _getWallet = false;
                     _canWalk = true;
                     _dialogueBalon = false;
-                    _objTemp = null;
+                    _objTemp = null;                    
                 }
                 _navMeshAgent.destination = hit.point;
                 _navMeshAgent.Resume();
                 particleClikPosition.position = new Vector3(hit.point.x, hit.point.y + 0.05f, hit.point.z);
-                particleClick.Play();
-                if (!_click.isPlaying) _click.Play();                
+                particleClick.Play();                               
             }
         }
         else if(_getWallet)
@@ -99,6 +96,11 @@ public class MovePlayer : MonoBehaviour
                     SetValues();
                 }
             }
+        }
+
+        if(Input.GetMouseButtonDown(0) && _canWalk && !_stayQuest)
+        {
+            if (!gameManager.isPlayEffect()) gameManager.PlayEffect(0);
         }
 
         if(_navMeshAgent.remainingDistance > 0.2f)
@@ -165,6 +167,10 @@ public class MovePlayer : MonoBehaviour
     void ActivateClickNpc()
     {
         _npcClicked = true;
+    }
+    void ActiveClickDialogue()
+    {
+        _dialogueBalon = true;
     }
     void ActivateClickWallet()
     {

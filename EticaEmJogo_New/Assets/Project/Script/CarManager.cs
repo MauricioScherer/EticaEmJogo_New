@@ -11,6 +11,7 @@ public class CarManager : MonoBehaviour
     public float speed;
     public Transform[] position1;
     public Transform[] position2;
+    public AudioSource hooter;
 	
 	void Update ()
     {
@@ -51,8 +52,11 @@ public class CarManager : MonoBehaviour
 
     public void StopCar()
     {
-        if (road)        
-            road = false;        
+        if (road)
+        {
+            road = false;
+            hooter.Play();
+        }           
     }
 
     public void ReturnRoad()

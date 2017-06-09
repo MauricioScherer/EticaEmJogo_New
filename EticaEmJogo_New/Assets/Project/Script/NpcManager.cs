@@ -34,19 +34,20 @@ public class NpcManager : MonoBehaviour
 
     private Animator _anim;
     private NavMeshAgent _navMeshAgent;
+    private AudioSource _voice;
     private bool _waveActive;
     private bool _randomSelectPath;    
     private int _sort;
     private int _stateSelect;
     private int _stateQuest;
     private bool _dialogueBalonActive;
-    private AudioSource _voice;
 
     public int numberQuestActive;
     public bool questResolved;
     public GameObject exclamation;
     public GameObject ballonWallet;
     public GameManager gameManager;
+    public AudioClip[] voices;
     public Transform[] path;
 
     void Awake ()
@@ -128,15 +129,20 @@ public class NpcManager : MonoBehaviour
                     _anim.SetBool("Wave", _waveActive);
                     exclamation.SetActive(true);
                     Invoke("SetWaveActivated", 1f);
+                    if (!gameManager.isPlayEffect())
+                        gameManager.PlayEffect(4);
                 }
             }
-
         }
 
         if(_stateSelect == 1 && _stateQuest == 0)
         {
             if(!_dialogueBalonActive && !questResolved)
+            {
                 exclamation.SetActive(true);
+                if (!gameManager.isPlayEffect())
+                    gameManager.PlayEffect(4);
+            }
         }
     }
 
@@ -164,6 +170,8 @@ public class NpcManager : MonoBehaviour
             ballonWallet.SetActive(false);
         _anim.SetBool("Lose2", false);
         _anim.SetBool("Victory", true);
+        _voice.clip = voices[1];
+        _voice.Play();
         Invoke("SetStandardAnim", 0.5f);
     }
 

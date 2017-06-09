@@ -12,6 +12,8 @@ public class QuestOptionsManager : MonoBehaviour
 
     public void EnterQuest(int p_option)
     {
+        if (!player.isPlayEffect())
+            player.PlayEffect(1);
         options[p_option].color = stay;
     }
     public void ExitQuest(int p_option)
@@ -21,6 +23,7 @@ public class QuestOptionsManager : MonoBehaviour
 
     public void WalletCorrect(bool p_isCorrect)
     {
+        player.PlayEffect(2);
         player.player.deliverWallet = p_isCorrect;
     }
 }

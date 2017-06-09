@@ -30,6 +30,7 @@ public class CelularManager : MonoBehaviour
             celularView.SetActive(false);
             _stayCelular = false;
         }
+        gameManager.PlayEffect(3);
     }
 
     public void DeactiveView()
