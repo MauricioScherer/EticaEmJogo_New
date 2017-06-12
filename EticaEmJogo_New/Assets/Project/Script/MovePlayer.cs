@@ -93,7 +93,7 @@ public class MovePlayer : MonoBehaviour
                 }
                 else
                 {
-                    SetValues();
+                    SetValues();                    
                 }
             }
         }
@@ -117,7 +117,9 @@ public class MovePlayer : MonoBehaviour
             if (_npcClicked || _itemSelect)
             {
                 if (_objTemp != null)
+                {
                     _objTemp.SetActive(false);
+                }
                 gameManager.SelectQuest(_numberQuestSelect);
                 _stayQuest = true;
             }
@@ -130,7 +132,9 @@ public class MovePlayer : MonoBehaviour
             else if(_dialogueBalon)
             {
                 if (_objTemp != null)
+                {
                     _objTemp.GetComponent<NpcManager>().ViewBalonDialogue();
+                }
                 SetValues();
             }
         }
@@ -155,7 +159,7 @@ public class MovePlayer : MonoBehaviour
         if (_objTemp != null)
         {
             _objTemp = null;
-            _getWallet = true;
+            _getWallet = true;            
         }
         else
         {

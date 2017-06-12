@@ -65,6 +65,11 @@ public class ManagerLevel : MonoBehaviour
         return _numberQuestResolve;
     }
 
+    public int GetNumberScene()
+    {
+        return _numberScene;
+    }
+
     public void SelectEventGameManager()
     {
         if (_numberScene == 1)
@@ -78,6 +83,7 @@ public class ManagerLevel : MonoBehaviour
     {
         alertFinalLevel.SetActive(true);
         busFinalLevel.SetActive(true);
+        gameManager.SetMissionText();
         PagDefine(gameManager.GetScore());
         Invoke("ResetAlert", 5);
     }
@@ -126,7 +132,8 @@ public class ManagerLevel : MonoBehaviour
 
     public void ViewFeedback()
     {        
-        feedback.SetActive(true);        
+        feedback.SetActive(true);
+        gameManager.music.Stop();       
         Time.timeScale = 0;
     }
 

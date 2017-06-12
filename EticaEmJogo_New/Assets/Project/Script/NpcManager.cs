@@ -115,6 +115,7 @@ public class NpcManager : MonoBehaviour
     {
         ballonWallet.SetActive(false);
         _dialogueBalonActive = false;
+        gameManager.SetMissionText();
     }
 
     void OnMouseEnter()
@@ -172,6 +173,7 @@ public class NpcManager : MonoBehaviour
         _anim.SetBool("Victory", true);
         _voice.clip = voices[1];
         _voice.Play();
+        gameManager.ResetMissionText();
         Invoke("SetStandardAnim", 0.5f);
     }
 

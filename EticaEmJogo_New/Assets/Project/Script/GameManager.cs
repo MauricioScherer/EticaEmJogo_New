@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject score;
     public GameObject phone;
     public GameObject painelPause;
+    public GameObject painelMission;
     public GameObject[] poolAvatar;    
     public MovePlayer player;
     public GameObject[] poolAvatarQuest;
@@ -29,17 +30,14 @@ public class GameManager : MonoBehaviour
     public AudioClip[] clipEffect;
     public Slider controllerMusic;
     public CameraPosition camPosition;
-
-    public Texture2D cursorTextureStandard;
-    private Vector2 hotSpot = Vector2.zero;
-    private CursorMode cursorMode = CursorMode.Auto;
+    public Text missionCurrent;
 
     void Awake ()
     {
         numberQuestResolve = 0;
-        Cursor.SetCursor(cursorTextureStandard, hotSpot, cursorMode);
         controllerMusic.value = 0.1f;
         music.volume = controllerMusic.value;
+
         if(PlayerPrefs.HasKey("avatarSelect"))
         {
             int __tempNumberPool = PlayerPrefs.GetInt("avatarSelect");
@@ -96,28 +94,13 @@ public class GameManager : MonoBehaviour
         _stayQuest = !_stayQuest;        
     }
 
-    public void CorrectAnswer()
+    public void CheckQuest(int p_score)
     {
-        _Score += 5;
+        _Score += p_score;
         ActivateAndDeactivateHud();
         StayQuest();
         scoreBar.fillAmount = ScoreCalculation();
     }
-
-    public void RightAnswer()
-    {
-        _Score += 2;
-        ActivateAndDeactivateHud();
-        StayQuest();
-        scoreBar.fillAmount = ScoreCalculation();
-    }
-
-    public void WrongAnswer()
-    {
-        ActivateAndDeactivateHud();
-        StayQuest();
-        scoreBar.fillAmount = ScoreCalculation();
-    } 
     
     public void PauseSelect()
     {
@@ -160,13 +143,15 @@ public class GameManager : MonoBehaviour
         {
             score.SetActive(false);
             help.SetActive(false);
-            phone.SetActive(false);          
+            phone.SetActive(false);
+            painelMission.SetActive(false);
         }
         else
         {
             score.SetActive(true);
             help.SetActive(true);
             phone.SetActive(true);
+            painelMission.SetActive(true);
         }        
     }
     
@@ -209,5 +194,35 @@ public class GameManager : MonoBehaviour
     public bool isPlayEffect()
     {
         return effect.isPlaying;
+    }
+
+    public void SetMissionText()
+    {
+        if(managerLevel)
+        {
+            if(managerLevel.GetNumberScene() == 1)
+            {
+                if(numberQuestResolve == 0)
+                {
+                    if(missionCurrent.text == "")
+                        missionCurrent.text = "- A carteira perdida";
+                }
+                else if(numberQuestResolve == 1)
+                {
+                    if (missionCurrent.text == "")
+                        missionCurrent.text = "- Encontro na praça";
+                }
+                else if (numberQuestResolve == 3)
+                {
+                    if (missionCurrent.text == "")
+                        missionCurrent.text = "- Hora do ônibus";
+                }
+            }
+        }
+    }
+
+    public void ResetMissionText()
+    {
+        missionCurrent.text = "";
     }
 }
