@@ -8,6 +8,7 @@ public class CelularManager : MonoBehaviour
     private Animator _anim;
 
     public GameObject celularView;
+    public ManagerLevel managerLevel;
     public GameObject[] mensage;
     public GameManager gameManager;
     
@@ -63,6 +64,19 @@ public class CelularManager : MonoBehaviour
         for(int i = 0; i < mensage.Length; i++)
         {
             mensage[i].SetActive(false);
+        }
+    }
+
+    public void PlayMovie()
+    {
+        if(managerLevel)
+        {
+            if (managerLevel.GetNumberQuestResolve() == 1)
+            {
+                managerLevel.SelectEventGameManager();
+                celularView.SetActive(false);
+                _stayCelular = false;
+            }
         }
     }
 }

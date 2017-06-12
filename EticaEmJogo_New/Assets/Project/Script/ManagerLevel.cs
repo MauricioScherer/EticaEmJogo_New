@@ -52,7 +52,6 @@ public class ManagerLevel : MonoBehaviour
             else if (_numberQuestResolve == 1)
             {
                 gameManager.SelectMensagePhone(_numberQuestResolve, 8);
-                Invoke("SelectEventGameManager", 17);
             }
             else if(_numberQuestResolve == 2)
             {
@@ -61,7 +60,12 @@ public class ManagerLevel : MonoBehaviour
         }
     }
 
-    void SelectEventGameManager()
+    public int GetNumberQuestResolve()
+    {
+        return _numberQuestResolve;
+    }
+
+    public void SelectEventGameManager()
     {
         if (_numberScene == 1)
         {
