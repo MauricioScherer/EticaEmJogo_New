@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,10 +11,12 @@ public class GameManager : MonoBehaviour
     private int _numberQuestStay;
     private int _numberPointsForLevel;
     private int _numberMensagePhone;
+    private int _numberScene;
     private GameObject _avatarQuestCurrent;
 
     public int numberQuestResolve;
     public ManagerLevel managerLevel;
+    public ManagerLevel2 managerLevel2;
     public GameObject[] quest;
     public GameObject help;
     public GameObject score;
@@ -37,8 +40,9 @@ public class GameManager : MonoBehaviour
         numberQuestResolve = 0;
         controllerMusic.value = 0.1f;
         music.volume = controllerMusic.value;
+        _numberScene = SceneManager.GetActiveScene().buildIndex;
 
-        if(PlayerPrefs.HasKey("avatarSelect"))
+        if (PlayerPrefs.HasKey("avatarSelect"))
         {
             int __tempNumberPool = PlayerPrefs.GetInt("avatarSelect");
             poolAvatar[__tempNumberPool].SetActive(true);
@@ -160,10 +164,12 @@ public class GameManager : MonoBehaviour
         quest[_numberQuestStay].SetActive(false);
         _avatarQuestCurrent.SetActive(false);
         player.SetValues();
+
         if (managerLevel)
-        {
             managerLevel.SetEvent(numberQuestResolve);
-        }
+        else if (managerLevel2)
+            managerLevel2.SetEvent(numberQuestResolve);
+
         numberQuestResolve++;
         return _Score / _numberPointsForLevel;
     }
@@ -198,25 +204,22 @@ public class GameManager : MonoBehaviour
 
     public void SetMissionText()
     {
-        if(managerLevel)
+        if (GetNumberScene() == 1)
         {
-            if(managerLevel.GetNumberScene() == 1)
+            if (numberQuestResolve == 0)
             {
-                if(numberQuestResolve == 0)
-                {
-                    if(missionCurrent.text == "")
-                        missionCurrent.text = "- A carteira perdida";
-                }
-                else if(numberQuestResolve == 1)
-                {
-                    if (missionCurrent.text == "")
-                        missionCurrent.text = "- Encontro na praça";
-                }
-                else if (numberQuestResolve == 3)
-                {
-                    if (missionCurrent.text == "")
-                        missionCurrent.text = "- Hora do ônibus";
-                }
+                if (missionCurrent.text == "")
+                    missionCurrent.text = "- A carteira perdida";
+            }
+            else if (numberQuestResolve == 1)
+            {
+                if (missionCurrent.text == "")
+                    missionCurrent.text = "- Encontro na praça";
+            }
+            else if (numberQuestResolve == 3)
+            {
+                if (missionCurrent.text == "")
+                    missionCurrent.text = "- Hora do ônibus";
             }
         }
     }
@@ -224,5 +227,10 @@ public class GameManager : MonoBehaviour
     public void ResetMissionText()
     {
         missionCurrent.text = "";
+    }
+
+    public int GetNumberScene()
+    {
+        return _numberScene;
     }
 }

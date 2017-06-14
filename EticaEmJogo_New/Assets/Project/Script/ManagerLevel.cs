@@ -5,13 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class ManagerLevel : MonoBehaviour
 {
-    private int _numberScene;
     private int _numberQuestResolve;
     private int _numberPag;
     
     public GameManager gameManager;
     public GameObject busFinalLevel;
-    public GameObject triggerInstruction2;
     public GameObject canvasInstruction;
     public GameObject painel;
     public GameObject alertFinalLevel;    
@@ -23,11 +21,6 @@ public class ManagerLevel : MonoBehaviour
     public GameObject buttonContinue;
     public GameObject[] pag;
     public GameObject[] pagCurrent;
-
-    void Awake()
-    {
-        _numberScene = SceneManager.GetActiveScene().buildIndex;
-    }
 
     void Start()
     {
@@ -42,21 +35,18 @@ public class ManagerLevel : MonoBehaviour
 
     public void SetEvent(int p_numberQuestCurrent)
     {
-        if(_numberScene == 1)
+        _numberQuestResolve = p_numberQuestCurrent;
+        if (_numberQuestResolve == 0)
         {
-            _numberQuestResolve = p_numberQuestCurrent;
-            if (_numberQuestResolve == 0)
-            {
-                gameManager.SelectMensagePhone(_numberQuestResolve, 13);
-            }
-            else if (_numberQuestResolve == 1)
-            {
-                gameManager.SelectMensagePhone(_numberQuestResolve, 8);
-            }
-            else if(_numberQuestResolve == 2)
-            {
-                Invoke("viewAlertFinalLevel", 6);
-            }
+            gameManager.SelectMensagePhone(_numberQuestResolve, 13);
+        }
+        else if (_numberQuestResolve == 1)
+        {
+            gameManager.SelectMensagePhone(_numberQuestResolve, 8);
+        }
+        else if (_numberQuestResolve == 2)
+        {
+            Invoke("viewAlertFinalLevel", 6);
         }
     }
 
@@ -65,24 +55,18 @@ public class ManagerLevel : MonoBehaviour
         return _numberQuestResolve;
     }
 
-    public int GetNumberScene()
-    {
-        return _numberScene;
-    }
-
     public void SelectEventGameManager()
     {
-        if (_numberScene == 1)
-        {
-            gameManager.player.CanWalk();
-            gameManager.SelectQuest(2);
-        }
+        gameManager.player.CanWalk();
+        gameManager.SelectQuest(2);
     }
 
     void viewAlertFinalLevel()
     {
-        alertFinalLevel.SetActive(true);
-        busFinalLevel.SetActive(true);
+        if(alertFinalLevel)
+            alertFinalLevel.SetActive(true);
+        if(busFinalLevel)
+            busFinalLevel.SetActive(true);
         gameManager.SetMissionText();
         PagDefine(gameManager.GetScore());
         Invoke("ResetAlert", 5);
@@ -90,12 +74,14 @@ public class ManagerLevel : MonoBehaviour
 
     void ResetAlert()
     {
-        alertFinalLevel.SetActive(false);
+        if(alertFinalLevel)
+            alertFinalLevel.SetActive(false);
     }
 
     public void NewInstruction()
     {
-        painel.SetActive(true);
+        if (painel)
+            painel.SetActive(true);
         instruction[1].SetActive(true);
         Time.timeScale = 0;
         PlayerNoWalk();
@@ -107,7 +93,8 @@ public class ManagerLevel : MonoBehaviour
         {
             instruction[i].SetActive(false);
         }
-        painel.SetActive(false);
+        if(painel)
+            painel.SetActive(false);
         Time.timeScale = 1;
         Invoke("PlayerCanWalk", 0.5f);
     }

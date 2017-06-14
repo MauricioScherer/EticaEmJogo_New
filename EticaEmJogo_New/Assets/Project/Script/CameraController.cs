@@ -6,6 +6,12 @@ public class CameraController : MonoBehaviour
 {
     public Transform cameraPosition;
     public float speed;
+
+    void Awake()
+    {
+        transform.position = cameraPosition.position;
+        transform.rotation = cameraPosition.rotation;
+    }
 	
 	void Update ()
     {
