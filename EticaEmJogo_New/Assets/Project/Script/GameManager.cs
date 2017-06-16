@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private int _numberPointsForLevel;
     private int _numberMensagePhone;
     private int _numberScene;
+    public bool _stayTriggerFade;
     private GameObject _avatarQuestCurrent;
 
     public int numberQuestResolve;
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
     public AudioClip[] clipEffect;
     public Slider controllerMusic;
     public CameraPosition camPosition;
+    public Animator Fade;
     public Text missionCurrent;
 
     void Awake ()
@@ -65,6 +67,17 @@ public class GameManager : MonoBehaviour
         {
             music.volume = controllerMusic.value;
         }
+    }
+
+    public void StartFade()
+    {
+        Fade.SetBool("FadeIn", true);
+        Invoke("ResetFade", 1);
+    }
+
+    void ResetFade()
+    {
+        Fade.SetBool("FadeIn", false);
     }
 
     public void SelectQuest(int p_numQuest)
@@ -232,5 +245,15 @@ public class GameManager : MonoBehaviour
     public int GetNumberScene()
     {
         return _numberScene;
+    }
+
+    public bool GetStayTriggerFade()
+    {
+        return _stayTriggerFade;
+    }
+
+    public void SetStayTriggerFade(bool p_stay)
+    {
+        _stayTriggerFade = p_stay;
     }
 }
