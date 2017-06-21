@@ -5,6 +5,8 @@ using UnityEngine;
 public class MouseEnter : MonoBehaviour
 {
     public Texture2D eyeCursor;
+    public ManagerLevel managerLevel;
+    public ManagerLevel2 managerLevel2;
 
     void OnMouseEnter()
     {

@@ -16,6 +16,7 @@ public class MovePlayer : MonoBehaviour
     private bool _canWalk;
     private bool _inDirectionPersonWallet;
     private bool _dialogueBalon;
+    private bool _viewMural;
     private int _numberQuestSelect;
 
     public GameManager gameManager;
@@ -66,6 +67,10 @@ public class MovePlayer : MonoBehaviour
                     _objTemp = hit.collider.gameObject;
                     Invoke("ActivateClickWallet", 0.1f);
                 }
+                else if(hit.collider.CompareTag("Mural"))
+                {
+                    Invoke("ActiveClickMurak", 0.1f);
+                }
                 else
                 {
                     _npcClicked = false;
@@ -73,6 +78,7 @@ public class MovePlayer : MonoBehaviour
                     _getWallet = false;
                     _canWalk = true;
                     _dialogueBalon = false;
+                    _viewMural = false;
                     _objTemp = null;                    
                 }
                 _navMeshAgent.destination = hit.point;
@@ -137,6 +143,10 @@ public class MovePlayer : MonoBehaviour
                 }
                 SetValues();
             }
+            else if(_viewMural)
+            {
+                gameManager.managerLevel2.ViewCanvasMural(true);
+            }
         }
     }
 
@@ -156,6 +166,7 @@ public class MovePlayer : MonoBehaviour
         _canWalk = true;
         _itemSelect = false;
         _stayQuest = false;
+        _viewMural = false;
         if (_objTemp != null)
         {
             _objTemp = null;
@@ -179,5 +190,10 @@ public class MovePlayer : MonoBehaviour
     void ActivateClickWallet()
     {
         _itemSelect = true;
+    }
+    void ActiveClickMurak()
+    {
+        _viewMural = true;
+        CanWalk();
     }
 }

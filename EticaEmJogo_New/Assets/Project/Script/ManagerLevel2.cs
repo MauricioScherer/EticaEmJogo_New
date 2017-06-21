@@ -45,26 +45,12 @@ public class ManagerLevel2 : MonoBehaviour
     {
         return _numberQuestResolve;
     }
-
-    public void SelectEventGameManager()
-    {
-        gameManager.player.CanWalk();
-        gameManager.SelectQuest(2);
-    }
-
+    
     void viewAlertFinalLevel()
     {
         gameManager.SetMissionText();
         PagDefine(gameManager.GetScore());
         Invoke("ResetAlert", 5);
-    }
-
-    public void NewInstruction()
-    {
-        if (painel)
-            painel.SetActive(true);
-        Time.timeScale = 0;
-        PlayerNoWalk();
     }
 
     public void ReturnToGame()
@@ -84,6 +70,11 @@ public class ManagerLevel2 : MonoBehaviour
     void PlayerCanWalk()
     {
         gameManager.player.SetValues();
+    }
+
+    public void ViewCanvasMural(bool p_view)
+    {
+        canvasLevel.SetActive(p_view);
     }
 
     public bool ResolveTotalQuests()
