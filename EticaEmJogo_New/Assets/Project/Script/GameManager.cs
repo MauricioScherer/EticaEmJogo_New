@@ -43,7 +43,6 @@ public class GameManager : MonoBehaviour
         controllerMusic.value = 0.1f;
         music.volume = controllerMusic.value;
         _numberScene = SceneManager.GetActiveScene().buildIndex;
-
         if (PlayerPrefs.HasKey("avatarSelect"))
         {
             int __tempNumberPool = PlayerPrefs.GetInt("avatarSelect");
@@ -58,6 +57,10 @@ public class GameManager : MonoBehaviour
             player = poolAvatar[0].GetComponent<MovePlayer>();
             camPosition.playerPosition = poolAvatar[0].transform;
         }
+
+        if (_numberScene == 2)
+            player.CanWalk(false);
+
         _numberPointsForLevel = 0;
     }
 	
@@ -124,8 +127,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         painelPause.SetActive(true);
         ActivateAndDeactivateHud();
-        if (!_stayQuest)
-            player.CanWalk();
         for (int i = 0; i < quest.Length; i++)
         {
             if(quest[i].activeSelf)
@@ -154,7 +155,15 @@ public class GameManager : MonoBehaviour
         }         
     }
 
-    void ActivateAndDeactivateHud()
+    public void DeactiveHudAndPause()
+    {
+        Time.timeScale = 0;
+        ActivateAndDeactivateHud();
+        if (!_stayQuest)
+            player.CanWalk(true);
+    }
+
+    public void ActivateAndDeactivateHud()
     {
         if(score.activeSelf)
         {
@@ -180,8 +189,6 @@ public class GameManager : MonoBehaviour
 
         if (managerLevel)
             managerLevel.SetEvent(numberQuestResolve);
-        else if (managerLevel2)
-            managerLevel2.SetEvent(numberQuestResolve);
 
         numberQuestResolve++;
         return _Score / _numberPointsForLevel;

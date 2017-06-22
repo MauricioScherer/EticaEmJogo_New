@@ -46,20 +46,36 @@ public class MovePlayer : MonoBehaviour
                     int __questStay = hit.collider.GetComponent<NpcManager>().GetQuestStay();
                     int __stateCurrent = hit.collider.GetComponent<NpcManager>().GetStateCurrent();
 
-                    if (!__questResolved)
+                    if(gameManager.GetNumberScene() == 1)
                     {
-                        if(__questStay != 0)
+                        if (!__questResolved)
                         {
-                            hit.collider.GetComponent<NpcManager>().questResolved = true;
-                            _numberQuestSelect = hit.collider.GetComponent<NpcManager>().GetQuestStay();
-                            Invoke("ActivateClickNpc", 0.1f);
+                            if (__questStay != 0 && __stateCurrent != 4)
+                            {
+                                hit.collider.GetComponent<NpcManager>().questResolved = true;
+                                _numberQuestSelect = hit.collider.GetComponent<NpcManager>().GetQuestStay();
+                                Invoke("ActivateClickNpc", 0.1f);
+                            }
+                            else if (__stateCurrent == 1)
+                            {
+                                _objTemp = hit.collider.gameObject;
+                                Invoke("ActiveClickDialogue", 0.1f);
+                            }
                         }
-                        else if(__stateCurrent == 1)
+                    }
+                    else if(gameManager.GetNumberScene() == 2)
+                    {
+                        if (!__questResolved)
                         {
-                            _objTemp = hit.collider.gameObject;
-                            Invoke("ActiveClickDialogue", 0.1f);
+                            if (__questStay == 1 && gameManager.managerLevel2.GetNumberQuestResolve() == 1)
+                            {
+                                hit.collider.GetComponent<NpcManager>().questResolved = true;
+                                _numberQuestSelect = hit.collider.GetComponent<NpcManager>().GetQuestStay();
+                                _objTemp = hit.collider.gameObject;
+                                Invoke("ActivateClickNpc", 0.1f);
+                            }
                         }
-                    }                    
+                    }              
                 }
                 else if(hit.collider.CompareTag("Wallet"))
                 {                    
@@ -69,7 +85,7 @@ public class MovePlayer : MonoBehaviour
                 }
                 else if(hit.collider.CompareTag("Mural"))
                 {
-                    Invoke("ActiveClickMurak", 0.1f);
+                    Invoke("ActiveClickMural", 0.1f);
                 }
                 else
                 {
@@ -120,32 +136,51 @@ public class MovePlayer : MonoBehaviour
 
         if (_navMeshAgent.remainingDistance <= 0.2f && !_stayQuest)
         {
-            if (_npcClicked || _itemSelect)
+            if(gameManager.GetNumberScene() == 1)
             {
-                if (_objTemp != null)
+                if (_npcClicked || _itemSelect)
                 {
-                    _objTemp.SetActive(false);
+                    if (_objTemp != null)
+                    {
+                        _objTemp.SetActive(false);
+                    }
+                    gameManager.SelectQuest(_numberQuestSelect);
+                    _stayQuest = true;
                 }
-                gameManager.SelectQuest(_numberQuestSelect);
-                _stayQuest = true;
-            }
-            else if(_getWallet && _inDirectionPersonWallet)
-            {                
-                avatarWallet.gameObject.GetComponent<NpcManager>().SetAnimVictory();
-                avatarWallet.gameObject.GetComponent<NpcManager>().questResolved = true;
-                SetValues();
-            }
-            else if(_dialogueBalon)
-            {
-                if (_objTemp != null)
+                else if (_getWallet && _inDirectionPersonWallet)
                 {
-                    _objTemp.GetComponent<NpcManager>().ViewBalonDialogue();
+                    avatarWallet.gameObject.GetComponent<NpcManager>().SetAnimVictory();
+                    avatarWallet.gameObject.GetComponent<NpcManager>().questResolved = true;
+                    SetValues();
                 }
-                SetValues();
+                else if (_dialogueBalon)
+                {
+                    if (_objTemp != null)
+                    {
+                        _objTemp.GetComponent<NpcManager>().ViewBalonDialogue();
+                    }
+                    SetValues();
+                }
             }
-            else if(_viewMural)
+            else if(gameManager.GetNumberScene() == 2)
             {
-                gameManager.managerLevel2.ViewCanvasMural(true);
+                if(_npcClicked)
+                {
+                    if(_numberQuestSelect == 1)
+                    {
+                        if (_objTemp != null)
+                        {
+                            _objTemp.GetComponent<NpcManager>().ballonDialogue[1].SetActive(true);
+                            _objTemp = null;
+                        }
+                    }
+                }
+                else if (_viewMural)
+                {
+                    gameManager.managerLevel2.ViewCanvasMural(true);
+                    gameManager.DeactiveHudAndPause();
+                    _viewMural = false;
+                }
             }
         }
     }
@@ -155,9 +190,9 @@ public class MovePlayer : MonoBehaviour
         _inDirectionPersonWallet = true;
     }
 
-    public void CanWalk()
+    public void CanWalk(bool p_canWalk)
     {
-        _canWalk = !_canWalk;
+        _canWalk = p_canWalk;
     }
 
     public void SetValues()
@@ -191,9 +226,9 @@ public class MovePlayer : MonoBehaviour
     {
         _itemSelect = true;
     }
-    void ActiveClickMurak()
+    void ActiveClickMural()
     {
         _viewMural = true;
-        CanWalk();
+        CanWalk(false);
     }
 }

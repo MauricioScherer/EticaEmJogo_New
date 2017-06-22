@@ -52,7 +52,7 @@ public class CelularManager : MonoBehaviour
     {
         if(!_stayCelular)
         {
-            gameManager.player.CanWalk();
+            gameManager.player.CanWalk(false);
         }
     }
 

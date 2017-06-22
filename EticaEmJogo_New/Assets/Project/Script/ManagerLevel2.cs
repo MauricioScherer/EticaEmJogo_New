@@ -10,7 +10,9 @@ public class ManagerLevel2 : MonoBehaviour
     
     public GameManager gameManager;
     public GameObject canvasLevel;
-    public GameObject painel;  
+    public GameObject painel;
+
+    public NpcManager npcQuest1;
 
     public GameObject feedback;
     public GameObject buttonBackPag;
@@ -55,16 +57,25 @@ public class ManagerLevel2 : MonoBehaviour
 
     public void ReturnToGame()
     {
-
         if(painel)
             painel.SetActive(false);
+        if(canvasLevel)
+        {
+            ViewCanvasMural(false);
+            if (_numberQuestResolve == 0)
+            {
+                _numberQuestResolve = 1;
+            }
+        }
+
+        gameManager.ActivateAndDeactivateHud();
         Time.timeScale = 1;
-        Invoke("PlayerCanWalk", 0.5f);
+        Invoke("PlayerCanWalk", 1f);
     }
 
     void PlayerNoWalk()
     {
-        gameManager.player.CanWalk();
+        gameManager.player.CanWalk(false);
     }
 
     void PlayerCanWalk()
@@ -171,5 +182,10 @@ public class ManagerLevel2 : MonoBehaviour
             }
         }
         SceneManager.LoadScene("Menu");
+    }
+
+    public int GetNumberQuest()
+    {
+        return _numberQuestResolve;
     }
 }

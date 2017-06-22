@@ -10,7 +10,8 @@ public class NpcManager : MonoBehaviour
         IDLE_STATE,
         LOSE_STATE,
         MOVE_STATE,
-        DIALOGUE_STATE
+        DIALOGUE_STATE,
+        DIALOGUE_BALLON_STATE
     }
     public states startState;
 
@@ -49,6 +50,7 @@ public class NpcManager : MonoBehaviour
     public GameManager gameManager;
     public AudioClip[] voices;
     public Transform[] path;
+    public GameObject[] ballonDialogue;
 
     void Awake ()
     {
@@ -70,6 +72,11 @@ public class NpcManager : MonoBehaviour
         {
             int temp = Random.Range(0, 3);
             Invoke("SetAnimDialogue", temp);
+            _navMeshAgent.enabled = false;
+        }
+        else if(_stateSelect == 4)
+        {
+            _anim.SetBool("Conversation", true);
             _navMeshAgent.enabled = false;
         }
         else
@@ -124,7 +131,8 @@ public class NpcManager : MonoBehaviour
         {
             if(!questResolved)
             {
-                if (_stateSelect == 0 && !_waveActive && _stateQuest != 0)
+                if (_stateSelect == 0 && !_waveActive && _stateQuest != 0 ||
+                    _stateSelect == 4 && !_waveActive && _stateQuest != 0 && gameManager.numberQuestResolve == gameManager.managerLevel2.GetNumberQuestResolve())
                 {
                     _waveActive = true;
                     _anim.SetBool("Wave", _waveActive);
@@ -135,7 +143,6 @@ public class NpcManager : MonoBehaviour
                 }
             }
         }
-
         if(_stateSelect == 1 && _stateQuest == 0)
         {
             if(!_dialogueBalonActive && !questResolved)
@@ -192,7 +199,7 @@ public class NpcManager : MonoBehaviour
         Invoke("SetAnimDialogue", 4);
     }
 
-    void SetStandardAnim()
+    public void SetStandardAnim()
     {
         if(_anim.GetBool("Wave"))
             _anim.SetBool("Wave", false);
@@ -221,6 +228,11 @@ public class NpcManager : MonoBehaviour
         _navMeshAgent.destination = path[_sort].position;
         _navMeshAgent.Resume();
         _randomSelectPath = false;
+    }
+
+    public void SetQuestStay(int p_numberQuest)
+    {
+        _stateQuest = p_numberQuest;
     }
 
     public int GetQuestStay()

@@ -57,7 +57,7 @@ public class ManagerLevel : MonoBehaviour
 
     public void SelectEventGameManager()
     {
-        gameManager.player.CanWalk();
+        gameManager.player.CanWalk(false);
         gameManager.SelectQuest(2);
     }
 
@@ -101,7 +101,7 @@ public class ManagerLevel : MonoBehaviour
 
     void PlayerNoWalk()
     {
-        gameManager.player.CanWalk();
+        gameManager.player.CanWalk(false);
     }
 
     void PlayerCanWalk()
