@@ -74,6 +74,13 @@ public class MovePlayer : MonoBehaviour
                                 _objTemp = hit.collider.gameObject;
                                 Invoke("ActivateClickNpc", 0.1f);
                             }
+                            else if(__questStay == 2 && gameManager.managerLevel2.GetNumberQuestResolve() == 2)
+                            {
+                                hit.collider.GetComponent<NpcManager>().questResolved = true;
+                                _numberQuestSelect = hit.collider.GetComponent<NpcManager>().GetQuestStay();
+                                _objTemp = hit.collider.gameObject;
+                                Invoke("ActivateClickNpc", 0.1f);
+                            }
                         }
                     }              
                 }
@@ -171,6 +178,14 @@ public class MovePlayer : MonoBehaviour
                         if (_objTemp != null)
                         {
                             _objTemp.GetComponent<NpcManager>().ballonDialogue[1].SetActive(true);
+                            _objTemp = null;
+                        }
+                    }
+                    else if(_numberQuestSelect == 2)
+                    {
+                        if (_objTemp != null)
+                        {
+                            _objTemp.GetComponent<NpcManager>().ballonDialogue[2].SetActive(true);
                             _objTemp = null;
                         }
                     }

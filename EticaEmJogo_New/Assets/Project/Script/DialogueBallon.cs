@@ -18,6 +18,8 @@ public class DialogueBallon : MonoBehaviour
                 {
                     textDialogue[i].SetActive(false);
                     textDialogue[i + 1].SetActive(true);
+                    if(!npcManager.GetComponent<AudioSource>().isPlaying)
+                        npcManager.GetComponent<AudioSource>().Play();
                     break;
                 }
             }
@@ -30,11 +32,25 @@ public class DialogueBallon : MonoBehaviour
                     if (gameManager.numberQuestResolve == 0)
                     {
                         gameManager.SelectQuest(3);
+                        gameManager.managerLevel2.quest1Resolve = true;
+                        gameManager.SetMissionText();
                         gameManager.player.CanWalk(false);
                     }
-                    else
+                    else if (gameManager.numberQuestResolve == 1)
                     {
                         gameManager.player.SetValues();
+                        gameManager.ResetMissionText();
+                        gameManager.managerLevel2.SetNumberQuest(2);
+                        gameManager.numberQuestResolve = 2;
+                        gameManager.SetMissionText();
+                    }
+                    else if (gameManager.numberQuestResolve == 2)
+                    {
+                        gameManager.player.SetValues();
+                        gameManager.ResetMissionText();
+                        gameManager.managerLevel2.SetNumberQuest(3);
+                        gameManager.numberQuestResolve = 3;
+                        gameManager.managerLevel2.ViewArrow(true);
                     }
                 }
 

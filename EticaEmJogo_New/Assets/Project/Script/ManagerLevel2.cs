@@ -5,14 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class ManagerLevel2 : MonoBehaviour
 {
-    private int _numberQuestResolve;
+    public int _numberQuestResolve;
     private int _numberPag;
-    
+
+    public bool quest1Resolve;
     public GameManager gameManager;
     public GameObject canvasLevel;
+    public GameObject arrowCaixa;
+    public GameObject point_PS_Pos1;
+    public CelularManager celularManager;
     public GameObject painel;
-
-    public NpcManager npcQuest1;
 
     public GameObject feedback;
     public GameObject buttonBackPag;
@@ -23,7 +25,7 @@ public class ManagerLevel2 : MonoBehaviour
 
     void Start()
     {
-
+        Invoke("EventCelularQuest1", 5);
     }
 
     public void SetEvent(int p_numberQuestCurrent)
@@ -53,6 +55,11 @@ public class ManagerLevel2 : MonoBehaviour
         gameManager.SetMissionText();
         PagDefine(gameManager.GetScore());
         Invoke("ResetAlert", 5);
+    }
+
+    void EventCelularQuest1()
+    {
+        celularManager.SetMensage(2);
     }
 
     public void ReturnToGame()
@@ -187,5 +194,16 @@ public class ManagerLevel2 : MonoBehaviour
     public int GetNumberQuest()
     {
         return _numberQuestResolve;
+    }
+
+    public void SetNumberQuest(int p_number)
+    {
+        _numberQuestResolve = p_number;
+    }
+
+    public void ViewArrow(bool p_active)
+    {
+        arrowCaixa.SetActive(p_active);
+        point_PS_Pos1.SetActive(p_active);
     }
 }

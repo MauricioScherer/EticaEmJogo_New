@@ -219,6 +219,10 @@ public class NpcManager : MonoBehaviour
             _anim.SetBool("Shrug", false);
         if (_anim.GetBool("YesGesture"))
             _anim.SetBool("YesGesture", false);
+        if (_anim.GetBool("ButtonPress"))
+            _anim.SetBool("ButtonPress", false);
+        if (_anim.GetBool("PickUp"))
+            _anim.SetBool("PickUp", false);
     }
 
     void SelectPath()

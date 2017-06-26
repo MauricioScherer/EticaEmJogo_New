@@ -25,9 +25,12 @@ public class CelularManager : MonoBehaviour
             _stayCelular = true;
             if (_anim.GetBool("Walk"))
                 _anim.SetBool("Walk", false);
-            if(gameManager.numberQuestResolve == 1)
+            if(gameManager.GetNumberScene() == 1)
             {
-                gameManager.SetMissionText();
+                if (gameManager.numberQuestResolve == 1)
+                {
+                    gameManager.SetMissionText();
+                }
             }
         }
         else
@@ -44,15 +47,29 @@ public class CelularManager : MonoBehaviour
         {
             celularView.SetActive(false);
             _stayCelular = false;
-            WalkState();
         }
     }
 
-    public void WalkState()
+    public void EnterWalkState()
+    {
+        gameManager.player.CanWalk(false);
+    }
+
+    public void ExitWalkState()
     {
         if(!_stayCelular)
         {
-            gameManager.player.CanWalk(false);
+            if(gameManager.managerLevel2)
+            {
+                if(gameManager.managerLevel2.quest1Resolve)
+                {
+                    gameManager.player.CanWalk(true);
+                }
+            }
+            else
+            {
+                gameManager.player.CanWalk(true);
+            }                
         }
     }
 

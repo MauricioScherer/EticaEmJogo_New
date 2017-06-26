@@ -242,6 +242,19 @@ public class GameManager : MonoBehaviour
                     missionCurrent.text = "- Hora do ônibus";
             }
         }
+        else if(GetNumberScene() == 2)
+        {
+            if (numberQuestResolve == 0)
+            {
+                if (missionCurrent.text == "")
+                    missionCurrent.text = "- Mural de avisos";
+            }
+            else if (numberQuestResolve == 1)
+            {
+                if (missionCurrent.text == "")
+                    missionCurrent.text = "- Ir até os caixas";
+            }
+        }
     }
 
     public void ResetMissionText()
