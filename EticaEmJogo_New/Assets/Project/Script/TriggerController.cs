@@ -7,6 +7,14 @@ public class TriggerController : MonoBehaviour
     public GameManager gameManager;
     public ManagerLevel managerLevel;
     public ManagerLevel2 managerLevel2;
+    public NpcDialogue1 npcDialogue;
+    public GameObject[] npcsDeactive;
+
+    //void Update()
+    //{
+    //    gameManager.player.gameObject.transform.rotation = Quaternion.Lerp(
+    //        gameManager.player.gameObject.transform.rotation, new Quaternion(0, 0, 0, 0), 1);
+    //}
 
     void OnTriggerEnter(Collider other)
     {
@@ -37,6 +45,10 @@ public class TriggerController : MonoBehaviour
                 {
                     if(gameManager.numberQuestResolve == 3)
                     {
+                        for(int i = 0; i < npcsDeactive.Length; i++)
+                        {
+                            npcsDeactive[i].SetActive(false);
+                        }
                         managerLevel2.ViewArrow(false);
                         gameManager.player.CanWalk(false);
                         Invoke("SetRotationPLayer", 2);
@@ -48,6 +60,7 @@ public class TriggerController : MonoBehaviour
 
     void SetRotationPLayer()
     {
+        npcDialogue.ViewBallon();
         gameManager.player.gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 }
