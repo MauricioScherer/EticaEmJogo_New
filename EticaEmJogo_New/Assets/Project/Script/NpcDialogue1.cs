@@ -11,6 +11,7 @@ public class NpcDialogue1 : MonoBehaviour
     public int _numPath;
 
     public bool isMove;
+    public GameManager gameManager;
     public GameObject ballonDialoge;
     public GameObject npcCurrent;
     public Transform[] path;
@@ -51,8 +52,9 @@ public class NpcDialogue1 : MonoBehaviour
                 }
                 else
                 {
-                    Invoke("SetDance", 1f);
-                    Invoke("ResetDance", 3f);
+                    Invoke("SetDance", 2f);
+                    Invoke("ResetDance", 4f);
+                    Invoke("InvokeQuest", 6f);
                     isMove = false;
                 }
             }
@@ -81,7 +83,12 @@ public class NpcDialogue1 : MonoBehaviour
     void ResetDance()
     {
         _anim.SetBool("DanceIn", false);
-        _anim.SetBool("DanceOut", true);
+        _anim.SetBool("DanceOut", true);        
+    }
+
+    void InvokeQuest()
+    {
+        gameManager.SelectQuest(4);
     }
 
     public void ViewBallon()

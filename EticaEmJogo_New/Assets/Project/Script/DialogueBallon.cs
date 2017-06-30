@@ -50,6 +50,7 @@ public class DialogueBallon : MonoBehaviour
                         gameManager.ResetMissionText();
                         gameManager.managerLevel2.SetNumberQuest(3);
                         gameManager.numberQuestResolve = 3;
+                        gameManager.SetMissionText();
                         gameManager.managerLevel2.ViewArrow(true);
                     }
                 }

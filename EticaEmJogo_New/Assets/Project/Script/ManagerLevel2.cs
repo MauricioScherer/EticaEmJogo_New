@@ -15,6 +15,8 @@ public class ManagerLevel2 : MonoBehaviour
     public GameObject point_PS_Pos1;
     public CelularManager celularManager;
     public GameObject painel;
+    public GameObject clientIn;
+    public NpcController npcController;
 
     public GameObject feedback;
     public GameObject buttonBackPag;
@@ -205,5 +207,19 @@ public class ManagerLevel2 : MonoBehaviour
     {
         arrowCaixa.SetActive(p_active);
         point_PS_Pos1.SetActive(p_active);
+    }
+
+    public void ViewAlertClientIn()
+    {
+        if(!clientIn.activeSelf)
+        {
+            clientIn.SetActive(true);
+            Invoke("ViewAlertClientIn", 4f);
+        }
+        else
+        {
+            npcController.InvokeNewCliente();
+            clientIn.SetActive(false);
+        }
     }
 }

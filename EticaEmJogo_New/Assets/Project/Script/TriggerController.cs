@@ -10,12 +10,6 @@ public class TriggerController : MonoBehaviour
     public NpcDialogue1 npcDialogue;
     public GameObject[] npcsDeactive;
 
-    //void Update()
-    //{
-    //    gameManager.player.gameObject.transform.rotation = Quaternion.Lerp(
-    //        gameManager.player.gameObject.transform.rotation, new Quaternion(0, 0, 0, 0), 1);
-    //}
-
     void OnTriggerEnter(Collider other)
     {
         if(gameManager.GetNumberScene() == 1)

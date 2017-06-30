@@ -185,7 +185,14 @@ public class GameManager : MonoBehaviour
     {
         quest[_numberQuestStay].SetActive(false);
         _avatarQuestCurrent.SetActive(false);
-        player.SetValues();
+        if(_numberQuestStay != 4)
+        {
+            player.SetValues();
+        }
+        else
+        {
+            managerLevel2.ViewAlertClientIn();
+        }
 
         if (managerLevel)
             managerLevel.SetEvent(numberQuestResolve);
@@ -249,10 +256,15 @@ public class GameManager : MonoBehaviour
                 if (missionCurrent.text == "")
                     missionCurrent.text = "- Mural de avisos";
             }
-            else if (numberQuestResolve == 1)
+            else if (numberQuestResolve == 2)
             {
                 if (missionCurrent.text == "")
-                    missionCurrent.text = "- Ir até os caixas";
+                    missionCurrent.text = "- Falar com Supervisor";
+            }
+            else if (numberQuestResolve == 3)
+            {
+                if (missionCurrent.text == "")
+                    missionCurrent.text = "- Ir ao posto de trabalho";
             }
         }
     }

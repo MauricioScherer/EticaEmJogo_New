@@ -4,21 +4,39 @@ using UnityEngine;
 
 public class NpcController : MonoBehaviour
 {
+    private bool _emptyBox;
+    private int _numberClientInvoke;
+
     public GameManager gameManager;
+    public AudioSource beepDoor;
     public GameObject[] npcs;
-    private bool emptyBox;
+
 
     void Awake()
     {
-        emptyBox = true;
+        _emptyBox = true;
     }
 
     public bool GetEmptyBox()
     {
-        return emptyBox;
+        return _emptyBox;
     }
     public void SetEmptyBox(bool p_status)
     {
-        emptyBox = p_status;
+        _emptyBox = p_status;
+    }
+
+    public void InvokeNewCliente()
+    {
+        npcs[_numberClientInvoke].SetActive(true);
+        _numberClientInvoke++;
+
+        if (!beepDoor.isPlaying)
+            beepDoor.Play();
+
+        if(_numberClientInvoke < 5)
+        {
+            Invoke("InvokeNewCliente", 15f);
+        }
     }
 }
