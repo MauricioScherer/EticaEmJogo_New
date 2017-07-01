@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public ManagerLevel managerLevel;
     public ManagerLevel2 managerLevel2;
     public GameObject[] quest;
+    public GameObject canvasGameManger;
     public GameObject help;
     public GameObject score;
     public GameObject phone;
@@ -287,5 +288,13 @@ public class GameManager : MonoBehaviour
     public void SetStayTriggerFade(bool p_stay)
     {
         _stayTriggerFade = p_stay;
+    }
+
+    public void ViewCanvasGameManager()
+    {
+        if (!canvasGameManger.activeSelf)
+            canvasGameManger.SetActive(true);
+        else
+            canvasGameManger.SetActive(false);
     }
 }

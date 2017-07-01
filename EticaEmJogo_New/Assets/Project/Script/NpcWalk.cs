@@ -8,8 +8,11 @@ public class NpcWalk : MonoBehaviour
     private Animator _anim;
     private NavMeshAgent _navMeshAgent;
     private bool _SelectPath;
-    private int _numPath;
+    public int _numPath;
+    private bool _viewCanvasMarket;
 
+    public GameObject compBag;
+    public ManagerLevel2 managerLevel2;
     public NpcController npcController;
     public GameObject npcCurrent;
     public Transform[] path;
@@ -30,7 +33,7 @@ public class NpcWalk : MonoBehaviour
         else
         {
             _anim.SetFloat("MoveSpeed", 0);
-            if(_numPath < path.Length - 1)
+            if(_numPath < path.Length)
             {
                 if (!_SelectPath)
                 {
@@ -44,13 +47,16 @@ public class NpcWalk : MonoBehaviour
                     }
                     else if(_numPath == 4)
                     {
-                        if(Input.GetKeyDown("t"))
+                        if(!_viewCanvasMarket)
                         {
-                            _numPath++;
-                            SelectNewPath();
-                            npcController.SetEmptyBox(true);
-                            _SelectPath = true;
+                            managerLevel2.ViewCanvasMarket();
+                            compBag.SetActive(true);
+                            _viewCanvasMarket = true;
                         }
+                    }
+                    else if(_numPath == 5)
+                    {
+                        gameObject.SetActive(false);
                     }
                     if (_numPath > 0 && _numPath < 4)
                     {
@@ -96,5 +102,15 @@ public class NpcWalk : MonoBehaviour
     void ResetAnim()
     {
         _anim.SetBool("ButtonPress", false);
+    }
+
+    public void FinalizeMarket()
+    {
+        compBag.SetActive(false);
+        managerLevel2.ViewCanvasMarket();        
+        _numPath++;
+        SelectNewPath();
+        npcController.SetEmptyBox(true);
+        _SelectPath = true;
     }
 }

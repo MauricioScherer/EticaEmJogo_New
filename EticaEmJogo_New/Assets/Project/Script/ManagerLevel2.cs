@@ -11,6 +11,7 @@ public class ManagerLevel2 : MonoBehaviour
     public bool quest1Resolve;
     public GameManager gameManager;
     public GameObject canvasLevel;
+    public GameObject canvasMarket;
     public GameObject arrowCaixa;
     public GameObject point_PS_Pos1;
     public CelularManager celularManager;
@@ -221,5 +222,14 @@ public class ManagerLevel2 : MonoBehaviour
             npcController.InvokeNewCliente();
             clientIn.SetActive(false);
         }
+    }
+
+    public void ViewCanvasMarket()
+    {
+        gameManager.ViewCanvasGameManager();
+        if (!canvasMarket.activeSelf)
+            canvasMarket.SetActive(true);
+        else
+            canvasMarket.SetActive(false);
     }
 }
