@@ -11,6 +11,7 @@ public class MarketOperate : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
+            market.StartSound(0);
             market.numItens++;
             itemBag.SetActive(true);
             gameObject.SetActive(false);

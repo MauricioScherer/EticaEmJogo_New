@@ -9,6 +9,7 @@ public class ManagerLevel2 : MonoBehaviour
     private int _numberPag;
 
     public bool quest1Resolve;
+    public int numClientFinalize;
     public GameManager gameManager;
     public GameObject canvasLevel;
     public GameObject canvasMarket;
@@ -18,6 +19,7 @@ public class ManagerLevel2 : MonoBehaviour
     public GameObject painel;
     public GameObject clientIn;
     public NpcController npcController;
+    public NpcControllerIa npcControlerIA;
 
     public GameObject feedback;
     public GameObject buttonBackPag;
@@ -220,6 +222,7 @@ public class ManagerLevel2 : MonoBehaviour
         else
         {
             npcController.InvokeNewCliente();
+            npcControlerIA.InvokeNewCliente();
             clientIn.SetActive(false);
         }
     }

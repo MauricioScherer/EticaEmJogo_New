@@ -237,17 +237,17 @@ public class GameManager : MonoBehaviour
             if (numberQuestResolve == 0)
             {
                 if (missionCurrent.text == "")
-                    missionCurrent.text = "- A carteira perdida";
+                    missionCurrent.text = "A carteira perdida";
             }
             else if (numberQuestResolve == 1)
             {
                 if (missionCurrent.text == "")
-                    missionCurrent.text = "- Encontro na praça";
+                    missionCurrent.text = "Encontro na praça";
             }
             else if (numberQuestResolve == 3)
             {
                 if (missionCurrent.text == "")
-                    missionCurrent.text = "- Hora do ônibus";
+                    missionCurrent.text = "Hora do ônibus";
             }
         }
         else if(GetNumberScene() == 2)
@@ -255,17 +255,17 @@ public class GameManager : MonoBehaviour
             if (numberQuestResolve == 0)
             {
                 if (missionCurrent.text == "")
-                    missionCurrent.text = "- Mural de avisos";
+                    missionCurrent.text = "Mural de avisos";
             }
             else if (numberQuestResolve == 2)
             {
                 if (missionCurrent.text == "")
-                    missionCurrent.text = "- Falar com Supervisor";
+                    missionCurrent.text = "Falar com Supervisor";
             }
             else if (numberQuestResolve == 3)
             {
                 if (missionCurrent.text == "")
-                    missionCurrent.text = "- Ir ao posto de trabalho";
+                    missionCurrent.text = "Ir ao posto de trabalho";
             }
         }
     }

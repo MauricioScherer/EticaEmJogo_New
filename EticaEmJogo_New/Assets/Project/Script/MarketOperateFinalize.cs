@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class MarketOperateFinalize : MonoBehaviour
 {
+    private AudioSource sound;
+
     public int numItens;
+    public AudioClip[] clipEffect;
     public GameObject buttonOk;
     public NpcWalk npcWalk;
+    public ManagerLevel2 ManagerLevel2;
+
+    void Start()
+    {
+        sound = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
         if(numItens == 4 && !buttonOk.activeSelf)
         {
+            StartSound(1);
             buttonOk.SetActive(true);
             numItens = 0;
         }
@@ -20,6 +30,13 @@ public class MarketOperateFinalize : MonoBehaviour
     public void FinalizeJob()
     {
         npcWalk.FinalizeMarket();
+        ManagerLevel2.numClientFinalize++;
         gameObject.SetActive(false);
+    }
+
+    public void StartSound(int p_clip)
+    {
+        sound.clip = clipEffect[p_clip];
+        sound.Play();
     }
 }

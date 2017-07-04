@@ -55,6 +55,7 @@ public class TriggerController : MonoBehaviour
     void SetRotationPLayer()
     {
         npcDialogue.ViewBallon();
+        gameManager.ResetMissionText();
         gameManager.player.gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 }

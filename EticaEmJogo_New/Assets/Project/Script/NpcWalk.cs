@@ -43,7 +43,7 @@ public class NpcWalk : MonoBehaviour
                     }
                     else if(_numPath < 4)
                     {
-                        Invoke("SelectNewPath", 5f);
+                        Invoke("SelectNewPath", 4f);
                     }
                     else if(_numPath == 4)
                     {
@@ -54,8 +54,9 @@ public class NpcWalk : MonoBehaviour
                             _viewCanvasMarket = true;
                         }
                     }
-                    else if(_numPath == 5)
+                    else if(_numPath >= 5)
                     {
+                        Debug.Log("aqui");
                         gameObject.SetActive(false);
                     }
                     if (_numPath > 0 && _numPath < 4)

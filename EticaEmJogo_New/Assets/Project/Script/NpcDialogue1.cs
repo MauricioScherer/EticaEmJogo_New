@@ -14,6 +14,7 @@ public class NpcDialogue1 : MonoBehaviour
     public GameManager gameManager;
     public GameObject ballonDialoge;
     public GameObject npcCurrent;
+    public Transform positionCaixa;
     public Transform[] path;
 
     void Awake()
@@ -86,9 +87,21 @@ public class NpcDialogue1 : MonoBehaviour
         _anim.SetBool("DanceOut", true);        
     }
 
+    public void SetPickupFaset()
+    {
+        _anim.SetBool("PickUpFast", true);
+    }
+
+    public void ResetPickupFaset()
+    {
+        _anim.SetBool("PickUpFast", false);
+    }
+
     void InvokeQuest()
     {
         gameManager.SelectQuest(4);
+        npcCurrent.transform.position = positionCaixa.transform.position;
+        npcCurrent.transform.rotation = positionCaixa.transform.rotation;
     }
 
     public void ViewBallon()
