@@ -202,6 +202,6 @@ public class ManagerLevel : MonoBehaviour
                 break;
             }
         }
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Scene_02");
     }
 }

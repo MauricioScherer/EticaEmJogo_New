@@ -16,6 +16,7 @@ public class NpcWalk : MonoBehaviour
     public NpcController npcController;
     public GameObject npcCurrent;
     public Transform[] path;
+    private bool _viewQuestCaixa;
 
     void Awake()
     {
@@ -49,14 +50,21 @@ public class NpcWalk : MonoBehaviour
                     {
                         if(!_viewCanvasMarket)
                         {
-                            managerLevel2.ViewCanvasMarket();
-                            compBag.SetActive(true);
-                            _viewCanvasMarket = true;
+                            if (managerLevel2.numClientFinalize == 4 && !_viewQuestCaixa)
+                            {
+                                managerLevel2.gameManager.SelectQuest(5);
+                                _viewQuestCaixa = true;
+                            }
+                            else if(managerLevel2.numClientFinalize != 4 || managerLevel2.finalQuestResolve)
+                            {
+                                managerLevel2.ViewCanvasMarket();
+                                compBag.SetActive(true);
+                                _viewCanvasMarket = true;
+                            }
                         }
                     }
-                    else if(_numPath >= 5)
+                    else if(_numPath > 4)
                     {
-                        Debug.Log("aqui");
                         gameObject.SetActive(false);
                     }
                     if (_numPath > 0 && _numPath < 4)

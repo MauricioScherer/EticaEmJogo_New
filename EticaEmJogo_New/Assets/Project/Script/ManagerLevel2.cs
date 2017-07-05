@@ -9,6 +9,7 @@ public class ManagerLevel2 : MonoBehaviour
     private int _numberPag;
 
     public bool quest1Resolve;
+    public bool finalQuestResolve;
     public int numClientFinalize;
     public GameManager gameManager;
     public GameObject canvasLevel;
@@ -77,6 +78,7 @@ public class ManagerLevel2 : MonoBehaviour
             if (_numberQuestResolve == 0)
             {
                 _numberQuestResolve = 1;
+                gameManager.SetMissionText();
             }
         }
 
@@ -193,7 +195,7 @@ public class ManagerLevel2 : MonoBehaviour
                 break;
             }
         }
-        SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("Menu");
     }
 
     public int GetNumberQuest()

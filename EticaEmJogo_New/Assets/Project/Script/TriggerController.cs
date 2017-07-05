@@ -9,6 +9,7 @@ public class TriggerController : MonoBehaviour
     public ManagerLevel2 managerLevel2;
     public NpcDialogue1 npcDialogue;
     public GameObject[] npcsDeactive;
+    private bool _viewBallon;
 
     void OnTriggerEnter(Collider other)
     {
@@ -37,7 +38,7 @@ public class TriggerController : MonoBehaviour
             {
                 if (gameObject.CompareTag("TriggerAction"))
                 {
-                    if(gameManager.numberQuestResolve == 3)
+                    if(gameManager.numberQuestResolve == 3 && !_viewBallon)
                     {
                         for(int i = 0; i < npcsDeactive.Length; i++)
                         {
@@ -46,6 +47,7 @@ public class TriggerController : MonoBehaviour
                         managerLevel2.ViewArrow(false);
                         gameManager.player.CanWalk(false);
                         Invoke("SetRotationPLayer", 2);
+                        _viewBallon = true;
                     }
                 }
             }
@@ -54,7 +56,7 @@ public class TriggerController : MonoBehaviour
 
     void SetRotationPLayer()
     {
-        npcDialogue.ViewBallon();
+        npcDialogue.ViewBallonDialogueInitial();
         gameManager.ResetMissionText();
         gameManager.player.gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
     }

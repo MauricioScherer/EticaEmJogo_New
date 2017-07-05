@@ -188,7 +188,17 @@ public class GameManager : MonoBehaviour
         _avatarQuestCurrent.SetActive(false);
         if(_numberQuestStay != 4)
         {
-            player.SetValues();
+            if(managerLevel2)
+            {
+                if(managerLevel2.numClientFinalize == 4)
+                    managerLevel2.finalQuestResolve = true;
+                else
+                    player.SetValues();
+            }
+            else
+            {
+                player.SetValues();
+            }
         }
         else
         {
@@ -256,6 +266,10 @@ public class GameManager : MonoBehaviour
             {
                 if (missionCurrent.text == "")
                     missionCurrent.text = "Mural de avisos";
+            }
+            else if (numberQuestResolve == 1)
+            {
+                missionCurrent.text = "Falar com Carla";
             }
             else if (numberQuestResolve == 2)
             {

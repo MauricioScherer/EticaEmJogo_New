@@ -8,11 +8,15 @@ public class NpcDialogue1 : MonoBehaviour
     private Animator _anim;
     private NavMeshAgent _navMeshAgent;
     private bool _SelectPath;
-    public int _numPath;
+    private bool _dialgueActivate;
+    private int _numPath;
+    public int _numDialogueStandActivate;
 
     public bool isMove;
     public GameManager gameManager;
+    public ManagerLevel2 managerLevel2;
     public GameObject ballonDialoge;
+    public GameObject[] ballonStand;
     public GameObject npcCurrent;
     public Transform positionCaixa;
     public Transform[] path;
@@ -25,6 +29,12 @@ public class NpcDialogue1 : MonoBehaviour
 
     void Update()
     {
+        if(managerLevel2.numClientFinalize == 4 && !_dialgueActivate)
+        {
+            Invoke("ViewBallonDialogueStand", 5f);
+            _dialgueActivate = true;
+        }
+
         if(isMove)
         {
             if (_navMeshAgent.remainingDistance > 0.05f)
@@ -59,6 +69,22 @@ public class NpcDialogue1 : MonoBehaviour
                     isMove = false;
                 }
             }
+        }
+    }
+
+    void ViewBallonDialogueStand()
+    {    
+        if(_numDialogueStandActivate < ballonStand.Length)
+        {
+            if(_numDialogueStandActivate != 0)
+                ballonStand[_numDialogueStandActivate - 1].SetActive(false);
+            ballonStand[_numDialogueStandActivate].SetActive(true);
+            _numDialogueStandActivate++;
+            Invoke("ViewBallonDialogueStand", 6f);
+        }
+        else
+        {
+            ballonStand[_numDialogueStandActivate - 1].SetActive(false);
         }
     }
 
@@ -104,7 +130,7 @@ public class NpcDialogue1 : MonoBehaviour
         npcCurrent.transform.rotation = positionCaixa.transform.rotation;
     }
 
-    public void ViewBallon()
+    public void ViewBallonDialogueInitial()
     {
         ballonDialoge.SetActive(true);
     }
