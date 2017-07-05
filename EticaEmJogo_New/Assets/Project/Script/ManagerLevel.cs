@@ -33,6 +33,12 @@ public class ManagerLevel : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if(Input.GetKeyDown("2"))
+            SceneManager.LoadScene("Scene_02");
+    }
+
     public void SetEvent(int p_numberQuestCurrent)
     {
         _numberQuestResolve = p_numberQuestCurrent;

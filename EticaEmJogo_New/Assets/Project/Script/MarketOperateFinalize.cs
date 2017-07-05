@@ -10,7 +10,7 @@ public class MarketOperateFinalize : MonoBehaviour
     public AudioClip[] clipEffect;
     public GameObject buttonOk;
     public NpcWalk npcWalk;
-    public ManagerLevel2 ManagerLevel2;
+    public ManagerLevel2 managerLevel2;
 
     void Start()
     {
@@ -30,7 +30,9 @@ public class MarketOperateFinalize : MonoBehaviour
     public void FinalizeJob()
     {
         npcWalk.FinalizeMarket();
-        ManagerLevel2.numClientFinalize++;
+        managerLevel2.numClientFinalize++;
+        if (managerLevel2.numClientFinalize == 5)
+            managerLevel2.ViewFeedBackDelay();
         gameObject.SetActive(false);
     }
 

@@ -29,8 +29,10 @@ public class ManagerLevel2 : MonoBehaviour
     public GameObject[] pag;
     public GameObject[] pagCurrent;
 
-    void Start()
+    void Awake()
     {
+        Time.timeScale = 1;
+        gameManager.music.Play();
         Invoke("EventCelularQuest1", 5);
     }
 
@@ -236,5 +238,10 @@ public class ManagerLevel2 : MonoBehaviour
             canvasMarket.SetActive(true);
         else
             canvasMarket.SetActive(false);
+    }
+
+    public void ViewFeedBackDelay()
+    {
+        Invoke("ViewFeedback", 5f);
     }
 }
