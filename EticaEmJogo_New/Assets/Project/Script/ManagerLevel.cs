@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ManagerLevel : MonoBehaviour
 {
     private int _numberQuestResolve;
     private int _numberPag;
+    private bool _finalizeLevel;
+    private bool _fadeIn;
+    private bool _fadeOut;
+    private Color _colorFade;
     
     public GameManager gameManager;
     public GameObject busFinalLevel;
@@ -15,6 +20,7 @@ public class ManagerLevel : MonoBehaviour
     public GameObject alertFinalLevel;    
     public GameObject[] instruction;
 
+    public Image fade;
     public GameObject feedback;
     public GameObject buttonBackPag;
     public GameObject buttonNextPag;
@@ -37,6 +43,33 @@ public class ManagerLevel : MonoBehaviour
     {
         if(Input.GetKeyDown("2"))
             SceneManager.LoadScene("Scene_02");
+
+        if(_finalizeLevel)
+        {
+            if (_fadeIn)
+            {
+                fade.color = _colorFade;
+                gameManager.music.volume -= 0.05f * Time.deltaTime;
+                _colorFade.a += Time.deltaTime;
+
+                if (_colorFade.a >= 255)
+                {
+                    Invoke("FadeOut", 2f);
+                    _fadeIn = false;
+                }
+            }
+            if (_fadeOut)
+            {
+                fade.color = _colorFade;
+                _colorFade.a -= Time.deltaTime;
+
+                if (_colorFade.a <= 0)
+                {
+                    fade.gameObject.SetActive(false);
+                    _fadeOut = false;
+                }
+            }
+        }
     }
 
     public void SetEvent(int p_numberQuestCurrent)
@@ -209,5 +242,18 @@ public class ManagerLevel : MonoBehaviour
             }
         }
         SceneManager.LoadScene("Scene_02");
+    }
+
+    public void FadeIn()
+    {
+        fade.gameObject.SetActive(true);
+        _finalizeLevel = true;
+        _fadeIn = true;
+    }
+
+    public void FadeOut()
+    {
+        ViewFeedback();
+        _fadeOut = true;
     }
 }

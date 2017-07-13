@@ -20,8 +20,8 @@ public class TriggerController : MonoBehaviour
                 if (gameObject.CompareTag("TriggerAction"))
                 {
                     if (managerLevel.ResolveTotalQuests())
-                    {
-                        managerLevel.ViewFeedback();
+                    {                        
+                        managerLevel.FadeIn();
                         gameObject.SetActive(false);
                     }
                 }
