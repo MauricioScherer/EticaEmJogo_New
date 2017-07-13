@@ -54,12 +54,12 @@ public class MovePlayer : MonoBehaviour
                             {
                                 hit.collider.GetComponent<NpcManager>().questResolved = true;
                                 _numberQuestSelect = hit.collider.GetComponent<NpcManager>().GetQuestStay();
-                                Invoke("ActivateClickNpc", 0.1f);
+                                Invoke("ActivateClickNpc", 0.05f);
                             }
                             else if (__stateCurrent == 1)
                             {
                                 _objTemp = hit.collider.gameObject;
-                                Invoke("ActiveClickDialogue", 0.1f);
+                                Invoke("ActiveClickDialogue", 0.05f);
                             }
                         }
                     }
@@ -72,14 +72,14 @@ public class MovePlayer : MonoBehaviour
                                 hit.collider.GetComponent<NpcManager>().questResolved = true;
                                 _numberQuestSelect = hit.collider.GetComponent<NpcManager>().GetQuestStay();
                                 _objTemp = hit.collider.gameObject;
-                                Invoke("ActivateClickNpc", 0.1f);
+                                Invoke("ActivateClickNpc", 0.05f);
                             }
                             else if(__questStay == 2 && gameManager.managerLevel2.GetNumberQuestResolve() == 2)
                             {
                                 hit.collider.GetComponent<NpcManager>().questResolved = true;
                                 _numberQuestSelect = hit.collider.GetComponent<NpcManager>().GetQuestStay();
                                 _objTemp = hit.collider.gameObject;
-                                Invoke("ActivateClickNpc", 0.1f);
+                                Invoke("ActivateClickNpc", 0.05f);
                             }
                         }
                     }              
@@ -88,11 +88,11 @@ public class MovePlayer : MonoBehaviour
                 {                    
                     _numberQuestSelect = 0;
                     _objTemp = hit.collider.gameObject;
-                    Invoke("ActivateClickWallet", 0.1f);
+                    Invoke("ActivateClickWallet", 0.05f);
                 }
                 else if(hit.collider.CompareTag("Mural"))
                 {
-                    Invoke("ActiveClickMural", 0.1f);
+                    Invoke("ActiveClickMural", 0.05f);
                 }
                 else
                 {

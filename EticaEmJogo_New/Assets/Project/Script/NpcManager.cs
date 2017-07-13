@@ -195,12 +195,24 @@ public class NpcManager : MonoBehaviour
             _anim.SetBool("Shrug", true);
         else if (temp == 3)
             _anim.SetBool("YesGesture", true);
-        Invoke("SetStandardAnim", 1);
+        Invoke("ResetDialogue", 1);
         Invoke("SetAnimDialogue", 4);
     }
 
-    public void SetStandardAnim()
+    void ResetDialogue()
     {
+        if (_anim.GetBool("Conversation"))
+            _anim.SetBool("Conversation", false);
+        else if (_anim.GetBool("NoGesture"))
+            _anim.SetBool("NoGesture", false);
+        else if (_anim.GetBool("Shrug"))
+            _anim.SetBool("Shrug", false);
+        else if (_anim.GetBool("YesGesture"))
+            _anim.SetBool("YesGesture", false);
+    }
+
+    public void SetStandardAnim()
+    {        
         if(_anim.GetBool("Wave"))
             _anim.SetBool("Wave", false);
         if (_anim.GetBool("Lose1"))

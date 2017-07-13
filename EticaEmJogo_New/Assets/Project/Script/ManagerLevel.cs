@@ -8,9 +8,9 @@ public class ManagerLevel : MonoBehaviour
 {
     private int _numberQuestResolve;
     private int _numberPag;
-    private bool _finalizeLevel;
     private bool _fadeIn;
     private bool _fadeOut;
+    private bool _fadeMusic;
     private Color _colorFade;
     
     public GameManager gameManager;
@@ -44,32 +44,42 @@ public class ManagerLevel : MonoBehaviour
         if(Input.GetKeyDown("2"))
             SceneManager.LoadScene("Scene_02");
 
-        if(_finalizeLevel)
+        if (Input.GetKeyDown("m"))
         {
-            if (_fadeIn)
-            {
-                fade.color = _colorFade;
-                gameManager.music.volume -= 0.05f * Time.deltaTime;
-                _colorFade.a += Time.deltaTime;
+            FadeIn();
+        }
 
-                if (_colorFade.a >= 255)
-                {
-                    Invoke("FadeOut", 2f);
-                    _fadeIn = false;
-                }
+        if (_fadeIn)
+        {
+            fade.color = _colorFade;            
+            _colorFade.a += 0.7f * Time.deltaTime;            
+
+            if (_colorFade.a >= 1)
+            {
+                Invoke("FadeOut", 1f);
+                _fadeIn = false;
             }
-            if (_fadeOut)
+        }
+        if (_fadeOut)
+        {
+            fade.color = _colorFade;
+            _colorFade.a -= 0.7f * Time.deltaTime;
+            
+            if (_colorFade.a <= 0)
             {
-                fade.color = _colorFade;
-                _colorFade.a -= Time.deltaTime;
-
-                if (_colorFade.a <= 0)
+                fade.gameObject.SetActive(false);
+                Time.timeScale = 0;
+                _fadeOut = false;
+                if (gameManager.music.volume > 0)
                 {
-                    fade.gameObject.SetActive(false);
-                    _fadeOut = false;
+                    gameManager.music.volume = 0;
+                    _fadeMusic = false;
                 }
             }
         }
+
+        if(_fadeMusic)
+            gameManager.music.volume -= 0.06f * Time.deltaTime;
     }
 
     public void SetEvent(int p_numberQuestCurrent)
@@ -159,8 +169,6 @@ public class ManagerLevel : MonoBehaviour
     public void ViewFeedback()
     {        
         feedback.SetActive(true);
-        gameManager.music.Stop();       
-        Time.timeScale = 0;
     }
 
     void PagDefine(float p_points)
@@ -247,8 +255,8 @@ public class ManagerLevel : MonoBehaviour
     public void FadeIn()
     {
         fade.gameObject.SetActive(true);
-        _finalizeLevel = true;
         _fadeIn = true;
+        _fadeMusic = true;
     }
 
     public void FadeOut()

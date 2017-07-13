@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject help;
     public GameObject score;
     public GameObject phone;
+    public GameObject sprMusicActivate;
     public GameObject painelPause;
     public GameObject painelMission;
     public GameObject[] poolAvatar;    
@@ -33,7 +34,6 @@ public class GameManager : MonoBehaviour
     public AudioSource music;
     public AudioSource effect;
     public AudioClip[] clipEffect;
-    public Slider controllerMusic;
     public CameraPosition camPosition;
     public Animator Fade;
     public Text missionCurrent;
@@ -41,8 +41,6 @@ public class GameManager : MonoBehaviour
     void Awake ()
     {
         numberQuestResolve = 0;
-        controllerMusic.value = 0.1f;
-        music.volume = controllerMusic.value;
         _numberScene = SceneManager.GetActiveScene().buildIndex;
         if (PlayerPrefs.HasKey("avatarSelect"))
         {
@@ -67,10 +65,7 @@ public class GameManager : MonoBehaviour
 	
 	void Update ()
     {
-        if(painelPause.activeSelf)
-        {
-            music.volume = controllerMusic.value;
-        }
+
     }
 
     public void StartFade()
@@ -310,5 +305,19 @@ public class GameManager : MonoBehaviour
             canvasGameManger.SetActive(true);
         else
             canvasGameManger.SetActive(false);
+    }
+
+    public void MusicActivate()
+    {
+        if(music.isPlaying)
+        {
+            sprMusicActivate.SetActive(false);
+            music.Pause();
+        }
+        else
+        {
+            sprMusicActivate.SetActive(true);
+            music.Play();
+        }
     }
 }
