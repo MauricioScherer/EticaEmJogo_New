@@ -249,7 +249,7 @@ public class ManagerLevel : MonoBehaviour
                 break;
             }
         }
-        SceneManager.LoadScene("Scene_02");
+        SceneManager.LoadScene("Scene_anim_entermarket");
     }
 
     public void FadeIn()

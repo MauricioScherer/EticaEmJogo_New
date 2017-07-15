@@ -31,7 +31,8 @@ public class ManagerLevel2 : MonoBehaviour
 
     void Awake()
     {
-        Time.timeScale = 1;
+        if(Time.deltaTime < 1)
+            Time.timeScale = 1;
         gameManager.music.Play();
         Invoke("EventCelularQuest1", 5);
     }

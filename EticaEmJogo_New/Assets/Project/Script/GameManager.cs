@@ -35,8 +35,9 @@ public class GameManager : MonoBehaviour
     public AudioSource effect;
     public AudioClip[] clipEffect;
     public CameraPosition camPosition;
-    public Animator Fade;
     public Text missionCurrent;
+    public GameObject missionAlert;
+    public Text missionDescription;
 
     void Awake ()
     {
@@ -66,17 +67,6 @@ public class GameManager : MonoBehaviour
 	void Update ()
     {
 
-    }
-
-    public void StartFade()
-    {
-        Fade.SetBool("FadeIn", true);
-        Invoke("ResetFade", 1);
-    }
-
-    void ResetFade()
-    {
-        Fade.SetBool("FadeIn", false);
     }
 
     public void SelectQuest(int p_numQuest)
@@ -243,16 +233,22 @@ public class GameManager : MonoBehaviour
             {
                 if (missionCurrent.text == "")
                     missionCurrent.text = "A carteira perdida";
+                missionAlert.SetActive(true);
+                missionDescription.text = "descrição da misão da carteira";
             }
             else if (numberQuestResolve == 1)
             {
                 if (missionCurrent.text == "")
                     missionCurrent.text = "Encontro na praça";
+                missionAlert.SetActive(true);
+                missionDescription.text = "descrição da misão ddo encontro na praça";
             }
             else if (numberQuestResolve == 3)
             {
                 if (missionCurrent.text == "")
                     missionCurrent.text = "Hora do ônibus";
+                missionAlert.SetActive(true);
+                missionDescription.text = "descrição da misão de ir para o onibus";
             }
         }
         else if(GetNumberScene() == 2)
@@ -261,22 +257,40 @@ public class GameManager : MonoBehaviour
             {
                 if (missionCurrent.text == "")
                     missionCurrent.text = "Mural de avisos";
+                missionAlert.SetActive(true);
+                missionDescription.text = "descrição da misão de ver o mural";
             }
             else if (numberQuestResolve == 1)
             {
                 missionCurrent.text = "Falar com Carla";
+                missionAlert.SetActive(true);
+                missionDescription.text = "descrição da misão de falar com a carla";
             }
             else if (numberQuestResolve == 2)
             {
                 if (missionCurrent.text == "")
                     missionCurrent.text = "Falar com Supervisor";
+                missionAlert.SetActive(true);
+                missionDescription.text = "descrição da misão de falar com o supervisor";
             }
             else if (numberQuestResolve == 3)
             {
                 if (missionCurrent.text == "")
                     missionCurrent.text = "Ir ao posto de trabalho";
+                missionAlert.SetActive(true);
+                missionDescription.text = "descrição da misão de ir ao posto de trabalho";
             }
         }
+
+        if(missionAlert.activeSelf)
+        {
+            Invoke("DeactveMissionAlert", 6f);
+        }
+    }
+
+    void DeactveMissionAlert()
+    {
+        missionAlert.SetActive(false);
     }
 
     public void ResetMissionText()
