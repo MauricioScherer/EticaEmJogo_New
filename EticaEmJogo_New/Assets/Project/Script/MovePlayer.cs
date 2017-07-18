@@ -63,7 +63,7 @@ public class MovePlayer : MonoBehaviour
                             }
                         }
                     }
-                    else if(gameManager.GetNumberScene() == 2)
+                    else if(gameManager.GetNumberScene() == 3)
                     {
                         if (!__questResolved)
                         {
@@ -169,7 +169,7 @@ public class MovePlayer : MonoBehaviour
                     SetValues();
                 }
             }
-            else if(gameManager.GetNumberScene() == 2)
+            else if(gameManager.GetNumberScene() == 3)
             {
                 if(_npcClicked)
                 {

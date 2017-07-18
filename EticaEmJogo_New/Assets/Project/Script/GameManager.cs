@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
             camPosition.playerPosition = poolAvatar[0].transform;
         }
 
-        if (_numberScene == 2)
+        if (_numberScene == 3)
             player.CanWalk(false);
 
         _numberPointsForLevel = 0;
@@ -251,16 +251,9 @@ public class GameManager : MonoBehaviour
                 missionDescription.text = "descrição da misão de ir para o onibus";
             }
         }
-        else if(GetNumberScene() == 2)
+        else if(GetNumberScene() == 3)
         {
-            if (numberQuestResolve == 0)
-            {
-                if (missionCurrent.text == "")
-                    missionCurrent.text = "Mural de avisos";
-                missionAlert.SetActive(true);
-                missionDescription.text = "descrição da misão de ver o mural";
-            }
-            else if (numberQuestResolve == 1)
+            if (numberQuestResolve == 1)
             {
                 missionCurrent.text = "Falar com Carla";
                 missionAlert.SetActive(true);
@@ -283,6 +276,27 @@ public class GameManager : MonoBehaviour
         }
 
         if(missionAlert.activeSelf)
+        {
+            Invoke("DeactveMissionAlert", 6f);
+        }
+    }
+
+    public void viewMissionAlert()
+    {
+        Invoke("SetMissionTextCaseSpecial", 1f);
+    }
+
+    void SetMissionTextCaseSpecial()
+    {
+        if (numberQuestResolve == 1)
+        {
+            if (missionCurrent.text == "")
+                missionCurrent.text = "Mural de avisos";
+            missionAlert.SetActive(true);
+            missionDescription.text = "descrição da misão de ver o mural";
+        }
+
+        if (missionAlert.activeSelf)
         {
             Invoke("DeactveMissionAlert", 6f);
         }

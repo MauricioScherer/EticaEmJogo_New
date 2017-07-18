@@ -27,13 +27,12 @@ public class DialogueBallon : MonoBehaviour
             {
                 npcManager.SetStandardAnim();               
 
-                if (gameManager.GetNumberScene() == 2)
+                if (gameManager.GetNumberScene() == 3)
                 {
                     if (gameManager.numberQuestResolve == 0)
                     {
                         gameManager.SelectQuest(3);
-                        gameManager.managerLevel2.quest1Resolve = true;
-                        gameManager.SetMissionText();
+                        gameManager.managerLevel2.quest1Resolve = true;                        
                         gameManager.player.CanWalk(false);
                     }
                     else if (gameManager.numberQuestResolve == 1)

@@ -32,7 +32,7 @@ public class TriggerController : MonoBehaviour
                 }
             }
         }
-        else if(gameManager.GetNumberScene() == 2)
+        else if(gameManager.GetNumberScene() == 3)
         {
             if (other.CompareTag("Player"))
             {
