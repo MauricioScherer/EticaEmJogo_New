@@ -45,6 +45,7 @@ public class TriggerController : MonoBehaviour
                             npcsDeactive[i].SetActive(false);
                         }
                         managerLevel2.ViewArrow(false);
+                        gameManager.player.SetNewPositionPlayewr(gameObject.transform);
                         gameManager.player.CanWalk(false);
                         Invoke("SetRotationPLayer", 2);
                         _viewBallon = true;
@@ -58,6 +59,6 @@ public class TriggerController : MonoBehaviour
     {
         npcDialogue.ViewBallonDialogueInitial();
         gameManager.ResetMissionText();
-        gameManager.player.gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
+        gameManager.player.gameObject.transform.rotation = new Quaternion(0, 90, 0, 0);
     }
 }

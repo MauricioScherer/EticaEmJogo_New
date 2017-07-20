@@ -210,6 +210,11 @@ public class MovePlayer : MonoBehaviour
         _canWalk = p_canWalk;
     }
 
+    public bool GetCanWalk()
+    {
+        return _canWalk;
+    }
+
     public void SetValues()
     {
         _npcClicked = false;
@@ -245,5 +250,11 @@ public class MovePlayer : MonoBehaviour
     {
         _viewMural = true;
         CanWalk(false);
+    }
+
+    public void SetNewPositionPlayewr(Transform p_position)
+    {
+        _navMeshAgent.destination = p_position.position;
+        _navMeshAgent.Resume();
     }
 }

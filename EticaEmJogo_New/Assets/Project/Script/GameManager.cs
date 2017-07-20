@@ -113,6 +113,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         painelPause.SetActive(true);
         ActivateAndDeactivateHud();
+
         for (int i = 0; i < quest.Length; i++)
         {
             if(quest[i].activeSelf)
@@ -130,7 +131,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         painelPause.SetActive(false);
         ActivateAndDeactivateHud();
-        if(_stayQuest)
+
+        if (_stayQuest)
         {
             quest[_numberQuestStay].SetActive(true);
             _avatarQuestCurrent.SetActive(true);
@@ -298,7 +300,7 @@ public class GameManager : MonoBehaviour
 
         if (missionAlert.activeSelf)
         {
-            Invoke("DeactveMissionAlert", 6f);
+            Invoke("DeactveMissionAlert", 4f);
         }
     }
 
