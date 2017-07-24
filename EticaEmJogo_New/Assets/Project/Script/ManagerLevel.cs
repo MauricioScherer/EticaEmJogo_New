@@ -44,11 +44,6 @@ public class ManagerLevel : MonoBehaviour
         if(Input.GetKeyDown("2"))
             SceneManager.LoadScene("Scene_02");
 
-        if (Input.GetKeyDown("m"))
-        {
-            FadeIn();
-        }
-
         if (_fadeIn)
         {
             fade.color = _colorFade;            
@@ -174,11 +169,21 @@ public class ManagerLevel : MonoBehaviour
     void PagDefine(float p_points)
     {
         if (p_points >= 12)
-            pagCurrent = new GameObject[3] {pag[0],pag[1], pag[2] };
+        {
+            pagCurrent = new GameObject[1] { pag[0] };            
+            if (buttonNextPag.activeSelf)
+                buttonNextPag.SetActive(false);
+            if (buttonBackPag.activeSelf)
+                buttonBackPag.SetActive(false);
+            if (!buttonContinue.activeSelf)
+                buttonContinue.SetActive(true);
+        }
         else if(p_points >= 6)
-            pagCurrent = new GameObject[3] { pag[0], pag[1], pag[3] };
+            pagCurrent = new GameObject[2] { pag[1], pag[2] };
         else
-            pagCurrent = new GameObject[4] { pag[0], pag[1], pag[4],pag[5] };
+            pagCurrent = new GameObject[2] { pag[3], pag[4] };
+
+        pagCurrent[0].SetActive(true);
     }
 
     public void NextPag()

@@ -236,21 +236,21 @@ public class GameManager : MonoBehaviour
                 if (missionCurrent.text == "")
                     missionCurrent.text = "A carteira perdida";
                 missionAlert.SetActive(true);
-                missionDescription.text = "descrição da misão da carteira";
+                missionDescription.text = "Procure pela carteira perdida";
             }
             else if (numberQuestResolve == 1)
             {
                 if (missionCurrent.text == "")
                     missionCurrent.text = "Encontro na praça";
                 missionAlert.SetActive(true);
-                missionDescription.text = "descrição da misão ddo encontro na praça";
+                missionDescription.text = "Encontre seus amigos na praça";
             }
             else if (numberQuestResolve == 3)
             {
                 if (missionCurrent.text == "")
-                    missionCurrent.text = "Hora do ônibus";
+                    missionCurrent.text = "Chegar ao ponto de ônibus";
                 missionAlert.SetActive(true);
-                missionDescription.text = "descrição da misão de ir para o onibus";
+                missionDescription.text = "Pegar o ônibus para iniciar o seu primeiro dia de trabalho no mercado “Tudo Tem”";
             }
         }
         else if(GetNumberScene() == 3)
@@ -259,27 +259,27 @@ public class GameManager : MonoBehaviour
             {
                 missionCurrent.text = "Falar com Carla";
                 missionAlert.SetActive(true);
-                missionDescription.text = "descrição da misão de falar com a carla";
+                missionDescription.text = "Volte a falar com a Carla";
             }
             else if (numberQuestResolve == 2)
             {
                 if (missionCurrent.text == "")
                     missionCurrent.text = "Falar com Supervisor";
                 missionAlert.SetActive(true);
-                missionDescription.text = "descrição da misão de falar com o supervisor";
+                missionDescription.text = "Conheça seu supervisor na sala ao lado, ele irá passar mais informações";
             }
             else if (numberQuestResolve == 3)
             {
                 if (missionCurrent.text == "")
                     missionCurrent.text = "Ir ao posto de trabalho";
                 missionAlert.SetActive(true);
-                missionDescription.text = "descrição da misão de ir ao posto de trabalho";
+                missionDescription.text = "Vá até seu posto de trabalho pra começar seu trabalho";
             }
         }
 
         if(missionAlert.activeSelf)
         {
-            Invoke("DeactveMissionAlert", 6f);
+            Invoke("DeactveMissionAlert", 4f);
         }
     }
 
@@ -295,7 +295,7 @@ public class GameManager : MonoBehaviour
             if (missionCurrent.text == "")
                 missionCurrent.text = "Mural de avisos";
             missionAlert.SetActive(true);
-            missionDescription.text = "descrição da misão de ver o mural";
+            missionDescription.text = "Ler sobre os assuntos que a Carla mensionou no mural de avisos";
         }
 
         if (missionAlert.activeSelf)
