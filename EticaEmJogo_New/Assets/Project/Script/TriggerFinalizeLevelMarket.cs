@@ -12,7 +12,7 @@ public class TriggerFinalizeLevelMarket : MonoBehaviour
         {
             if (managerLevel2.numClientFinalize == 5)
             {
-                managerLevel2.ViewFeedback();
+                managerLevel2.FadeIn();
             }
         }
     }

@@ -74,7 +74,7 @@ public class ManagerLevel : MonoBehaviour
         }
 
         if(_fadeMusic)
-            gameManager.music.volume -= 0.06f * Time.deltaTime;
+            gameManager.music.volume -= 0.12f * Time.deltaTime;
     }
 
     public void SetEvent(int p_numberQuestCurrent)

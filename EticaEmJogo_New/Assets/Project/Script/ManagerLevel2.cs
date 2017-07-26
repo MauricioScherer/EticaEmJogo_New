@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ManagerLevel2 : MonoBehaviour
 {
     public int _numberQuestResolve;
     private int _numberPag;
+
+    private bool _fadeIn;
+    private bool _fadeOut;
+    private bool _fadeMusic;
+    private Color _colorFade;
 
     public bool quest1Resolve;
     public bool finalQuestResolve;
@@ -22,6 +28,7 @@ public class ManagerLevel2 : MonoBehaviour
     public NpcController npcController;
     public NpcControllerIa npcControlerIA;
     public NpcDialogue1 npcDialogue;
+    public Image fade;
 
     public GameObject feedback;
     public GameObject buttonBackPag;
@@ -36,6 +43,54 @@ public class ManagerLevel2 : MonoBehaviour
             Time.timeScale = 1;
         gameManager.music.Play();
         Invoke("EventCelularQuest1", 5);
+    }
+
+    void Update()
+    {
+        if (_fadeIn)
+        {
+            fade.color = _colorFade;
+            _colorFade.a += 0.7f * Time.deltaTime;
+
+            if (_colorFade.a >= 1)
+            {
+                Invoke("FadeOut", 1f);
+                _fadeIn = false;
+            }
+        }
+        if (_fadeOut)
+        {
+            fade.color = _colorFade;
+            _colorFade.a -= 0.7f * Time.deltaTime;
+
+            if (_colorFade.a <= 0)
+            {
+                fade.gameObject.SetActive(false);
+                Time.timeScale = 0;
+                _fadeOut = false;
+                if (gameManager.music.volume > 0)
+                {
+                    gameManager.music.volume = 0;
+                    _fadeMusic = false;
+                }
+            }
+        }
+
+        if (_fadeMusic)
+            gameManager.music.volume -= 0.12f * Time.deltaTime;
+    }
+
+    public void FadeOut()
+    {
+        ViewFeedback();
+        _fadeOut = true;
+    }
+
+    public void FadeIn()
+    {
+        fade.gameObject.SetActive(true);
+        _fadeIn = true;
+        _fadeMusic = true;
     }
 
     public void SetEvent(int p_numberQuestCurrent)
@@ -117,18 +172,26 @@ public class ManagerLevel2 : MonoBehaviour
     public void ViewFeedback()
     {        
         feedback.SetActive(true);
-        gameManager.music.Stop();       
-        Time.timeScale = 0;
     }
 
     void PagDefine(float p_points)
     {
         if (p_points >= 12)
-            pagCurrent = new GameObject[3] {pag[0],pag[1], pag[2] };
-        else if(p_points >= 6)
-            pagCurrent = new GameObject[3] { pag[0], pag[1], pag[3] };
+        {
+            pagCurrent = new GameObject[1] { pag[0] };
+            if (buttonNextPag.activeSelf)
+                buttonNextPag.SetActive(false);
+            if (buttonBackPag.activeSelf)
+                buttonBackPag.SetActive(false);
+            if (!buttonContinue.activeSelf)
+                buttonContinue.SetActive(true);
+        }
+        else if (p_points >= 6)
+            pagCurrent = new GameObject[2] { pag[1], pag[2] };
         else
-            pagCurrent = new GameObject[4] { pag[0], pag[1], pag[4],pag[5] };
+            pagCurrent = new GameObject[3] { pag[3], pag[4], pag[5] };
+
+        pagCurrent[0].SetActive(true);
     }
 
     public void NextPag()
