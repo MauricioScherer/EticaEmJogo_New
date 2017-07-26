@@ -44,18 +44,18 @@ public class NpcWalk : MonoBehaviour
                     }
                     else if(_numPath < 4)
                     {
-                        Invoke("SelectNewPath", 4f);
+                        Invoke("SelectNewPath", 2f);
                     }
                     else if(_numPath == 4)
                     {
                         if(!_viewCanvasMarket)
                         {
-                            if (managerLevel2.numClientFinalize == 4 && !_viewQuestCaixa)
+                            if (managerLevel2.numClientFinalize == 0 && !_viewQuestCaixa)
                             {
                                 managerLevel2.gameManager.SelectQuest(5);
                                 _viewQuestCaixa = true;
                             }
-                            else if(managerLevel2.numClientFinalize != 4 || managerLevel2.finalQuestResolve)
+                            else if(managerLevel2.numClientFinalize != 0 || managerLevel2.finalQuestResolve)
                             {
                                 managerLevel2.ViewCanvasMarket();
                                 compBag.SetActive(true);
@@ -63,7 +63,7 @@ public class NpcWalk : MonoBehaviour
                             }
                         }
                     }
-                    else if(_numPath > 4)
+                    else
                     {
                         gameObject.SetActive(false);
                     }
@@ -83,7 +83,7 @@ public class NpcWalk : MonoBehaviour
                             }
                             else
                             {
-                                _numPath = 1;
+                                _numPath = 2;
                             }
                         }
                         else

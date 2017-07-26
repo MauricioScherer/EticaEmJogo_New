@@ -177,7 +177,7 @@ public class GameManager : MonoBehaviour
         {
             if(managerLevel2)
             {
-                if(managerLevel2.numClientFinalize == 4)
+                if(managerLevel2.numClientFinalize == 0 && numberQuestResolve > 3)
                     managerLevel2.finalQuestResolve = true;
                 else
                     player.SetValues();
@@ -286,6 +286,20 @@ public class GameManager : MonoBehaviour
     public void viewMissionAlert()
     {
         Invoke("SetMissionTextCaseSpecial", 1f);
+    }
+
+    public void SetMissionFinalLevelMarket()
+    {
+        if (missionCurrent.text == "")
+            missionCurrent.text = "Ir para Estoque";
+        missionAlert.SetActive(true);
+        missionDescription.text = "Você teve um ótimo desempenho no trabalho, você será promovido! ir até o estoque";
+        player.CanWalk(true);
+
+        if (missionAlert.activeSelf)
+        {
+            Invoke("DeactveMissionAlert", 4f);
+        }
     }
 
     void SetMissionTextCaseSpecial()

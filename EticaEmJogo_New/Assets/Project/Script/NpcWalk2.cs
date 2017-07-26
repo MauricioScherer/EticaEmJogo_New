@@ -39,7 +39,7 @@ public class NpcWalk2 : MonoBehaviour
                     if(_numPath == 0)
                     {
                         _numPath++;
-                        Invoke("SelectNewPath", 0.05f);
+                        Invoke("SelectNewPath", 0.01f);
                     }
                     else if (_numPath > 0 && _numPath < 4)
                     {
@@ -50,22 +50,22 @@ public class NpcWalk2 : MonoBehaviour
                         }
                         else if(_numPath == 3)
                         {
-                            _numPath = 1;
+                            _numPath = 2;
                         }
                         else
                         {
                             _numPath++;
                         }
 
-                        Invoke("SelectNewPath", 4f);
+                        Invoke("SelectNewPath", 2f);
                         _anim.SetBool("ButtonPress", true);
                         Invoke("ResetAnim", 0.5f);
                     }
                     else if(_numPath == 4)
                     {
                         _numPath++;                                           
-                        Invoke("ViewBallonReaction", 2f);
-                        Invoke("SelectNewPath", 6f);
+                        //Invoke("ViewBallonReaction", 2f);
+                        Invoke("SelectNewPath", 5f);
                     }
                     else if(_numPath >= 5)
                     {

@@ -32,7 +32,9 @@ public class MarketOperateFinalize : MonoBehaviour
         npcWalk.FinalizeMarket();
         managerLevel2.numClientFinalize++;
         if (managerLevel2.numClientFinalize == 5)
-            managerLevel2.ViewFeedBackDelay();
+        {
+            managerLevel2.gameManager.SetMissionFinalLevelMarket();
+        }
         gameObject.SetActive(false);
     }
 

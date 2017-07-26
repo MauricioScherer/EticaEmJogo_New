@@ -21,6 +21,7 @@ public class ManagerLevel2 : MonoBehaviour
     public GameObject clientIn;
     public NpcController npcController;
     public NpcControllerIa npcControlerIA;
+    public NpcDialogue1 npcDialogue;
 
     public GameObject feedback;
     public GameObject buttonBackPag;
@@ -222,12 +223,13 @@ public class ManagerLevel2 : MonoBehaviour
         if(!clientIn.activeSelf)
         {
             clientIn.SetActive(true);
-            Invoke("ViewAlertClientIn", 4f);
+            Invoke("ViewAlertClientIn", 2f);
         }
         else
         {
             npcController.InvokeNewCliente();
             npcControlerIA.InvokeNewCliente();
+            npcDialogue.ActiveBallonStand();
             clientIn.SetActive(false);
         }
     }
@@ -239,10 +241,5 @@ public class ManagerLevel2 : MonoBehaviour
             canvasMarket.SetActive(true);
         else
             canvasMarket.SetActive(false);
-    }
-
-    public void ViewFeedBackDelay()
-    {
-        Invoke("ViewFeedback", 5f);
     }
 }

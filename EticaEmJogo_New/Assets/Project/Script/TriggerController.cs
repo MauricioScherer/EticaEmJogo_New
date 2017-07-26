@@ -50,6 +50,10 @@ public class TriggerController : MonoBehaviour
                         Invoke("SetRotationPLayer", 2);
                         _viewBallon = true;
                     }
+                    else if(managerLevel2.numClientFinalize == 5)
+                    {
+                        managerLevel2.ViewFeedback();
+                    }
                 }
             }
         }
@@ -59,6 +63,6 @@ public class TriggerController : MonoBehaviour
     {
         npcDialogue.ViewBallonDialogueInitial();
         gameManager.ResetMissionText();
-        gameManager.player.gameObject.transform.rotation = new Quaternion(0, 90, 0, 0);
+        gameManager.player.gameObject.transform.rotation = gameObject.transform.rotation;
     }
 }

@@ -8,7 +8,6 @@ public class NpcDialogue1 : MonoBehaviour
     private Animator _anim;
     private NavMeshAgent _navMeshAgent;
     private bool _SelectPath;
-    private bool _dialgueActivate;
     private int _numPath;
     public int _numDialogueStandActivate;
 
@@ -29,10 +28,9 @@ public class NpcDialogue1 : MonoBehaviour
 
     void Update()
     {
-        if(managerLevel2.numClientFinalize == 4 && !_dialgueActivate)
+        if(Input.GetKeyDown("5"))
         {
-            Invoke("ViewBallonDialogueStand", 5f);
-            _dialgueActivate = true;
+            npcCurrent.transform.rotation = positionCaixa.rotation;
         }
 
         if(isMove)
@@ -63,8 +61,8 @@ public class NpcDialogue1 : MonoBehaviour
                 }
                 else
                 {
-                    Invoke("SetDance", 2f);
-                    Invoke("ResetDance", 4f);
+                    Invoke("SetDance", 1f);
+                    Invoke("ResetDance", 3f);
                     Invoke("InvokeQuest", 6f);
                     isMove = false;
                 }
@@ -80,12 +78,17 @@ public class NpcDialogue1 : MonoBehaviour
                 ballonStand[_numDialogueStandActivate - 1].SetActive(false);
             ballonStand[_numDialogueStandActivate].SetActive(true);
             _numDialogueStandActivate++;
-            Invoke("ViewBallonDialogueStand", 5f);
+            Invoke("ViewBallonDialogueStand", 5.5f);
         }
         else
         {
             ballonStand[_numDialogueStandActivate - 1].SetActive(false);
         }
+    }
+
+    public void ActiveBallonStand()
+    {
+        Invoke("ViewBallonDialogueStand", 3f);
     }
 
     public void SelectNewPath()
@@ -126,8 +129,7 @@ public class NpcDialogue1 : MonoBehaviour
     void InvokeQuest()
     {
         gameManager.SelectQuest(4);
-        npcCurrent.transform.position = positionCaixa.transform.position;
-        npcCurrent.transform.rotation = positionCaixa.transform.rotation;
+        npcCurrent.transform.rotation = positionCaixa.rotation;
     }
 
     public void ViewBallonDialogueInitial()
