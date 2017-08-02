@@ -53,6 +53,28 @@ public class DialogueBallon : MonoBehaviour
                         gameManager.managerLevel2.ViewArrow(true);
                     }
                 }
+                else if(gameManager.GetNumberScene() == 4)
+                {
+                    if (gameManager.numberQuestResolve == 0 && !gameManager.managerLevel3.finalizeIntroDialogue)
+                    {
+                        if (gameManager.managerLevel3.npcManager1.ballonDialogue[0].activeSelf)
+                        {
+                            gameManager.managerLevel3.FinalizeIntroDialogueLevel();
+                            gameManager.ResetMissionText();
+                            gameManager.SetMissionText();                            
+                        }
+                        else
+                        {
+                            gameManager.managerLevel3.npcManager1.ballonDialogue[0].SetActive(true);
+                        }
+                    }
+                    else if(gameManager.numberQuestResolve == 1)
+                    {
+                        gameManager.player.SetValues();
+                        gameManager.ResetMissionText();
+                        gameManager.managerLevel3.ViewArrowJob();
+                    }
+                }
 
                 gameObject.SetActive(false);
             }

@@ -225,8 +225,8 @@ public class NpcManager : MonoBehaviour
             _anim.SetBool("Conversation", false);
         if (_anim.GetBool("NoGesture"))
             _anim.SetBool("NoGesture", false);
-        if (_anim.GetBool("Pickup"))
-            _anim.SetBool("Pickup", false);
+        if (_anim.GetBool("PickUp"))
+            _anim.SetBool("PickUp", false);
         if (_anim.GetBool("Shrug"))
             _anim.SetBool("Shrug", false);
         if (_anim.GetBool("YesGesture"))

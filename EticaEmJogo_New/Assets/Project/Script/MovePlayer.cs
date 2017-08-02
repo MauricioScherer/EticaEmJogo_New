@@ -82,6 +82,20 @@ public class MovePlayer : MonoBehaviour
                                 Invoke("ActivateClickNpc", 0.05f);
                             }
                         }
+                    }
+                    else if(gameManager.GetNumberScene() == 4)
+                    {
+                        if (!__questResolved)
+                        {
+                            if (__questStay == 1 && gameManager.numberQuestResolve == 1 && !gameManager.managerLevel3.dialogueNpcPedro)
+                            {
+                                hit.collider.GetComponent<NpcManager>().questResolved = true;
+                                _numberQuestSelect = hit.collider.GetComponent<NpcManager>().GetQuestStay();
+                                _objTemp = hit.collider.gameObject;
+                                gameManager.managerLevel3.dialogueNpcPedro = true;
+                                Invoke("ActivateClickNpc", 0.05f);
+                            }
+                        }
                     }              
                 }
                 else if(hit.collider.CompareTag("Wallet"))
@@ -195,6 +209,20 @@ public class MovePlayer : MonoBehaviour
                     gameManager.managerLevel2.ViewCanvasMural(true);
                     gameManager.DeactiveHudAndPause();
                     _viewMural = false;
+                }
+            }
+            else if(gameManager.GetNumberScene() == 4)
+            {
+                if (_npcClicked)
+                {
+                    if (_numberQuestSelect == 1)
+                    {
+                        if (_objTemp != null)
+                        {
+                            _objTemp.GetComponent<NpcManager>().ballonDialogue[0].SetActive(true);
+                            _objTemp = null;
+                        }
+                    }
                 }
             }
         }

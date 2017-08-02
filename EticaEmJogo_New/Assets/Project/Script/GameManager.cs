@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public int numberQuestResolve;
     public ManagerLevel managerLevel;
     public ManagerLevel2 managerLevel2;
+    public ManagerLevel3 managerLevel3;
     public GameObject[] quest;
     public GameObject canvasGameManger;
     public GameObject help;
@@ -274,6 +275,21 @@ public class GameManager : MonoBehaviour
                     missionCurrent.text = "Ir ao posto de trabalho";
                 missionAlert.SetActive(true);
                 missionDescription.text = "Vá até seu posto de trabalho pra começar seu trabalho";
+            }
+        }
+        else if(GetNumberScene() == 4)
+        {
+            if (numberQuestResolve == 0)
+            {
+                missionCurrent.text = "Pegar EPI's";
+                missionAlert.SetActive(true);
+                missionDescription.text = "Vá até seu armario e pegue seus equipamentos de proteção individual";
+            }
+            else if (numberQuestResolve == 1)
+            {
+                missionCurrent.text = "Falar com Pedro";
+                missionAlert.SetActive(true);
+                missionDescription.text = "Fale com seu colega pedro, ele ira ajudar nas suas novas tarefas";
             }
         }
 
