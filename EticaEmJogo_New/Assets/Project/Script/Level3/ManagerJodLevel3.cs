@@ -7,7 +7,9 @@ public class ManagerJodLevel3 : MonoBehaviour
     private bool _isMoving;
     private bool _isMoving2;
     private bool _isMovingRecuse;
+    private int _numBox;
 
+    public ManagerLevel3 managerLevel;
     public float speed;
     public GameObject box;
     public Transform posIn;
@@ -82,6 +84,7 @@ public class ManagerJodLevel3 : MonoBehaviour
         {
             box.SetActive(true);
             _isMoving = true;
+            _numBox++;
         }
     }
 
@@ -107,7 +110,18 @@ public class ManagerJodLevel3 : MonoBehaviour
 
         if(canvasJob.GetComponent<Prancheta>().GetNumBox())
         {
-            Invoke("EnterNewBox", 1f);
+            if(_numBox == 2)
+            {
+                managerLevel.AnimWokTok();
+            }
+            else if(_numBox == 4)
+            {
+                managerLevel.InvokeNpcChico();
+            }
+            else
+            {
+                Invoke("EnterNewBox", 1f);
+            }
         }
     }
 

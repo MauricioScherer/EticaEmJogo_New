@@ -12,6 +12,8 @@ public class TriggerJob : MonoBehaviour
         if (other.CompareTag("Player") && !viewArrowJob && managerLevel3.dialogueNpcPedro)
         {
             managerLevel3.ViewArrowJob();
+            managerLevel3.InitializeJob();
+            managerLevel3.gameManager.player.SetNewPositionPlayewr(gameObject.transform);
             viewArrowJob = true;
         }
     }

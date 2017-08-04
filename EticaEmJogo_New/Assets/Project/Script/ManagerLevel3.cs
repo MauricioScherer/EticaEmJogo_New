@@ -12,6 +12,10 @@ public class ManagerLevel3 : MonoBehaviour
     public GameObject arrowLockers;
     public GameObject arrowJog;
     public GameObject epiImage;
+    public ManagerJodLevel3 managerJob;
+    public GameObject NpcChico;
+    public GameObject WokTok;
+    public GameObject DialogueWokTok_1;
 
     void Start()
     {
@@ -68,5 +72,38 @@ public class ManagerLevel3 : MonoBehaviour
     void ActiveWalkPlayer()
     {
         gameManager.player.CanWalk(true);
+    }
+
+    public void SelectQuest(int p_numberQuest)
+    {
+        gameManager.SelectQuest(p_numberQuest);
+    }
+
+    public void InitializeJob()
+    {
+        managerJob.EnterNewBox();
+    }
+
+    public void InvokeNpcChico()
+    {
+        NpcChico.SetActive(true);
+    }
+
+    public void AnimWokTok()
+    {
+        WokTok.GetComponent<AudioSource>().Play();
+        WokTok.GetComponent<Animator>().SetBool("ActiveWalk", true);
+        DialogueWokTok_1.SetActive(true);
+        Invoke("ResetAnimWokTok", 0.2f);
+        Invoke("ResetDialogueWokTok", 6f);
+    }
+    void ResetAnimWokTok()
+    {
+        WokTok.GetComponent<Animator>().SetBool("ActiveWalk", false);
+    }
+    void ResetDialogueWokTok()
+    {
+        InitializeJob();
+        DialogueWokTok_1.SetActive(false);
     }
 }

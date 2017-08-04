@@ -28,10 +28,10 @@ public class NpcDialogue1 : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown("5"))
-        {
-            npcCurrent.transform.rotation = positionCaixa.rotation;
-        }
+        //if(Input.GetKeyDown("5"))
+        //{
+        //    npcCurrent.transform.rotation = positionCaixa.rotation;
+        //}
 
         if(isMove)
         {
