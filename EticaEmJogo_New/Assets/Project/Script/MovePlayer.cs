@@ -285,4 +285,15 @@ public class MovePlayer : MonoBehaviour
         _navMeshAgent.destination = p_position.position;
         _navMeshAgent.Resume();
     }
+
+    public void SetAnimYesGesture()
+    {
+        _anim.SetBool("YesGesture", true);
+        Invoke("ResetAnim", 0.2f);
+    }
+
+    void ResetAnim()
+    {
+        _anim.SetBool("YesGesture", false);
+    }
 }

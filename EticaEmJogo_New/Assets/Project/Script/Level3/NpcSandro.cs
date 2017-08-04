@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NpcChicoLevel3 : MonoBehaviour
+public class NpcSandro : MonoBehaviour
 {
     private Animator _anim;
     private NavMeshAgent _navMeshAgent;
@@ -14,9 +14,8 @@ public class NpcChicoLevel3 : MonoBehaviour
     public GameObject npcCurrent;
     public Transform[] path;
     public GameObject ballonDialoge;
-    public GameObject ballonDialoge2;
 
-    void Awake()
+    void Start ()
     {
         _anim = npcCurrent.GetComponent<Animator>();
         _navMeshAgent = npcCurrent.GetComponent<NavMeshAgent>();
@@ -24,8 +23,8 @@ public class NpcChicoLevel3 : MonoBehaviour
         _navMeshAgent.destination = path[_numPath].position;
         _navMeshAgent.Resume();
     }
-
-    void Update ()
+	
+	void Update ()
     {
         if (_navMeshAgent.remainingDistance > 0.05f)
         {
@@ -39,17 +38,9 @@ public class NpcChicoLevel3 : MonoBehaviour
                 if (_numPath == 0)
                 {
                     _numPath++;
-                    _anim.SetBool("ButtonPress", true);
-                    Invoke("ResetAnim", 0.5f);
-                    Invoke("SelectNewPath", 3f);
-                }
-                else if (_numPath == 1)
-                {
-                    _numPath++;
-                    Invoke("InvokeQuest", 6f);
                     ballonDialoge.SetActive(true);
                 }
-                else if (_numPath == 2)
+                else if(_numPath == 1)
                 {
                     gameObject.SetActive(false);
                 }
@@ -58,32 +49,9 @@ public class NpcChicoLevel3 : MonoBehaviour
         }
     }
 
-    void InvokeQuest()
-    {
-        managerLevel.SelectQuest(6);
-        ballonDialoge.SetActive(false);
-    }
-
     public void SelectNewPath()
     {
         _navMeshAgent.destination = path[_numPath].position;
         _navMeshAgent.Resume();
-        _SelectPath = false;
-        if(ballonDialoge2.activeSelf)
-        {
-            managerLevel.InitializeJob();
-            ballonDialoge2.SetActive(false);
-        }
-    }
-
-    void ResetAnim()
-    {
-        _anim.SetBool("ButtonPress", false);
-    }
-
-    public void FinalizeQuestChico()
-    {
-        ballonDialoge2.SetActive(true);
-        Invoke("SelectNewPath", 3f);
     }
 }

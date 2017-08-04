@@ -14,6 +14,7 @@ public class ManagerLevel3 : MonoBehaviour
     public GameObject epiImage;
     public ManagerJodLevel3 managerJob;
     public GameObject NpcChico;
+    public GameObject NpcSandro;
     public GameObject WokTok;
     public GameObject DialogueWokTok_1;
 
@@ -21,7 +22,7 @@ public class ManagerLevel3 : MonoBehaviour
     {
         if(gameManager.player.GetCanWalk())
         {
-            gameManager.player.CanWalk(false);
+            PlayerCanWalk(false);
         }
     }
 
@@ -29,8 +30,13 @@ public class ManagerLevel3 : MonoBehaviour
     {
         npcManager1.ballonDialogue[0].SetActive(false);
         finalizeIntroDialogue = true;
-        gameManager.player.CanWalk(true);
+        PlayerCanWalk(true);
         ViewArrowLockers();
+    }
+
+    public void PlayerCanWalk(bool p_canwalk)
+    {
+        gameManager.player.CanWalk(p_canwalk);
     }
 
     public void ViewArrowLockers()
@@ -49,14 +55,14 @@ public class ManagerLevel3 : MonoBehaviour
         }
         else
         {
-            gameManager.player.CanWalk(false);
+            PlayerCanWalk(false);
             arrowJog.SetActive(false);
         }        
     }
 
     public void ViewEpiMensage()
     {
-        gameManager.player.CanWalk(false);
+        PlayerCanWalk(false);
         gameManager.numberQuestResolve = 1;
         epiImage.SetActive(true);
     }
@@ -95,7 +101,7 @@ public class ManagerLevel3 : MonoBehaviour
         WokTok.GetComponent<Animator>().SetBool("ActiveWalk", true);
         DialogueWokTok_1.SetActive(true);
         Invoke("ResetAnimWokTok", 0.2f);
-        Invoke("ResetDialogueWokTok", 6f);
+        Invoke("ResetDialogueWokTok", 7f);
     }
     void ResetAnimWokTok()
     {

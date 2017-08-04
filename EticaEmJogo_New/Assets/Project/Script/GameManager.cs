@@ -291,6 +291,12 @@ public class GameManager : MonoBehaviour
                 missionAlert.SetActive(true);
                 missionDescription.text = "Fale com seu colega pedro, ele ira ajudar nas suas novas tarefas";
             }
+            else if (numberQuestResolve == 2)
+            {
+                missionCurrent.text = "Tirar EPI";
+                missionAlert.SetActive(true);
+                missionDescription.text = "Vá até o seu armário, deixe seu EPI para você ir ao refeitório almoçar";
+            }
         }
 
         if(missionAlert.activeSelf)
@@ -310,6 +316,19 @@ public class GameManager : MonoBehaviour
             missionCurrent.text = "Ir para Estoque";
         missionAlert.SetActive(true);
         missionDescription.text = "Você teve um ótimo desempenho no trabalho, você será promovido! ir até o estoque";
+        player.CanWalk(true);
+
+        if (missionAlert.activeSelf)
+        {
+            Invoke("DeactveMissionAlert", 4f);
+        }
+    }
+
+    public void SetMissionRefectory()
+    {
+        missionCurrent.text = "Ir para Refeitório";
+        missionAlert.SetActive(true);
+        missionDescription.text = "Vá até o refeitório para o horário de almoço";
         player.CanWalk(true);
 
         if (missionAlert.activeSelf)

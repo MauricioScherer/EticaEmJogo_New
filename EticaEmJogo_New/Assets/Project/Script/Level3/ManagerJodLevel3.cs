@@ -123,6 +123,12 @@ public class ManagerJodLevel3 : MonoBehaviour
                 Invoke("EnterNewBox", 1f);
             }
         }
+        else
+        {
+            managerLevel.gameManager.SetMissionText();
+            managerLevel.ViewArrowLockers();
+            managerLevel.PlayerCanWalk(true);
+        }
     }
 
     void ViewCanvasJob()
