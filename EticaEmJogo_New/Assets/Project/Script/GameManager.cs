@@ -279,7 +279,7 @@ public class GameManager : MonoBehaviour
         }
         else if(GetNumberScene() == 4)
         {
-            if (numberQuestResolve == 0)
+            if (numberQuestResolve == 0 || numberQuestResolve == 3)
             {
                 missionCurrent.text = "Pegar EPI's";
                 missionAlert.SetActive(true);
@@ -346,6 +346,19 @@ public class GameManager : MonoBehaviour
             missionAlert.SetActive(true);
             missionDescription.text = "Ler sobre os assuntos que a Carla mensionou no mural de avisos";
         }
+
+        if (missionAlert.activeSelf)
+        {
+            Invoke("DeactveMissionAlert", 4f);
+        }
+    }
+
+    public void SetMissionReturnJob()
+    {
+        missionCurrent.text = "Voltar ao trabalho";
+        missionAlert.SetActive(true);
+        missionDescription.text = "Retorne para o seu local de trabalho para continuar suas tarefas";
+        player.CanWalk(true);
 
         if (missionAlert.activeSelf)
         {

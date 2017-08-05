@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogueBallonLevel3 : MonoBehaviour
 {
     public GameManager gameManager;
+    public ManagerLevel3 managerLevel;
     public AudioSource voiceNpc;
     public NpcSandro npcCurrent;
     public GameObject[] textDialogue;
@@ -37,6 +38,8 @@ public class DialogueBallonLevel3 : MonoBehaviour
     {
         gameManager.ResetMissionText();
         gameManager.SetMissionRefectory();
+        managerLevel.ViewArrowRefactory();
+        managerLevel.SetEnterRefactory(true);
         npcCurrent.SelectNewPath();
     }
 }
