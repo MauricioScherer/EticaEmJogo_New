@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManagerJodLevel3 : MonoBehaviour
+public class ManagerJod2Level3 : MonoBehaviour
 {
     private bool _isMoving;
     private bool _isMoving2;
@@ -16,7 +16,6 @@ public class ManagerJodLevel3 : MonoBehaviour
     public Transform posOut;
     public Transform posOut2;
     public Cloth curtain;
-
     public GameObject canvasJob;
 
 	void Start ()
@@ -94,25 +93,23 @@ public class ManagerJodLevel3 : MonoBehaviour
         }
         box.transform.position = posIn.position;
 
-        if(canvasJob.GetComponent<Prancheta>().GetNumBox())
-        {
-            if(_numBox == 2)
+        if(canvasJob.GetComponent<PranchetaJob2>().GetNumBox())
+        {            
+            if (_numBox == 2)
             {
                 managerLevel.AnimWokTok();
             }
             else if(_numBox == 4)
             {
-                managerLevel.InvokeNpcChico();
+                managerLevel.AnimWokTokEnd();
             }
             else
             {
                 Invoke("EnterNewBox", 1f);
-            }
+            } 
         }
         else
         {
-            managerLevel.gameManager.SetMissionText();
-            managerLevel.ViewArrowLockers();
             managerLevel.PlayerCanWalk(true);
         }
     }
@@ -120,7 +117,7 @@ public class ManagerJodLevel3 : MonoBehaviour
     void ViewCanvasJob()
     {
         canvasJob.SetActive(true);
-        canvasJob.GetComponent<Prancheta>().ViewBox();
+        canvasJob.GetComponent<PranchetaJob2>().ViewBox();
     }
 
     

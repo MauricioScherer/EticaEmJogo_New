@@ -20,11 +20,16 @@ public class ManagerLevel3 : MonoBehaviour
     public GameObject arrowJog;
     public GameObject arrowRefactory;
     public GameObject epiImage;
+    public GameObject epiImageEmpty;
     public ManagerJodLevel3 managerJob;
+    public ManagerJod2Level3 managerJob2;
     public GameObject NpcChico;
     public GameObject NpcSandro;
     public GameObject WokTok;
     public GameObject DialogueWokTok_1;
+    public GameObject DialogueWokTok_2;
+    public GameObject DialogueWokTok_3;
+    public GameObject DialogueWokTok_4;
     public Image fade;
     public GameObject textFade;
 
@@ -126,13 +131,29 @@ public class ManagerLevel3 : MonoBehaviour
         gameManager.numberQuestResolve = 1;
         epiImage.SetActive(true);
     }
-
+    
     public void DeactiveEpiMensage()
     {
         Invoke("ActiveWalkPlayer", 0.1f);
         gameManager.ResetMissionText();
         gameManager.SetMissionText();
         epiImage.SetActive(false);
+    }
+
+    public void ViewEpiEmptyMensage()
+    {
+        PlayerCanWalk(false);
+        epiImageEmpty.SetActive(true);
+    }
+
+    public void DeactiveEpiEmptyMensage()
+    {
+        Invoke("ActiveWalkPlayer", 0.1f);
+        gameManager.ResetMissionText();
+        gameManager.SetMissionReturnJob();
+        gameManager.numberQuestResolve++;
+        epiImageEmpty.SetActive(false);
+        ViewArrowJob();
     }
 
     void ActiveWalkPlayer()
@@ -150,27 +171,72 @@ public class ManagerLevel3 : MonoBehaviour
         managerJob.EnterNewBox();
     }
 
+    public void InitializeJob2()
+    {
+        managerJob2.EnterNewBox();
+    }
+
     public void InvokeNpcChico()
     {
         NpcChico.SetActive(true);
     }
 
+    public void AnimWokTokEnd()
+    {
+        WokTok.GetComponent<AudioSource>().Play();
+        WokTok.GetComponent<Animator>().SetBool("ActiveWalk", true);
+        DialogueWokTok_3.SetActive(true);
+        Invoke("ResetAnimWokTok", 0.2f);
+        Invoke("ResetDialogueWokTokEnd", 8f);
+    }
+    void ResetDialogueWokTokEnd()
+    {
+        DialogueWokTok_3.SetActive(false);
+        SelectQuest(8);
+    }
+
+    public void DialogueWokTokPedro()
+    {
+        WokTok.GetComponent<AudioSource>().Play();
+        WokTok.GetComponent<Animator>().SetBool("ActiveWalk", true);
+        DialogueWokTok_4.SetActive(true);
+        Invoke("ResetAnimWokTok", 0.2f);
+        Invoke("ResetDialogueWokTokPedro", 8f);
+    }
+    void ResetDialogueWokTokPedro()
+    {
+        DialogueWokTok_4.SetActive(false);
+        InitializeJob();
+    }
+
+
     public void AnimWokTok()
     {
         WokTok.GetComponent<AudioSource>().Play();
         WokTok.GetComponent<Animator>().SetBool("ActiveWalk", true);
-        DialogueWokTok_1.SetActive(true);
+        if(managerJob.gameObject.activeSelf)
+            DialogueWokTok_1.SetActive(true);
+        else if(managerJob2.gameObject.activeSelf)
+            DialogueWokTok_2.SetActive(true);
         Invoke("ResetAnimWokTok", 0.2f);
-        Invoke("ResetDialogueWokTok", 7f);
+        Invoke("ResetDialogueWokTok", 8f);
     }
     void ResetAnimWokTok()
     {
         WokTok.GetComponent<Animator>().SetBool("ActiveWalk", false);
     }
     void ResetDialogueWokTok()
-    {
-        InitializeJob();
-        DialogueWokTok_1.SetActive(false);
+    {        
+        if (managerJob.gameObject.activeSelf)
+        {
+            DialogueWokTok_1.SetActive(false);
+            InitializeJob();
+        }
+        else
+        {
+            DialogueWokTok_2.SetActive(false);
+            SelectQuest(7);
+        }
     }
 
     public void SetEnterRefactory(bool p_enter)

@@ -183,7 +183,7 @@ public class GameManager : MonoBehaviour
                 else
                     player.SetValues();
             }
-            else if(_numberQuestStay != 6)
+            else if(_numberQuestStay != 6 && _numberQuestStay != 7 && _numberQuestStay != 8)
             {
                 player.SetValues();
             }

@@ -34,9 +34,7 @@ public class TriggerLocker : MonoBehaviour
             {
                 managerLevel3.gameManager.player.SetNewPositionPlayewr(gameObject.transform);
                 managerLevel3.ViewArrowLockers();
-                Debug.Log("Epi's não estão aqui!!!");
-                managerLevel3.gameManager.ResetMissionText();
-                managerLevel3.gameManager.SetMissionReturnJob();
+                managerLevel3.ViewEpiEmptyMensage();
                 _pullEpi2 = true;
             }
         }

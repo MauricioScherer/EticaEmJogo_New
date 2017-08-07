@@ -17,6 +17,8 @@ public class TriggerFactory : MonoBehaviour
                 managerLevel3.ViewArrowRefactory();
                 managerLevel3.gameManager.ResetMissionText();
                 managerLevel3.FadeIn();
+                managerLevel3.managerJob.gameObject.SetActive(false);
+                managerLevel3.managerJob2.gameObject.SetActive(true);
                 _EnterRefactory = true;
             }
         }
