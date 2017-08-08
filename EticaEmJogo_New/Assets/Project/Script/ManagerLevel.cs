@@ -107,8 +107,6 @@ public class ManagerLevel : MonoBehaviour
 
     void viewAlertFinalLevel()
     {
-        if(alertFinalLevel)
-            alertFinalLevel.SetActive(true);
         if(busFinalLevel)
             busFinalLevel.SetActive(true);
         gameManager.SetMissionText();

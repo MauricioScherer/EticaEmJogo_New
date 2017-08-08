@@ -12,6 +12,7 @@ public class TriggerFinalizeLevelMarket : MonoBehaviour
         {
             if (managerLevel2.numClientFinalize == 5)
             {
+                managerLevel2.ViewArrowEstoque();
                 managerLevel2.FadeIn();
             }
         }

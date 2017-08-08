@@ -34,9 +34,9 @@ public class NpcController : MonoBehaviour
         if (!beepDoor.isPlaying)
             beepDoor.Play();
 
-        if(_numberClientInvoke < 5)
+        if(_numberClientInvoke < npcs.Length)
         {
-            Invoke("InvokeNewCliente", 15f);
+            Invoke("InvokeNewCliente", 12f);
         }
     }
 }

@@ -48,11 +48,9 @@ public class TriggerController : MonoBehaviour
                         gameManager.player.SetNewPositionPlayewr(gameObject.transform);
                         gameManager.player.CanWalk(false);
                         Invoke("SetRotationPLayer", 2);
+                        gameManager.help.SetActive(false);
+                        gameManager.phone.SetActive(false);
                         _viewBallon = true;
-                    }
-                    else if(managerLevel2.numClientFinalize == 5)
-                    {
-                        managerLevel2.ViewFeedback();
                     }
                 }
             }

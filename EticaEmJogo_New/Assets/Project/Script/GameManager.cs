@@ -67,7 +67,14 @@ public class GameManager : MonoBehaviour
 	
 	void Update ()
     {
-
+        if(Input.GetKeyDown("1"))
+            SceneManager.LoadScene("Scene_01");
+        if (Input.GetKeyDown("2"))
+            SceneManager.LoadScene("Scene_02");
+        if (Input.GetKeyDown("3"))
+            SceneManager.LoadScene("Scene_03");
+        if (Input.GetKeyDown("0"))
+            SceneManager.LoadScene("Menu");
     }
 
     public void SelectQuest(int p_numQuest)
@@ -147,6 +154,8 @@ public class GameManager : MonoBehaviour
     public void DeactiveHudAndPause()
     {
         Time.timeScale = 0;
+        if (missionAlert.activeSelf)
+            DeactveMissionAlert();
         ActivateAndDeactivateHud();
         if (!_stayQuest)
             player.CanWalk(true);
@@ -315,13 +324,10 @@ public class GameManager : MonoBehaviour
         if (missionCurrent.text == "")
             missionCurrent.text = "Ir para Estoque";
         missionAlert.SetActive(true);
+        Invoke("DeactveMissionAlert", 4f);
         missionDescription.text = "Você teve um ótimo desempenho no trabalho, você será promovido! ir até o estoque";
         player.CanWalk(true);
-
-        if (missionAlert.activeSelf)
-        {
-            Invoke("DeactveMissionAlert", 4f);
-        }
+        managerLevel2.viewFinalLevel();
     }
 
     public void SetMissionRefectory()

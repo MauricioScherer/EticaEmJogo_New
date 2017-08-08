@@ -29,6 +29,7 @@ public class ManagerLevel2 : MonoBehaviour
     public NpcControllerIa npcControlerIA;
     public NpcDialogue1 npcDialogue;
     public Image fade;
+    public GameObject arrowEstoque;
 
     public GameObject feedback;
     public GameObject buttonBackPag;
@@ -93,21 +94,12 @@ public class ManagerLevel2 : MonoBehaviour
         _fadeMusic = true;
     }
 
-    public void SetEvent(int p_numberQuestCurrent)
+    public void ViewArrowEstoque()
     {
-        _numberQuestResolve = p_numberQuestCurrent;
-        if (_numberQuestResolve == 0)
-        {
-            gameManager.SelectMensagePhone(_numberQuestResolve, 13);
-        }
-        else if (_numberQuestResolve == 1)
-        {
-            gameManager.SelectMensagePhone(_numberQuestResolve, 8);
-        }
-        else if (_numberQuestResolve == 2)
-        {
-            Invoke("viewAlertFinalLevel", 6);
-        }
+        if(!arrowEstoque.activeSelf)
+            arrowEstoque.SetActive(true);
+        else
+            arrowEstoque.SetActive(false);
     }
 
     public int GetNumberQuestResolve()
@@ -115,11 +107,10 @@ public class ManagerLevel2 : MonoBehaviour
         return _numberQuestResolve;
     }
     
-    void viewAlertFinalLevel()
+    public void viewFinalLevel()
     {
-        gameManager.SetMissionText();
         PagDefine(gameManager.GetScore());
-        Invoke("ResetAlert", 5);
+        ViewArrowEstoque();
     }
 
     void EventCelularQuest1()
@@ -262,7 +253,7 @@ public class ManagerLevel2 : MonoBehaviour
                 break;
             }
         }
-            SceneManager.LoadScene("Scene_03");
+        SceneManager.LoadScene("Scene_03");
     }
 
     public int GetNumberQuest()

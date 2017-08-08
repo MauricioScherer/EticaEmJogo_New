@@ -18,7 +18,7 @@ public class NpcControllerIa : MonoBehaviour
         if (!beepDoor.isPlaying)
             beepDoor.Play();
 
-        if (_numberClientInvoke < 20)
+        if (_numberClientInvoke < npcs.Length)
         {
             Invoke("InvokeNewCliente", 10f);
         }
