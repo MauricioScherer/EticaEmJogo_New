@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ManagerLevel3 : MonoBehaviour
@@ -10,6 +11,7 @@ public class ManagerLevel3 : MonoBehaviour
     private bool _fadeOut;
     private bool _fadeMusic;
     private Color _colorFade;
+    private int _numberPag;
 
     public bool finalizeIntroDialogue;
     public bool getEpi;
@@ -32,6 +34,15 @@ public class ManagerLevel3 : MonoBehaviour
     public GameObject DialogueWokTok_4;
     public Image fade;
     public GameObject textFade;
+    public GameObject[] objectDeactive;
+    public GameObject[] LightJob;
+
+    public GameObject feedback;
+    public GameObject buttonBackPag;
+    public GameObject buttonNextPag;
+    public GameObject buttonContinue;
+    public GameObject[] pag;
+    public GameObject[] pagCurrent;
 
     void Start()
     {
@@ -187,9 +198,8 @@ public class ManagerLevel3 : MonoBehaviour
         WokTok.GetComponent<Animator>().SetBool("ActiveWalk", true);
         DialogueWokTok_3.SetActive(true);
         Invoke("ResetAnimWokTok", 0.2f);
-        Invoke("ResetDialogueWokTokEnd", 8f);
     }
-    void ResetDialogueWokTokEnd()
+    public void ResetDialogueWokTokEnd()
     {
         DialogueWokTok_3.SetActive(false);
         SelectQuest(8);
@@ -201,12 +211,11 @@ public class ManagerLevel3 : MonoBehaviour
         WokTok.GetComponent<Animator>().SetBool("ActiveWalk", true);
         DialogueWokTok_4.SetActive(true);
         Invoke("ResetAnimWokTok", 0.2f);
-        Invoke("ResetDialogueWokTokPedro", 8f);
     }
-    void ResetDialogueWokTokPedro()
+    public void ResetDialogueWokTokPedro()
     {
         DialogueWokTok_4.SetActive(false);
-        InitializeJob();
+        InitializeJob2();
     }
 
 
@@ -219,13 +228,12 @@ public class ManagerLevel3 : MonoBehaviour
         else if(managerJob2.gameObject.activeSelf)
             DialogueWokTok_2.SetActive(true);
         Invoke("ResetAnimWokTok", 0.2f);
-        Invoke("ResetDialogueWokTok", 8f);
     }
     void ResetAnimWokTok()
     {
         WokTok.GetComponent<Animator>().SetBool("ActiveWalk", false);
     }
-    void ResetDialogueWokTok()
+    public void ResetDialogueWokTok()
     {        
         if (managerJob.gameObject.activeSelf)
         {
@@ -259,5 +267,124 @@ public class ManagerLevel3 : MonoBehaviour
     {
         textFade.SetActive(false);
         _fadeOut = true;
+    }
+
+    public void DeactiveObjetsPosScene()
+    {
+        for(int i = 0; i < objectDeactive.Length; i++)
+        {
+            if(objectDeactive[i].activeSelf)
+                objectDeactive[i].SetActive(false);
+        }
+    }
+
+    public void DefineLightJob(int p_numLight)
+    {
+        for(int i = 0; i < LightJob.Length; i++)
+        {
+            if (i != p_numLight)
+                LightJob[i].SetActive(false);
+            else
+                LightJob[i].SetActive(true);
+        }
+    }
+
+    //feedback
+    public void ViewFeedback()
+    {
+        WokTok.SetActive(false);
+        feedback.SetActive(true);
+        PagDefine(gameManager.GetScore());
+    }
+
+    void PagDefine(float p_points)
+    {
+        if (p_points >= 12)
+        {
+            pagCurrent = new GameObject[1] { pag[0] };
+            if (buttonNextPag.activeSelf)
+                buttonNextPag.SetActive(false);
+            if (buttonBackPag.activeSelf)
+                buttonBackPag.SetActive(false);
+            if (!buttonContinue.activeSelf)
+                buttonContinue.SetActive(true);
+        }
+        else if (p_points >= 6)
+            pagCurrent = new GameObject[2] { pag[1], pag[2] };
+        else
+            pagCurrent = new GameObject[3] { pag[3], pag[4], pag[5] };
+
+        pagCurrent[0].SetActive(true);
+    }
+
+    public void NextPag()
+    {
+        if (_numberPag < pagCurrent.Length - 1)
+        {
+            for (int i = 0; i < pagCurrent.Length; i++)
+            {
+                if (pagCurrent[i].activeSelf)
+                {
+                    pagCurrent[i].SetActive(false);
+                    pagCurrent[i + 1].SetActive(true);
+                    if (i == 0)
+                    {
+                        buttonBackPag.SetActive(true);
+                    }
+                    if (i + 1 == pagCurrent.Length - 1)
+                    {
+                        buttonNextPag.SetActive(false);
+                        buttonContinue.SetActive(true);
+                    }
+                    break;
+                }
+            }
+            _numberPag++;
+        }
+    }
+
+    public void BackPag()
+    {
+        if (_numberPag > 0)
+        {
+            for (int i = 0; i < pagCurrent.Length; i++)
+            {
+                if (pagCurrent[i].activeSelf)
+                {
+                    pagCurrent[i].SetActive(false);
+                    pagCurrent[i - 1].SetActive(true);
+                    if (i == 1)
+                    {
+                        buttonBackPag.SetActive(false);
+                    }
+                    if (buttonContinue.activeSelf)
+                    {
+                        buttonContinue.SetActive(false);
+                        buttonNextPag.SetActive(true);
+                    }
+                    break;
+                }
+            }
+            _numberPag--;
+        }
+    }
+
+    public void ButtonContinue()
+    {
+        string[] tempArray = new string[20];
+        tempArray = PlayerPrefsUtility.GetStringArray("cpfArray");
+
+        int[] tempPoint = new int[20];
+        tempPoint = PlayerPrefsUtility.GetIntArray("pointsArray");
+        for (int i = 0; i < tempArray.Length; i++)
+        {
+            if (tempArray[i] == PlayerPrefs.GetString("cpfSelect"))
+            {
+                tempPoint[i] = (int)gameManager.GetScore();
+                PlayerPrefsUtility.SetIntArray("pointsArray", tempPoint);
+                break;
+            }
+        }
+        SceneManager.LoadScene("Menu");
     }
 }

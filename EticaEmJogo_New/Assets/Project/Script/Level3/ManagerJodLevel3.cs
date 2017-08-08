@@ -16,6 +16,9 @@ public class ManagerJodLevel3 : MonoBehaviour
     public Transform posOut;
     public Transform posOut2;
     public Cloth curtain;
+    public AudioSource beepEsteira;
+    public AudioSource effectCurtain;
+    public float[] timeEffectCurtain;
 
     public GameObject canvasJob;
 
@@ -26,7 +29,6 @@ public class ManagerJodLevel3 : MonoBehaviour
 	
 	void Update ()
     {
-
         if (_isMoving)
         {
             box.transform.position = Vector3.MoveTowards(box.transform.position, posOut.position, speed * Time.deltaTime);
@@ -68,6 +70,7 @@ public class ManagerJodLevel3 : MonoBehaviour
     {
         if (!_isMoving)
         {
+            Invoke("PlayEffectCurtain", timeEffectCurtain[0]);
             box.SetActive(true);
             _isMoving = true;
             _numBox++;
@@ -76,16 +79,22 @@ public class ManagerJodLevel3 : MonoBehaviour
 
     public void BoxAcept()
     {
+        beepEsteira.Play();
+        managerLevel.DefineLightJob(1);
         _isMoving2 = true;
     }
 
     public void BoxRecuse()
     {
+        beepEsteira.Play();
+        Invoke("PlayEffectCurtain", timeEffectCurtain[1]);
+        managerLevel.DefineLightJob(2);
         _isMovingRecuse = true;
     }
 
     public void ResetBox(bool p_disableCath)
     {
+        managerLevel.DefineLightJob(0);
         box.SetActive(false);
         if(p_disableCath)
         {
@@ -123,5 +132,8 @@ public class ManagerJodLevel3 : MonoBehaviour
         canvasJob.GetComponent<Prancheta>().ViewBox();
     }
 
-    
+    void PlayEffectCurtain()
+    {
+        effectCurtain.Play();
+    }
 }

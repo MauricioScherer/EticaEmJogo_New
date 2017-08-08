@@ -41,7 +41,7 @@ public class NpcSandro : MonoBehaviour
                     ballonDialoge.SetActive(true);
                 }
                 else if(_numPath == 1)
-                {
+                {                    
                     gameObject.SetActive(false);
                 }
                 _SelectPath = true;
@@ -53,5 +53,7 @@ public class NpcSandro : MonoBehaviour
     {
         _navMeshAgent.destination = path[_numPath].position;
         _navMeshAgent.Resume();
+        if (_SelectPath)
+            _SelectPath = false;
     }
 }

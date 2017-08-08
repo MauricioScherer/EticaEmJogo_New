@@ -18,6 +18,7 @@ public class TriggerLocker : MonoBehaviour
                 managerLevel3.gameManager.player.SetNewPositionPlayewr(gameObject.transform);
                 managerLevel3.ViewArrowLockers();
                 managerLevel3.ViewEpiMensage();
+                managerLevel3.DeactiveObjetsPosScene();
                 managerLevel3.getEpi = true;
             }
 

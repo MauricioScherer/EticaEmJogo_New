@@ -262,7 +262,7 @@ public class ManagerLevel2 : MonoBehaviour
                 break;
             }
         }
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("Scene_03");
     }
 
     public int GetNumberQuest()
