@@ -40,7 +40,6 @@ public class QuestOptionsManager : MonoBehaviour
     {
         if (p_isCorrect == false)
             gameManager.ResetMissionText();
-        gameManager.PlayEffect(2);
         gameManager.player.deliverWallet = p_isCorrect;
     }
 }

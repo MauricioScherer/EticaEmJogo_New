@@ -20,7 +20,7 @@ public class NpcControllerIa : MonoBehaviour
 
         if (_numberClientInvoke < npcs.Length)
         {
-            Invoke("InvokeNewCliente", 10f);
+            Invoke("InvokeNewCliente", 9f);
         }
     }
 }

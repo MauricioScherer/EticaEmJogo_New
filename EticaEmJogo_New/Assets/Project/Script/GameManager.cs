@@ -27,8 +27,10 @@ public class GameManager : MonoBehaviour
     public GameObject sprMusicActivate;
     public GameObject painelPause;
     public GameObject painelMission;
-    public GameObject[] poolAvatar;    
+    public GameObject[] poolAvatar;     
     public MovePlayer player;
+    public Transform[] poolFeedBackPosition;
+    public Transform feedBackActive;
     public GameObject[] poolAvatarQuest;
     public CelularManager celularManager;
     public Image scoreBar;
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
     public Text missionCurrent;
     public GameObject missionAlert;
     public Text missionDescription;
+    public GameObject[] feedBackQuest;
 
     void Awake ()
     {
@@ -50,12 +53,14 @@ public class GameManager : MonoBehaviour
             poolAvatar[__tempNumberPool].SetActive(true);
             _avatarQuestCurrent = poolAvatarQuest[__tempNumberPool];
             player = poolAvatar[__tempNumberPool].GetComponent<MovePlayer>();
+            feedBackActive = poolFeedBackPosition[__tempNumberPool];
             camPosition.playerPosition = poolAvatar[__tempNumberPool].transform;
         }
         else
         {
             poolAvatar[0].SetActive(true);
             player = poolAvatar[0].GetComponent<MovePlayer>();
+            feedBackActive = poolFeedBackPosition[0];
             camPosition.playerPosition = poolAvatar[0].transform;
         }
 
@@ -417,5 +422,18 @@ public class GameManager : MonoBehaviour
             sprMusicActivate.SetActive(true);
             music.Play();
         }
+    }
+
+    public void ActiveFeedBackQuest(int p_Quest)
+    {
+        feedBackQuest[p_Quest].SetActive(true);
+        Invoke("DeactiveFeedBackQuest", 3f);
+    }
+
+    void DeactiveFeedBackQuest()
+    {
+        feedBackQuest[0].SetActive(false);
+        feedBackQuest[1].SetActive(false);
+        feedBackQuest[2].SetActive(false);
     }
 }

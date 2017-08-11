@@ -18,6 +18,8 @@ public class ManagerJod2Level3 : MonoBehaviour
     public Cloth curtain;
     public AudioSource beepEsteira;
     public AudioSource effectCurtain;
+    public AudioSource effectSteira;
+    public AudioSource effectSteiraMove2;
     public float[] timeEffectCurtain;
     public GameObject canvasJob;
 
@@ -72,6 +74,7 @@ public class ManagerJod2Level3 : MonoBehaviour
         {
             Invoke("PlayEffectCurtain", timeEffectCurtain[0]);
             box.SetActive(true);
+            effectSteira.Play();
             _isMoving = true;
             _numBox++;
         }
@@ -81,6 +84,7 @@ public class ManagerJod2Level3 : MonoBehaviour
     {
         beepEsteira.Play();
         managerLevel.DefineLightJob(1);
+        effectSteiraMove2.Play();
         _isMoving2 = true;
     }
 
@@ -89,6 +93,7 @@ public class ManagerJod2Level3 : MonoBehaviour
         beepEsteira.Play();
         Invoke("PlayEffectCurtain", timeEffectCurtain[1]);
         managerLevel.DefineLightJob(2);
+        effectSteira.Play();
         _isMovingRecuse = true;
     }
 

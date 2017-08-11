@@ -46,7 +46,9 @@ public class ManagerLevel3 : MonoBehaviour
 
     void Start()
     {
-        if(gameManager.player.GetCanWalk())
+        if (Time.deltaTime < 1)
+            Time.timeScale = 1;
+        if (gameManager.player.GetCanWalk())
         {
             PlayerCanWalk(false);
         }

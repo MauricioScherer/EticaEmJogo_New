@@ -28,11 +28,6 @@ public class NpcDialogue1 : MonoBehaviour
 
     void Update()
     {
-        //if(Input.GetKeyDown("5"))
-        //{
-        //    npcCurrent.transform.rotation = positionCaixa.rotation;
-        //}
-
         if(isMove)
         {
             if (_navMeshAgent.remainingDistance > 0.05f)
@@ -78,7 +73,7 @@ public class NpcDialogue1 : MonoBehaviour
                 ballonStand[_numDialogueStandActivate - 1].SetActive(false);
             ballonStand[_numDialogueStandActivate].SetActive(true);
             _numDialogueStandActivate++;
-            Invoke("ViewBallonDialogueStand", 5.5f);
+            Invoke("ViewBallonDialogueStand", 4.7f);
         }
         else
         {

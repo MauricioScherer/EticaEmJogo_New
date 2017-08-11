@@ -42,11 +42,11 @@ public class NpcWalk : MonoBehaviour
                     {
                         Invoke("SelectNewPath", 0.01f);
                     }
-                    else if(_numPath < 4)
+                    else if(_numPath < 3)
                     {
-                        Invoke("SelectNewPath", 2f);
+                        Invoke("SelectNewPath", 1.7f);
                     }
-                    else if(_numPath == 4)
+                    else if(_numPath == 3)
                     {
                         if(!_viewCanvasMarket)
                         {
@@ -67,14 +67,14 @@ public class NpcWalk : MonoBehaviour
                     {
                         gameObject.SetActive(false);
                     }
-                    if (_numPath > 0 && _numPath < 4)
+                    if (_numPath > 0 && _numPath < 3)
                     {
                         _anim.SetBool("ButtonPress", true);
                         Invoke("ResetAnim", 0.5f);
                     }
-                    if(_numPath < 4)
+                    if(_numPath < 3)
                     {
-                        if(_numPath == 3)
+                        if(_numPath == 2)
                         {
                             if (npcController.GetEmptyBox())
                             {
