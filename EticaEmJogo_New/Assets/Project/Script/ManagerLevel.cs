@@ -11,6 +11,7 @@ public class ManagerLevel : MonoBehaviour
     private bool _fadeIn;
     private bool _fadeOut;
     private bool _fadeMusic;
+    private bool _viewMensageMissionPhone;
     private Color _colorFade;
     
     public GameManager gameManager;
@@ -266,5 +267,15 @@ public class ManagerLevel : MonoBehaviour
     {
         ViewFeedback();
         _fadeOut = true;
+    }
+
+    public bool GetviewMensageMissionPhone()
+    {
+        return _viewMensageMissionPhone;
+    }
+
+    public void SetviewMensageMissionPhone()
+    {
+        _viewMensageMissionPhone = true;
     }
 }

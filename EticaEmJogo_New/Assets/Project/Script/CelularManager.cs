@@ -25,18 +25,20 @@ public class CelularManager : MonoBehaviour
             _stayCelular = true;
             if (_anim.GetBool("Walk"))
                 _anim.SetBool("Walk", false);
-            if(gameManager.GetNumberScene() == 1)
-            {
-                if (gameManager.numberQuestResolve == 1)
-                {
-                    gameManager.SetMissionText();
-                }
-            }
         }
         else
         {
             celularView.SetActive(false);
             _stayCelular = false;
+
+            if (gameManager.GetNumberScene() == 1)
+            {
+                if (gameManager.numberQuestResolve == 1 && !managerLevel.GetviewMensageMissionPhone())
+                {
+                    gameManager.SetMissionText();
+                    managerLevel.SetviewMensageMissionPhone();
+                }
+            }
         }
         gameManager.PlayEffect(3);
     }
