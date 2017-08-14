@@ -274,21 +274,21 @@ public class GameManager : MonoBehaviour
             {
                 missionCurrent.text = "Falar com Carla";
                 missionAlert.SetActive(true);
-                missionDescription.text = "Volte a falar com a Carla";
+                missionDescription.text = "Terminar a conversa com Carla";
             }
             else if (numberQuestResolve == 2)
             {
                 if (missionCurrent.text == "")
-                    missionCurrent.text = "Falar com Supervisor";
+                    missionCurrent.text = "Falar com Vitor";
                 missionAlert.SetActive(true);
-                missionDescription.text = "Conheça seu supervisor na sala ao lado, ele irá passar mais informações";
+                missionDescription.text = "Encontrar seu supervisor para mais informações";
             }
             else if (numberQuestResolve == 3)
             {
                 if (missionCurrent.text == "")
-                    missionCurrent.text = "Ir ao posto de trabalho";
+                    missionCurrent.text = "Posto de trabalho";
                 missionAlert.SetActive(true);
-                missionDescription.text = "Vá até seu posto de trabalho pra começar seu trabalho";
+                missionDescription.text = "Ir para seu posto de trabalho para iniciar suas atividades";
             }
         }
         else if(GetNumberScene() == 4)
@@ -307,9 +307,9 @@ public class GameManager : MonoBehaviour
             }
             else if (numberQuestResolve == 2)
             {
-                missionCurrent.text = "Tirar EPI";
+                missionCurrent.text = "Guardar EPIs";
                 missionAlert.SetActive(true);
-                missionDescription.text = "Vá até o seu armário, deixe seu EPI para você ir ao refeitório almoçar";
+                missionDescription.text = "HORA DO INTERVALO! Vá até seu armário para guardar seus EPIs";
             }
         }
 
@@ -327,10 +327,10 @@ public class GameManager : MonoBehaviour
     public void SetMissionFinalLevelMarket()
     {
         if (missionCurrent.text == "")
-            missionCurrent.text = "Ir para Estoque";
+            missionCurrent.text = "Ir até o Estoque";
         missionAlert.SetActive(true);
         Invoke("DeactveMissionAlert", 4f);
-        missionDescription.text = "Você teve um ótimo desempenho no trabalho, você será promovido! ir até o estoque";
+        missionDescription.text = "Você teve um ótimo desempenho e será contratado, Parabéns! Vá até o estoque para finalizar o dia.";
         player.CanWalk(true);
         managerLevel2.viewFinalLevel();
     }
@@ -355,7 +355,7 @@ public class GameManager : MonoBehaviour
             if (missionCurrent.text == "")
                 missionCurrent.text = "Mural de avisos";
             missionAlert.SetActive(true);
-            missionDescription.text = "Ler sobre os assuntos que a Carla mensionou no mural de avisos";
+            missionDescription.text = "Olhar o mural de avisos que Carla mencionou";
         }
 
         if (missionAlert.activeSelf)
