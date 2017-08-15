@@ -294,6 +294,15 @@ public class MovePlayer : MonoBehaviour
 
     void ResetAnim()
     {
-        _anim.SetBool("YesGesture", false);
+        if(_anim.GetBool("YesGesture"))
+            _anim.SetBool("YesGesture", false);
+        if (_anim.GetBool("ButtonPress"))
+            _anim.SetBool("ButtonPress", false);
+    }
+
+    public void SetAnimButtonPress()
+    {
+        _anim.SetBool("ButtonPress", true);
+        Invoke("ResetAnim", 0.2f);
     }
 }

@@ -12,6 +12,7 @@ public class PersonManager : MonoBehaviour
     private int _avatarTemp;
     private bool _saveNewPlayer;
 
+    public AudioSource effect;
     public SceneAdminManager adminManager;
     public SceneDadosPlayerManager dadosPlayerManager;
     public SceneLoginManager loginManager;
@@ -206,5 +207,10 @@ public class PersonManager : MonoBehaviour
     public void ButtonPlayGame()
     {
         SceneManager.LoadScene("Scene_01");
+    }
+
+    public void PlayEffect()
+    {
+        effect.Play();
     }
 }

@@ -171,14 +171,14 @@ public class GameManager : MonoBehaviour
         if(score.activeSelf)
         {
             score.SetActive(false);
-            help.SetActive(false);
+            //help.SetActive(false);
             phone.SetActive(false);
             painelMission.SetActive(false);
         }
         else
         {
             score.SetActive(true);
-            help.SetActive(true);
+            //help.SetActive(true);
             phone.SetActive(true);
             painelMission.SetActive(true);
         }        
@@ -427,7 +427,7 @@ public class GameManager : MonoBehaviour
     public void ActiveFeedBackQuest(int p_Quest)
     {
         feedBackQuest[p_Quest].SetActive(true);
-        Invoke("DeactiveFeedBackQuest", 3f);
+        Invoke("DeactiveFeedBackQuest", 5f);
     }
 
     void DeactiveFeedBackQuest()
@@ -435,5 +435,10 @@ public class GameManager : MonoBehaviour
         feedBackQuest[0].SetActive(false);
         feedBackQuest[1].SetActive(false);
         feedBackQuest[2].SetActive(false);
+    }
+
+    public void ActiveButtonPressPlayer()
+    {
+        player.SetAnimButtonPress();
     }
 }
