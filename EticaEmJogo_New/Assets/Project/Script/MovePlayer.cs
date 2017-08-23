@@ -46,11 +46,11 @@ public class MovePlayer : MonoBehaviour
                     int __questStay = hit.collider.GetComponent<NpcManager>().GetQuestStay();
                     int __stateCurrent = hit.collider.GetComponent<NpcManager>().GetStateCurrent();
 
-                    if(gameManager.GetNumberScene() == 1)
+                    if (gameManager.GetNumberScene() == 1)
                     {
                         if (!__questResolved)
                         {
-                            if (__questStay != 0 && __stateCurrent != 4)
+                            if (__questStay != 0 && __stateCurrent != 4 && gameManager.numberQuestResolve == __questStay)
                             {
                                 hit.collider.GetComponent<NpcManager>().questResolved = true;
                                 _numberQuestSelect = hit.collider.GetComponent<NpcManager>().GetQuestStay();

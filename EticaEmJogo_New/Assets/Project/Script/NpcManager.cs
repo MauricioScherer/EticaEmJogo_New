@@ -52,6 +52,8 @@ public class NpcManager : MonoBehaviour
     public Transform[] path;
     public GameObject[] ballonDialogue;
 
+    public GameObject wallet;
+
     void Awake ()
     {
         _anim = GetComponent<Animator>();
@@ -111,6 +113,13 @@ public class NpcManager : MonoBehaviour
         if(!_dialogueBalonActive)
         {
             ballonWallet.SetActive(true);
+            if (wallet)
+            {
+                if(!wallet.activeSelf)
+                {
+                    wallet.SetActive(true);
+                }
+            }
             exclamation.SetActive(false);
             _dialogueBalonActive = true;
             _voice.Play();

@@ -30,6 +30,8 @@ public class ManagerJod2Level3 : MonoBehaviour
 	
 	void Update ()
     {
+        if (Input.GetKeyDown("r"))
+            EnterNewBox();
 
         if (_isMoving)
         {
@@ -114,7 +116,7 @@ public class ManagerJod2Level3 : MonoBehaviour
             {
                 managerLevel.AnimWokTok();
             }
-            else if(_numBox == 4)
+            else if(_numBox == 3)
             {
                 managerLevel.AnimWokTokEnd();
             }

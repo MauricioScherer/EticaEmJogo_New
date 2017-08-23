@@ -6,8 +6,7 @@ public class NpcController : MonoBehaviour
 {
     private bool _emptyBox;
     private int _numberClientInvoke;
-
-    public bool[] pathBusy;
+    
     public GameManager gameManager;
     public AudioSource beepDoor;
     public GameObject[] npcs;

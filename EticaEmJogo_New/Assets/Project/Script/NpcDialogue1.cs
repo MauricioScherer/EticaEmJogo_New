@@ -37,7 +37,7 @@ public class NpcDialogue1 : MonoBehaviour
             else
             {
                 _anim.SetFloat("MoveSpeed", 0);
-                if (_numPath < path.Length - 1)
+                if (_numPath < path.Length)
                 {
                     if (!_SelectPath)
                     {
@@ -49,7 +49,8 @@ public class NpcDialogue1 : MonoBehaviour
                         else
                         {
                             _numPath++;
-                            Invoke("SelectNewPath", 0.05f);
+                            if(_numPath < 4)
+                                Invoke("SelectNewPath", 0.05f);                            
                         }                                             
                         _SelectPath = true;
                     }
@@ -103,6 +104,7 @@ public class NpcDialogue1 : MonoBehaviour
     void SetDance()
     {
         _anim.SetBool("DanceIn", true);
+        GetComponent<AudioSource>().Play();
     }
 
     void ResetDance()

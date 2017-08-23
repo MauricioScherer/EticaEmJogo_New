@@ -113,11 +113,11 @@ public class ManagerJodLevel3 : MonoBehaviour
 
         if(canvasJob.GetComponent<Prancheta>().GetNumBox())
         {
-            if(_numBox == 2)
+            if(_numBox == 1)
             {
                 managerLevel.AnimWokTok();
             }
-            else if(_numBox == 4)
+            else if(_numBox == 2)
             {
                 managerLevel.InvokeNpcChico();
             }

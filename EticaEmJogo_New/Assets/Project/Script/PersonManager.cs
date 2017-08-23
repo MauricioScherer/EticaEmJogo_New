@@ -12,6 +12,8 @@ public class PersonManager : MonoBehaviour
     private int _avatarTemp;
     private bool _saveNewPlayer;
 
+    public int numberPag;
+
     public AudioSource effect;
     public SceneAdminManager adminManager;
     public SceneDadosPlayerManager dadosPlayerManager;
@@ -35,10 +37,10 @@ public class PersonManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Home))
         {
-            nameplayerArray = new string[20];
-            cpfplayerArray = new string[20];
-            avatarPlayerArray = new int[20];
-            pointsPlayerArray = new int[20];
+            nameplayerArray = new string[numberPag];
+            cpfplayerArray = new string[numberPag];
+            avatarPlayerArray = new int[numberPag];
+            pointsPlayerArray = new int[numberPag];
             for(int i = 0; i < cpfplayerArray.Length; i++)
             {
                 nameplayerArray[i] = "name";

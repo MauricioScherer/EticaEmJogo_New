@@ -31,7 +31,7 @@ public class MarketOperateFinalize : MonoBehaviour
     {
         npcWalk.FinalizeMarket();
         managerLevel2.numClientFinalize++;
-        if (managerLevel2.numClientFinalize == 5)
+        if (managerLevel2.numClientFinalize == 3)
         {
             managerLevel2.gameManager.SetMissionFinalLevelMarket();
         }
