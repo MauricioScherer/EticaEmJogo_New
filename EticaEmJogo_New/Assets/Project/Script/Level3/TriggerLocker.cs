@@ -20,6 +20,8 @@ public class TriggerLocker : MonoBehaviour
                 managerLevel3.ViewEpiMensage();
                 managerLevel3.DeactiveObjetsPosScene();
                 managerLevel3.getEpi = true;
+                managerLevel3.ActiveExclamation(0);
+                managerLevel3.ViewArrowPedro();
             }
 
             if(managerLevel3.gameManager.numberQuestResolve == 2 && !_pullEpi)

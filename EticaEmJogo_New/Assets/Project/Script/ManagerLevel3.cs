@@ -21,6 +21,7 @@ public class ManagerLevel3 : MonoBehaviour
     public GameObject arrowLockers;
     public GameObject arrowJog;
     public GameObject arrowRefactory;
+    public GameObject arrowPedro;
     public GameObject epiImage;
     public GameObject epiImageEmpty;
     public ManagerJodLevel3 managerJob;
@@ -36,6 +37,7 @@ public class ManagerLevel3 : MonoBehaviour
     public GameObject textFade;
     public GameObject[] objectDeactive;
     public GameObject[] LightJob;
+    public GameObject[] exclamationAvatar;
 
     public GameObject feedback;
     public GameObject buttonBackPag;
@@ -110,6 +112,14 @@ public class ManagerLevel3 : MonoBehaviour
             arrowLockers.SetActive(true);        
         else        
             arrowLockers.SetActive(false);        
+    }
+
+    public void ViewArrowPedro()
+    {
+        if (!arrowPedro.activeSelf)
+            arrowPedro.SetActive(true);
+        else
+            arrowPedro.SetActive(false);
     }
 
     public void ViewArrowJob()
@@ -387,5 +397,13 @@ public class ManagerLevel3 : MonoBehaviour
             }
         }
         SceneManager.LoadScene("Menu");
+    }
+
+    public void ActiveExclamation(int p_number)
+    {
+        if (exclamationAvatar[p_number].activeSelf)
+            exclamationAvatar[p_number].SetActive(false);
+        else
+            exclamationAvatar[p_number].SetActive(true);
     }
 }

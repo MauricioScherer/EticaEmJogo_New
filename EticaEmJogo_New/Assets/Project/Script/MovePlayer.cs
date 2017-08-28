@@ -231,6 +231,8 @@ public class MovePlayer : MonoBehaviour
                         if (_objTemp != null)
                         {
                             _objTemp.GetComponent<NpcManager>().ballonDialogue[0].SetActive(true);
+                            gameManager.managerLevel3.ActiveExclamation(0);
+                            gameManager.managerLevel3.ViewArrowPedro();
                             _objTemp = null;
                         }
                     }

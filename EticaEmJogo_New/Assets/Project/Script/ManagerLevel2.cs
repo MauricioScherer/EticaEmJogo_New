@@ -20,7 +20,7 @@ public class ManagerLevel2 : MonoBehaviour
     public GameManager gameManager;
     public GameObject canvasLevel;
     public GameObject canvasMarket;
-    public GameObject arrowCaixa;
+    public GameObject[] arrowCaixa;
     public GameObject point_PS_Pos1;
     public CelularManager celularManager;
     public GameObject painel;
@@ -267,7 +267,9 @@ public class ManagerLevel2 : MonoBehaviour
 
     public void ViewArrow(bool p_active)
     {
-        arrowCaixa.SetActive(p_active);
+        arrowCaixa[0].SetActive(p_active);
+        arrowCaixa[1].SetActive(p_active);
+        arrowCaixa[2].SetActive(p_active);
         point_PS_Pos1.SetActive(p_active);
     }
 
