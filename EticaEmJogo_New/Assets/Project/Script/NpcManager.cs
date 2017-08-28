@@ -130,6 +130,8 @@ public class NpcManager : MonoBehaviour
     void ResetBalonDialogue()
     {
         ballonWallet.SetActive(false);
+        if (!questResolved)
+            exclamation.SetActive(true);
         _dialogueBalonActive = false;
         gameManager.SetMissionText();
     }
@@ -145,7 +147,8 @@ public class NpcManager : MonoBehaviour
                 {
                     _waveActive = true;
                     _anim.SetBool("Wave", _waveActive);
-                    exclamation.SetActive(true);
+                    exclamation.GetComponent<Animator>().SetBool("StartAnim", true);
+                    //exclamation.SetActive(true);
                     Invoke("SetWaveActivated", 1f);
                     if (!gameManager.isPlayEffect())
                         gameManager.PlayEffect(4);
@@ -156,7 +159,8 @@ public class NpcManager : MonoBehaviour
         {
             if(!_dialogueBalonActive && !questResolved)
             {
-                exclamation.SetActive(true);
+                //exclamation.SetActive(true);
+                exclamation.GetComponent<Animator>().SetBool("StartAnim", true);
                 if (!gameManager.isPlayEffect())
                     gameManager.PlayEffect(4);
             }
@@ -167,7 +171,8 @@ public class NpcManager : MonoBehaviour
     {
         _waveActive = false;
         _anim.SetBool("Wave", _waveActive);
-        exclamation.SetActive(false);
+        //exclamation.SetActive(false);
+        exclamation.GetComponent<Animator>().SetBool("StartAnim", false);
     }
 
     void SetWaveActivated()

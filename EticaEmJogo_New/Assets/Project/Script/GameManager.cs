@@ -158,12 +158,10 @@ public class GameManager : MonoBehaviour
 
     public void DeactiveHudAndPause()
     {
-        Time.timeScale = 0;
+        player.CanWalk(false);
         if (missionAlert.activeSelf)
             DeactveMissionAlert();
         ActivateAndDeactivateHud();
-        if (!_stayQuest)
-            player.CanWalk(true);
     }
 
     public void ActivateAndDeactivateHud()
@@ -270,13 +268,7 @@ public class GameManager : MonoBehaviour
         }
         else if(GetNumberScene() == 3)
         {
-            if (numberQuestResolve == 1)
-            {
-                missionCurrent.text = "Falar com Carla";
-                missionAlert.SetActive(true);
-                missionDescription.text = "Terminar a conversa com Carla";
-            }
-            else if (numberQuestResolve == 2)
+            if (numberQuestResolve == 2)
             {
                 if (missionCurrent.text == "")
                     missionCurrent.text = "Falar com Vitor";

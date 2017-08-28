@@ -172,6 +172,8 @@ public class MovePlayer : MonoBehaviour
                 {
                     avatarWallet.gameObject.GetComponent<NpcManager>().SetAnimVictory();
                     avatarWallet.gameObject.GetComponent<NpcManager>().questResolved = true;
+                    gameManager.managerLevel.ActiveExclamation(0);
+                    gameManager.managerLevel.ActiveExclamation(1);
                     SetValues();
                 }
                 else if (_dialogueBalon)
@@ -192,6 +194,11 @@ public class MovePlayer : MonoBehaviour
                         if (_objTemp != null)
                         {
                             _objTemp.GetComponent<NpcManager>().ballonDialogue[1].SetActive(true);
+                            if(gameManager.managerLevel2)
+                            {
+                                gameManager.managerLevel2.ActiveExclamation(0);
+                                gameManager.managerLevel2.ActiveExclamation(1);
+                            }
                             _objTemp = null;
                         }
                     }
@@ -200,6 +207,10 @@ public class MovePlayer : MonoBehaviour
                         if (_objTemp != null)
                         {
                             _objTemp.GetComponent<NpcManager>().ballonDialogue[2].SetActive(true);
+                            if (gameManager.managerLevel2)
+                            {
+                                gameManager.managerLevel2.ActiveExclamation(1);
+                            }
                             _objTemp = null;
                         }
                     }

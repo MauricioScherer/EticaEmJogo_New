@@ -18,8 +18,11 @@ public class ManagerLevel : MonoBehaviour
     public GameObject busFinalLevel;
     public GameObject canvasInstruction;
     public GameObject painel;
-    public GameObject alertFinalLevel;    
+    public GameObject alertFinalLevel;
+    public GameObject instructionPhone;
+    public bool ViewInstructionPhone; 
     public GameObject[] instruction;
+    public GameObject[] exclamationAvatar;
 
     public Image fade;
     public GameObject feedback;
@@ -277,5 +280,13 @@ public class ManagerLevel : MonoBehaviour
     public void SetviewMensageMissionPhone()
     {
         _viewMensageMissionPhone = true;
+    }
+
+    public void ActiveExclamation(int p_number)
+    {
+        if(exclamationAvatar[p_number].activeSelf)
+            exclamationAvatar[p_number].SetActive(false);
+        else
+            exclamationAvatar[p_number].SetActive(true);
     }
 }

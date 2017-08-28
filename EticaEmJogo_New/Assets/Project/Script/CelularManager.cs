@@ -21,7 +21,8 @@ public class CelularManager : MonoBehaviour
     {
         if (!celularView.activeSelf)
         {
-            celularView.SetActive(true);
+            ViewInstructionPhone(0);
+            celularView.SetActive(true);            
             _stayCelular = true;
             if (_anim.GetBool("Walk"))
                 _anim.SetBool("Walk", false);
@@ -78,6 +79,7 @@ public class CelularManager : MonoBehaviour
     public void SetMensage(int p_mensageActive)
     {
         GetComponent<AudioSource>().Play();
+        ViewInstructionPhone(p_mensageActive);
         _anim.SetBool("Walk", true);
         mensage[p_mensageActive].SetActive(true);
     }
@@ -99,6 +101,28 @@ public class CelularManager : MonoBehaviour
                 managerLevel.SelectEventGameManager();
                 celularView.SetActive(false);
                 _stayCelular = false;
+            }
+        }
+    }
+
+    void ViewInstructionPhone(int p_temp)
+    {
+        if (gameManager.GetNumberScene() == 1 && p_temp == 0)
+        {
+            if (managerLevel.instructionPhone)
+            {
+                if(!managerLevel.ViewInstructionPhone)
+                {
+                    if (!managerLevel.instructionPhone.activeSelf)
+                    {
+                        managerLevel.instructionPhone.SetActive(true);
+                    }
+                    else
+                    {
+                        managerLevel.instructionPhone.SetActive(false);
+                        managerLevel.ViewInstructionPhone = true;
+                    }
+                }
             }
         }
     }

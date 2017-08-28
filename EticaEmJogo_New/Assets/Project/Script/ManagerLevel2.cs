@@ -30,6 +30,7 @@ public class ManagerLevel2 : MonoBehaviour
     public NpcDialogue1 npcDialogue;
     public Image fade;
     public GameObject arrowEstoque;
+    public GameObject[] exclamationAvatar;
 
     public GameObject feedback;
     public GameObject buttonBackPag;
@@ -128,13 +129,12 @@ public class ManagerLevel2 : MonoBehaviour
             if (_numberQuestResolve == 0)
             {
                 _numberQuestResolve = 1;
-                gameManager.SetMissionText();
+                ActiveExclamation(0);
             }
         }
 
         gameManager.ActivateAndDeactivateHud();
-        Time.timeScale = 1;
-        Invoke("PlayerCanWalk", 1f);
+        Invoke("PlayerCanWalk", 0.5f);
     }
 
     void PlayerNoWalk()
@@ -294,5 +294,13 @@ public class ManagerLevel2 : MonoBehaviour
             canvasMarket.SetActive(true);
         else
             canvasMarket.SetActive(false);
+    }
+
+    public void ActiveExclamation(int p_number)
+    {
+        if (exclamationAvatar[p_number].activeSelf)
+            exclamationAvatar[p_number].SetActive(false);
+        else
+            exclamationAvatar[p_number].SetActive(true);
     }
 }
