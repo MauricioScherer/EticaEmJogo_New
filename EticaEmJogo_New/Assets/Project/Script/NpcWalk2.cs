@@ -95,7 +95,8 @@ public class NpcWalk2 : MonoBehaviour
     void SelectNewPath()
     {
         _navMeshAgent.destination = path[_numPath].position;
-        _navMeshAgent.Resume();
+        //_navMeshAgent.Resume();
+        _navMeshAgent.isStopped = false;
         if (ballonReaction.activeSelf)
             ballonReaction.SetActive(false);
         _SelectPath = false;

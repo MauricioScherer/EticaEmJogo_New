@@ -22,7 +22,8 @@ public class NpcChicoLevel3 : MonoBehaviour
         _navMeshAgent = npcCurrent.GetComponent<NavMeshAgent>();
 
         _navMeshAgent.destination = path[_numPath].position;
-        _navMeshAgent.Resume();
+        //_navMeshAgent.Resume();
+        _navMeshAgent.isStopped = false;
     }
 
     void Update ()
@@ -67,7 +68,8 @@ public class NpcChicoLevel3 : MonoBehaviour
     public void SelectNewPath()
     {
         _navMeshAgent.destination = path[_numPath].position;
-        _navMeshAgent.Resume();
+        //_navMeshAgent.Resume();
+        _navMeshAgent.isStopped = false;
         _SelectPath = false;
         if(ballonDialoge2.activeSelf)
         {

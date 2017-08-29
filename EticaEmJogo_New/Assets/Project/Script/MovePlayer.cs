@@ -119,8 +119,9 @@ public class MovePlayer : MonoBehaviour
                     _objTemp = null;                    
                 }
                 _navMeshAgent.destination = hit.point;
-                _navMeshAgent.Resume();
-                particleClikPosition.position = new Vector3(hit.point.x, hit.point.y + 0.05f, hit.point.z);
+                //_navMeshAgent.Resume();
+                _navMeshAgent.isStopped = false;
+                particleClikPosition.position = new Vector3(hit.point.x, hit.point.y + 0.1f, hit.point.z);
                 particleClick.Play();                               
             }
         }
@@ -132,7 +133,8 @@ public class MovePlayer : MonoBehaviour
                 {
                     Invoke("MovePersonWallet", 0.5f);
                     _navMeshAgent.destination = avatarWallet.position;
-                    _navMeshAgent.Resume();
+                    //_navMeshAgent.Resume();
+                    _navMeshAgent.isStopped = false;
                 }
                 else
                 {
@@ -296,7 +298,8 @@ public class MovePlayer : MonoBehaviour
     public void SetNewPositionPlayewr(Transform p_position)
     {
         _navMeshAgent.destination = p_position.position;
-        _navMeshAgent.Resume();
+        //_navMeshAgent.Resume();
+        _navMeshAgent.isStopped = false;
     }
 
     public void SetAnimYesGesture()

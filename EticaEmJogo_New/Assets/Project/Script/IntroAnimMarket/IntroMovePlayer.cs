@@ -21,7 +21,8 @@ public class IntroMovePlayer : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
 
         _navMeshAgent.destination = destinationMarket.position;
-        _navMeshAgent.Resume();
+        //_navMeshAgent.Resume();
+        _navMeshAgent.isStopped = false;
     }
 	
 	void Update ()

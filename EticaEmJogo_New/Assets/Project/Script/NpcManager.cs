@@ -256,7 +256,8 @@ public class NpcManager : MonoBehaviour
         _sort = Random.Range(0, 3);
 
         _navMeshAgent.destination = path[_sort].position;
-        _navMeshAgent.Resume();
+        //_navMeshAgent.Resume();
+        _navMeshAgent.isStopped = false;
         _randomSelectPath = false;
     }
 

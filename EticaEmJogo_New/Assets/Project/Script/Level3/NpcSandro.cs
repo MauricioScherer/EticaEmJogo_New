@@ -21,7 +21,8 @@ public class NpcSandro : MonoBehaviour
         _navMeshAgent = npcCurrent.GetComponent<NavMeshAgent>();
 
         _navMeshAgent.destination = path[_numPath].position;
-        _navMeshAgent.Resume();
+        //_navMeshAgent.Resume();
+        _navMeshAgent.isStopped = false;
     }
 	
 	void Update ()
@@ -52,7 +53,8 @@ public class NpcSandro : MonoBehaviour
     public void SelectNewPath()
     {
         _navMeshAgent.destination = path[_numPath].position;
-        _navMeshAgent.Resume();
+        //_navMeshAgent.Resume();
+        _navMeshAgent.isStopped = false;
         if (_SelectPath)
             _SelectPath = false;
     }

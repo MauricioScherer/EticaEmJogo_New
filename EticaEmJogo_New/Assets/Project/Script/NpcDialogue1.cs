@@ -90,7 +90,8 @@ public class NpcDialogue1 : MonoBehaviour
     public void SelectNewPath()
     {
         _navMeshAgent.destination = path[_numPath].position;
-        _navMeshAgent.Resume();
+        //_navMeshAgent.Resume();
+        _navMeshAgent.isStopped = false;
         _SelectPath = false;
     }
 
