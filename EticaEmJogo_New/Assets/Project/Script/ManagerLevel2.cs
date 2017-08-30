@@ -31,6 +31,9 @@ public class ManagerLevel2 : MonoBehaviour
     public Image fade;
     public GameObject arrowEstoque;
     public GameObject[] exclamationAvatar;
+    public GameObject placarFinalLevel;
+    public GameObject particleFinalLevel;
+    public GameObject[] medalForPoints;
 
     public GameObject feedback;
     public GameObject buttonBackPag;
@@ -92,7 +95,34 @@ public class ManagerLevel2 : MonoBehaviour
     {
         fade.gameObject.SetActive(true);
         _fadeIn = true;
+    }
+
+    public void FadeMusic()
+    {
         _fadeMusic = true;
+    }
+
+    public void ViewPlacarFinalLevel(bool p_activate)
+    {
+        PlayerNoWalk();
+        placarFinalLevel.SetActive(p_activate);
+        particleFinalLevel.SetActive(p_activate);
+        if (p_activate)
+        {
+            if (gameManager.GetScore() >= 12)
+                medalForPoints[0].SetActive(true);
+            else if (gameManager.GetScore() >= 6)
+                medalForPoints[1].SetActive(true);
+            else
+                medalForPoints[2].SetActive(true);
+        }
+        else
+        {
+            medalForPoints[0].SetActive(false);
+            medalForPoints[1].SetActive(false);
+            medalForPoints[2].SetActive(false);
+        }
+
     }
 
     public void ViewArrowEstoque()

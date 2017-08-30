@@ -23,6 +23,9 @@ public class ManagerLevel : MonoBehaviour
     public bool ViewInstructionPhone; 
     public GameObject[] instruction;
     public GameObject[] exclamationAvatar;
+    public GameObject placarFinalLevel;
+    public GameObject particleFinalLevel;
+    public GameObject[] medalForPoints;
 
     public Image fade;
     public GameObject feedback;
@@ -262,7 +265,11 @@ public class ManagerLevel : MonoBehaviour
     public void FadeIn()
     {
         fade.gameObject.SetActive(true);
-        _fadeIn = true;
+        _fadeIn = true;        
+    }
+
+    public void FadeMusic()
+    {
         _fadeMusic = true;
     }
 
@@ -270,6 +277,29 @@ public class ManagerLevel : MonoBehaviour
     {
         ViewFeedback();
         _fadeOut = true;
+    }
+
+    public void ViewPlacarFinalLevel(bool p_activate)
+    {
+        PlayerNoWalk();
+        placarFinalLevel.SetActive(p_activate);
+        particleFinalLevel.SetActive(p_activate);
+        if(p_activate)
+        {
+            if (gameManager.GetScore() >= 12)
+                medalForPoints[0].SetActive(true);
+            else if (gameManager.GetScore() >= 6)
+                medalForPoints[1].SetActive(true);
+            else
+                medalForPoints[2].SetActive(true);
+        }
+        else
+        {
+            medalForPoints[0].SetActive(false);
+            medalForPoints[1].SetActive(false);
+            medalForPoints[2].SetActive(false);
+        }
+
     }
 
     public bool GetviewMensageMissionPhone()

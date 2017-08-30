@@ -15,7 +15,14 @@ public class TriggerFinalizeLevelMarket : MonoBehaviour
             if (managerLevel2.numClientFinalize == 3 && !_viewArrow)
             {
                 managerLevel2.ViewArrowEstoque();
-                managerLevel2.FadeIn();
+
+                //TODO
+                //obsoleto
+                //managerLevel2.FadeIn();
+
+                managerLevel2.FadeMusic();
+                managerLevel2.ViewPlacarFinalLevel(true);
+                gameObject.SetActive(false);
                 _viewArrow = true;
             }
         }
