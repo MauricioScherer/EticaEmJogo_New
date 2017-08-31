@@ -166,16 +166,14 @@ public class GameManager : MonoBehaviour
 
     public void ActivateAndDeactivateHud()
     {
-        if(score.activeSelf)
+        if(phone.activeSelf)
         {
-            score.SetActive(false);
             //help.SetActive(false);
             phone.SetActive(false);
             painelMission.SetActive(false);
         }
         else
         {
-            score.SetActive(true);
             //help.SetActive(true);
             phone.SetActive(true);
             painelMission.SetActive(true);

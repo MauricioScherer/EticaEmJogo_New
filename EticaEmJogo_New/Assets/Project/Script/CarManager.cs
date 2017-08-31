@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CarManager : MonoBehaviour
 {
-    private Transform _currentPosition;
     private Transform _targetPosition;
     private bool road;
 
@@ -37,14 +36,12 @@ public class CarManager : MonoBehaviour
         {
             transform.position = position1[0].position;
             transform.rotation = position1[0].rotation;
-            _currentPosition = position1[0];
             _targetPosition = position1[1];
         }
         else if (pos == 2)
         {
             transform.position = position2[0].position;
             transform.rotation = position2[0].rotation;
-            _currentPosition = position2[0];
             _targetPosition = position2[1];
         }
         road = true;
