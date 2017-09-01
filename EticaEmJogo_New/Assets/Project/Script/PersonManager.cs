@@ -72,7 +72,7 @@ public class PersonManager : MonoBehaviour
     }
 
     public void SavePlayer()
-    {        
+    {
         for (int i = 0; i < cpfplayerArray.Length; i++)
         {
             if(cpfplayerArray[i] == "0" || cpfplayerArray[i] == _cpfTemp)

@@ -18,6 +18,9 @@ public class ManagerLevel3 : MonoBehaviour
     public bool dialogueNpcPedro;
     public GameManager gameManager;
     public NpcManager npcManager1;
+    public QuestOptionsManager quest7;
+    public QuestOptionsManager quest8;
+    public QuestOptionsManager quest9;
     public GameObject arrowLockers;
     public GameObject arrowJog;
     public GameObject arrowRefactory;
@@ -199,7 +202,24 @@ public class ManagerLevel3 : MonoBehaviour
 
     public void InitializeJob2()
     {
-        managerJob2.EnterNewBox();
+        if(quest8.gameObject.activeSelf)
+        {
+            if(quest8.GetActiveSelectQuest())
+            {
+                managerJob2.EnterNewBox();
+            }
+        }
+        else if(quest9.gameObject.activeSelf)
+        {
+            if (quest9.GetActiveSelectQuest())
+            {
+                managerJob2.EnterNewBox();
+            }
+        }
+        else
+        {
+            managerJob2.EnterNewBox();
+        }
     }
 
     public void InvokeNpcChico()
@@ -422,7 +442,7 @@ public class ManagerLevel3 : MonoBehaviour
         {
             if (tempArray[i] == PlayerPrefs.GetString("cpfSelect"))
             {
-                tempPoint[i] = (int)gameManager.GetScore();
+                tempPoint[i] += (int)gameManager.GetScore();
                 PlayerPrefsUtility.SetIntArray("pointsArray", tempPoint);
                 break;
             }

@@ -74,4 +74,9 @@ public class QuestOptionsManager : MonoBehaviour
     {
         _activeSelectQuest = true;
     }
+
+    public bool GetActiveSelectQuest()
+    {
+        return _activeSelectQuest;
+    }
 }

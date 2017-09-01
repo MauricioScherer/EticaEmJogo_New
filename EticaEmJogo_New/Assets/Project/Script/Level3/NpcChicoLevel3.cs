@@ -85,7 +85,10 @@ public class NpcChicoLevel3 : MonoBehaviour
 
     public void FinalizeQuestChico()
     {
-        ballonDialoge2.SetActive(true);
-        Invoke("SelectNewPath", 3f);
+        if(managerLevel.quest7.GetActiveSelectQuest())
+        {
+            ballonDialoge2.SetActive(true);
+            Invoke("SelectNewPath", 3f);
+        }
     }
 }

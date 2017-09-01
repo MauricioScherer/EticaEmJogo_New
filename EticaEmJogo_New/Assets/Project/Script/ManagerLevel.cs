@@ -250,11 +250,12 @@ public class ManagerLevel : MonoBehaviour
 
         int[] tempPoint = new int[20];
         tempPoint = PlayerPrefsUtility.GetIntArray("pointsArray");
+
         for (int i = 0; i < tempArray.Length; i++)
         {
             if(tempArray[i] == PlayerPrefs.GetString("cpfSelect"))
             {
-                tempPoint[i] = (int)gameManager.GetScore();
+                tempPoint[i] += (int)gameManager.GetScore();
                 PlayerPrefsUtility.SetIntArray("pointsArray", tempPoint);
                 break;
             }

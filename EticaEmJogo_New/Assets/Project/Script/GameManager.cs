@@ -166,16 +166,34 @@ public class GameManager : MonoBehaviour
 
     public void ActivateAndDeactivateHud()
     {
-        if(phone.activeSelf)
+        if(painelMission.activeSelf)
         {
             //help.SetActive(false);
-            phone.SetActive(false);
+            if(GetNumberScene() != 4)
+            {
+                if(GetNumberScene() == 3)
+                {
+                    if(numberQuestResolve <= 1)
+                        phone.SetActive(false);
+                }
+                else
+                    phone.SetActive(false);
+            }
             painelMission.SetActive(false);
         }
         else
         {
             //help.SetActive(true);
-            phone.SetActive(true);
+            if (GetNumberScene() != 4)
+            {
+                if (GetNumberScene() == 3)
+                {
+                    if (numberQuestResolve <= 1)
+                        phone.SetActive(true);
+                }
+                else
+                    phone.SetActive(true);
+            }
             painelMission.SetActive(true);
         }        
     }
@@ -278,6 +296,7 @@ public class GameManager : MonoBehaviour
                 if (missionCurrent.text == "")
                     missionCurrent.text = "Posto de trabalho";
                 missionAlert.SetActive(true);
+                phone.SetActive(false);
                 missionDescription.text = "Ir para seu posto de trabalho para iniciar suas atividades";
             }
         }

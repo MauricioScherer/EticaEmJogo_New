@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class SceneStatusPlayerManager : MonoBehaviour
 {
     private string _numberCpf;
-    private int _numberAvatar;
 
     public PersonManager personManager;
 
@@ -29,7 +28,6 @@ public class SceneStatusPlayerManager : MonoBehaviour
     public void SetStatus(string p_cpf, string p_name, int p_score, int p_avatar)
     {
         _numberCpf = p_cpf;
-        _numberAvatar = p_avatar;
         cpfPlayer.text = "CPF: " + p_cpf;
         namePlayer.text = p_name;
         scorePlayer.text = "Pontuação: " + p_score.ToString();

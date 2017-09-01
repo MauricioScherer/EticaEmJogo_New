@@ -16,13 +16,12 @@ public class TriggerFactory : MonoBehaviour
             {
                 managerLevel3.ViewArrowRefactory();
                 managerLevel3.gameManager.ResetMissionText();
+                managerLevel3.FadeIn();
 
                 //TODO
-                //obsoleto
-                //managerLevel3.FadeIn();
-
-                managerLevel3.FadeMusic();
-                managerLevel3.ViewPlacarFinalLevel(true);
+                //Aqui finaliza o game com esses dois metodos
+                //managerLevel3.FadeMusic();
+                //managerLevel3.ViewPlacarFinalLevel(true);
                 managerLevel3.managerJob.gameObject.SetActive(false);
                 managerLevel3.managerJob2.gameObject.SetActive(true);
                 _EnterRefactory = true;
