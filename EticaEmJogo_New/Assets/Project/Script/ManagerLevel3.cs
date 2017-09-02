@@ -9,7 +9,7 @@ public class ManagerLevel3 : MonoBehaviour
     private bool _enterRefactory;
     private bool _fadeIn;
     private bool _fadeOut;
-    private bool _fadeMusic;
+    //private bool _fadeMusic;
     private Color _colorFade;
     private int _numberPag;
 
@@ -36,8 +36,10 @@ public class ManagerLevel3 : MonoBehaviour
     public GameObject DialogueWokTok_2;
     public GameObject DialogueWokTok_3;
     public GameObject DialogueWokTok_4;
+    public GameObject DialogueWokTok_5;
     public Image fade;
     public GameObject textFade;
+    public GameObject npcCarla;
     public GameObject[] objectDeactive;
     public GameObject[] LightJob;
     public GameObject[] exclamationAvatar;
@@ -71,8 +73,16 @@ public class ManagerLevel3 : MonoBehaviour
 
             if (_colorFade.a >= 1)
             {
-                textFade.SetActive(true);
-                Invoke("FadeOut", 3f);
+                if (gameManager.numberQuestResolve == 2)
+                {
+                    textFade.SetActive(true);
+                    Invoke("FadeOut", 3f);
+                }
+                else if (gameManager.numberQuestResolve == 6)
+                {
+                    ViewFeedback();
+                    Invoke("FadeOut", 0.5f);
+                }                
                 _fadeIn = false;
             }
         }
@@ -84,7 +94,8 @@ public class ManagerLevel3 : MonoBehaviour
             if (_colorFade.a <= 0)
             {
                 fade.gameObject.SetActive(false);
-                textFade.SetActive(false);
+                if(textFade.activeSelf)
+                    textFade.SetActive(false);
 
                 if(gameManager.numberQuestResolve == 2)
                 {
@@ -282,6 +293,14 @@ public class ManagerLevel3 : MonoBehaviour
         }
     }
 
+    public void ViewLastWalkTock()
+    {
+        WokTok.GetComponent<AudioSource>().Play();
+        WokTok.GetComponent<Animator>().SetBool("ActiveWalk", true);
+        DialogueWokTok_5.SetActive(true);
+        Invoke("ResetAnimWokTok", 0.2f);
+    }
+
     public void SetEnterRefactory(bool p_enter)
     {
         _enterRefactory = p_enter;
@@ -298,10 +317,10 @@ public class ManagerLevel3 : MonoBehaviour
         _fadeIn = true;
     }
 
-    public void FadeMusic()
-    {
-        _fadeMusic = true;
-    }
+    //public void FadeMusic()
+    //{
+    //    _fadeMusic = true;
+    //}
 
     public void FadeOut()
     {
@@ -339,6 +358,13 @@ public class ManagerLevel3 : MonoBehaviour
             if(objectDeactive[i].activeSelf)
                 objectDeactive[i].SetActive(false);
         }
+    }
+
+    public void ActiveLastDialogueNpc()
+    {
+        npcCarla.SetActive(true);
+        DialogueWokTok_5.SetActive(false);
+        PlayerCanWalk(true);
     }
 
     public void DefineLightJob(int p_numLight)

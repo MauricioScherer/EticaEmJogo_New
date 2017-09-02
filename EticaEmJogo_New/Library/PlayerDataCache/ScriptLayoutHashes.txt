@@ -58,7 +58,7 @@ c63db43c730fa2cbb8ca07de15898cb6 UnityEngine.UI.dll:UnityEngine.UI.Toggle
 f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 86d36c43c53541d667100dc90b89cfba UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 1b8c02d0aa82fbf036a2b9b2d713eec3 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
-6588d23634f1026ca6f5fc699b7ff2ea Assembly-CSharp.dll:.Prancheta
+b8757f98cb5c0bd172c978a6f46ab910 Assembly-CSharp.dll:.Prancheta
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 49cd62a578efc0a599b810a2b66cd49c UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -154,7 +154,7 @@ ec4cd9ebfe3e7a84ef4c9cc19ec91e94 Assembly-CSharp.dll:.ManagerJodLevel3
 30db6bf1abfbd17c6cdd1385b9eba6ca Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.DepthOfField
 539134b29a4762e86d9ec5e307ca2f87 Assembly-CSharp.dll:.DemoController
 6ffffeabc2adf71f046658f284878922 Assembly-CSharp.dll:.MarketOperateFinalize
-db148f7797c2c79d4605885e0db1e087 Assembly-CSharp.dll:.PersonManager
+dc97e3000532be86b4cf7ed4493d25c6 Assembly-CSharp.dll:.PersonManager
 1473961b7526ae7b84c36ecf28d8a4fe Assembly-CSharp.dll:.PoolCarManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.PostEffectsHelper
 b26b3a55de2a8cbeee573d45c8848f09 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ScreenSpaceAmbientOcclusion
@@ -210,7 +210,7 @@ b594ae13cfd5e73c8e529d9a8c23acf6 Assembly-CSharp.dll:.NpcWalk
 cd76c13e46b5baaece940907ac2daa80 Assembly-CSharp.dll:.CelularManager
 695e1680ce84e601f41bd2b69930562a Assembly-CSharp.dll:.TriggerFinalizeLevelMarket
 63aa628bbd882af1d224cb6807ff76e8 Assembly-CSharp.dll:.GameManager
-dd6c043397c0de6ea8432296f4c07a58 Assembly-CSharp.dll:.PranchetaJob2
+44a35ddbf5407a4aef3b92b9f8c929d0 Assembly-CSharp.dll:.PranchetaJob2
 53dbd7baa3c8da2f87828dd70d70dae4 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.DepthOfFieldDeprecated
 5f2ad72f2e8c64a1bd914266a65e3d17 Assembly-CSharp.dll:.CarManager
 28ed8461894afdbc2cd83209cf7b6034 Assembly-CSharp.dll:.MouseEnter

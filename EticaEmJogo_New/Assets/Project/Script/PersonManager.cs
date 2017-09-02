@@ -20,6 +20,7 @@ public class PersonManager : MonoBehaviour
     public SceneLoginManager loginManager;
     public SceneAvatarCustomManager avatarCustomManager;
     public SceneStatusPlayerManager statusPlayerManager;
+    public GameObject screenLoading;
     public GameObject[] scene;
 
     public string[] nameplayerArray;
@@ -208,6 +209,7 @@ public class PersonManager : MonoBehaviour
 
     public void ButtonPlayGame()
     {
+        screenLoading.SetActive(true);
         SceneManager.LoadScene("Scene_01");
     }
 

@@ -95,6 +95,13 @@ public class MovePlayer : MonoBehaviour
                                 gameManager.managerLevel3.dialogueNpcPedro = true;
                                 Invoke("ActivateClickNpc", 0.05f);
                             }
+                            if (__questStay == 6 && gameManager.numberQuestResolve == 6)
+                            {
+                                hit.collider.GetComponent<NpcManager>().questResolved = true;
+                                _numberQuestSelect = hit.collider.GetComponent<NpcManager>().GetQuestStay();
+                                _objTemp = hit.collider.gameObject;
+                                Invoke("ActivateClickNpc", 0.05f);
+                            }
                         }
                     }              
                 }
@@ -235,6 +242,15 @@ public class MovePlayer : MonoBehaviour
                             _objTemp.GetComponent<NpcManager>().ballonDialogue[0].SetActive(true);
                             gameManager.managerLevel3.ActiveExclamation(0);
                             gameManager.managerLevel3.ViewArrowPedro();
+                            _objTemp = null;
+                        }
+                    }
+                    else if (_numberQuestSelect == 6)
+                    {
+                        if (_objTemp != null)
+                        {
+                            _objTemp.GetComponent<NpcManager>().ballonDialogue[0].SetActive(true);
+                            gameManager.managerLevel3.ActiveExclamation(1);
                             _objTemp = null;
                         }
                     }

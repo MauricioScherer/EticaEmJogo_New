@@ -121,13 +121,13 @@ public class ManagerJod2Level3 : MonoBehaviour
                 managerLevel.AnimWokTokEnd();
             }
             else
-            {
+            {                
                 Invoke("EnterNewBox", 1f);
             } 
         }
         else
         {
-            managerLevel.ViewFeedback();
+            managerLevel.ViewLastWalkTock();
         }
     }
 

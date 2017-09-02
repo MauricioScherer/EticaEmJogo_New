@@ -74,6 +74,10 @@ public class DialogueBallon : MonoBehaviour
                         gameManager.ResetMissionText();
                         gameManager.managerLevel3.ViewArrowJob();
                     }
+                    else if(gameManager.numberQuestResolve == 6)
+                    {
+                        gameManager.managerLevel3.ViewPlacarFinalLevel(true);
+                    }
                 }
 
                 gameObject.SetActive(false);
