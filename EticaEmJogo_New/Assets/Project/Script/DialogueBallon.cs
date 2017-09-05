@@ -79,6 +79,13 @@ public class DialogueBallon : MonoBehaviour
                         gameManager.managerLevel3.ViewPlacarFinalLevel(true);
                     }
                 }
+                else if(gameManager.GetNumberScene() == 5)
+                {
+                    if (gameManager.numberQuestResolve == 0)
+                    {
+                        gameManager.managerLevel4.PlayerCanWalk(true);
+                    }
+                }
 
                 gameObject.SetActive(false);
             }

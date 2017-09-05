@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: cf4307c5b9dc9aa4e8a0fbd92f930b95
+timeCreated: 1504540701
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Om Telolet Om
+  fontNames:
+  - Om Telolet Om
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

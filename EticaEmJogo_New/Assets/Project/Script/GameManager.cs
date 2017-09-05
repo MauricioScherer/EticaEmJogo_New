@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public ManagerLevel managerLevel;
     public ManagerLevel2 managerLevel2;
     public ManagerLevel3 managerLevel3;
+    public ManagerLevel4 managerLevel4;
     public GameObject[] quest;
     public GameObject canvasGameManger;
     public GameObject help;
