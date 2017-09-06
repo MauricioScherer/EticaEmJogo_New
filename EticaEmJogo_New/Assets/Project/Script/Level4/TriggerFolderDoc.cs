@@ -39,6 +39,7 @@ public class TriggerFolderDoc : MonoBehaviour
             _stayDocInFolder = false;
             job.CloseArqDoc();
             doc.SetActive(false);
+            job.mensagerManager.CountNewMensage2();
         }
     }
 

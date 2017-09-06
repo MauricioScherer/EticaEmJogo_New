@@ -2,18 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ManagerLevel4 : MonoBehaviour
 {
     private int _numberPag;
+    private bool _fadeIn;
+    private bool _fadeOut;
+    private Color _colorFade;
 
+    public bool selectNpcAna;
     public GameManager gameManager;
     public GameObject arrowJob;
+    public GameObject canvasJob;
+    public Image fade;
 
     public GameObject placarFinalLevel;
     public GameObject particleFinalLevel;
     public GameObject[] medalForPoints;
     public GameObject[] exclamationAvatar;
+    public Transform posDialogueNpc;
 
     public GameObject feedback;
     public GameObject buttonBackPag;
@@ -34,8 +42,49 @@ public class ManagerLevel4 : MonoBehaviour
 	
 	void Update ()
     {
-		
-	}
+        if (_fadeIn)
+        {
+            fade.color = _colorFade;
+            _colorFade.a += 0.6f * Time.deltaTime;
+
+            if (_colorFade.a >= 1)
+            {
+                if (gameManager.numberQuestResolve == 1)
+                {
+                    ViewCanvasJob();
+                    Invoke("FadeOut", 0.5f);
+                }
+                //else if (gameManager.numberQuestResolve == 6)
+                //{
+                //    ViewFeedback();
+                //    Invoke("FadeOut", 0.5f);
+                //}
+                _fadeIn = false;
+            }
+        }
+        if (_fadeOut)
+        {
+            fade.color = _colorFade;
+            _colorFade.a -= 0.6f * Time.deltaTime;
+
+            if (_colorFade.a <= 0)
+            {
+                fade.gameObject.SetActive(false);
+                _fadeOut = false;
+            }
+        }
+    }
+
+    public void FadeIn()
+    {
+        fade.gameObject.SetActive(true);
+        _fadeIn = true;
+    }
+
+    public void FadeOut()
+    {
+        _fadeOut = true;
+    }
 
     public void ActiveExclamation(int p_number)
     {
@@ -54,6 +103,18 @@ public class ManagerLevel4 : MonoBehaviour
         else
         {
             arrowJob.SetActive(false);
+        }
+    }
+
+    public void ViewCanvasJob()
+    {
+        if (!canvasJob.activeSelf)
+        {
+            canvasJob.SetActive(true);
+        }
+        else
+        {
+            canvasJob.SetActive(false);
         }
     }
 

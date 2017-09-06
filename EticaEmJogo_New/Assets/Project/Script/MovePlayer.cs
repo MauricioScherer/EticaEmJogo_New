@@ -113,6 +113,7 @@ public class MovePlayer : MonoBehaviour
                                 hit.collider.GetComponent<NpcManager>().questResolved = true;
                                 _numberQuestSelect = hit.collider.GetComponent<NpcManager>().GetQuestStay();
                                 _objTemp = hit.collider.gameObject;
+                                gameManager.managerLevel4.selectNpcAna = true;
                                 Invoke("ActivateClickNpc", 0.05f);
                             }
                         }
@@ -138,8 +139,21 @@ public class MovePlayer : MonoBehaviour
                     _viewMural = false;
                     _objTemp = null;                    
                 }
-                _navMeshAgent.destination = hit.point;
-                //_navMeshAgent.Resume();
+                if(gameManager.GetNumberScene() == 5)
+                {
+                    if(gameManager.numberQuestResolve == 0 && gameManager.managerLevel4.selectNpcAna)
+                    {
+                        _navMeshAgent.destination = gameManager.managerLevel4.posDialogueNpc.position;
+                    }
+                    else
+                    {
+                        _navMeshAgent.destination = hit.point;
+                    }
+                }
+                else
+                {
+                    _navMeshAgent.destination = hit.point;
+                } 
                 _navMeshAgent.isStopped = false;
                 particleClikPosition.position = new Vector3(hit.point.x, hit.point.y + 0.1f, hit.point.z);
                 particleClick.Play();                               

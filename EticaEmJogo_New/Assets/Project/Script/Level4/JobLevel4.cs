@@ -5,6 +5,7 @@ using UnityEngine;
 public class JobLevel4 : MonoBehaviour
 {
     private bool _stayDoc;
+    private bool _stayMensager;
     private int _numArqTemp;
 
     public Texture2D pcCursor;
@@ -12,26 +13,39 @@ public class JobLevel4 : MonoBehaviour
     public Transform[] doc;    
     public Transform[] docPosition;
     public GameObject[] docOpen;
+    public GameObject mensager;    
+    public MensagerManager mensagerManager;
 
     public TriggerFolderDoc triggerDocAproved;
     public TriggerFolderDoc triggerDocReproved;
 
     void Start ()
     {
-		
+        Invoke("ViewNewMensager", 3f);
 	}
 	
 	void Update ()
     {
         if(_stayDoc)
         {
-            if(Input.GetMouseButtonDown(1))
+            if(Input.GetMouseButtonDown(0))
             {
                 docOpen[_numArqTemp].SetActive(true);
             }
-            else if(Input.GetMouseButton(0))
+            else if(Input.GetMouseButton(1))
             {
                 doc[_numArqTemp].position = Input.mousePosition;
+            }
+        }
+        else if(_stayMensager)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if(mensagerManager.GetStayVisibolSimbol())
+                {
+                    mensagerManager.ViewSimbolNewMensage();
+                }
+                mensager.SetActive(true);
             }
         }
 	}
@@ -43,6 +57,33 @@ public class JobLevel4 : MonoBehaviour
     public void ExitScreenPc()
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+    }
+
+    public void EnterMensager()
+    {
+        _stayMensager = true;
+        Cursor.SetCursor(docCursor, Vector2.zero, CursorMode.Auto);
+    }
+    public void ExitMensager()
+    {
+        _stayMensager = false;
+        Cursor.SetCursor(pcCursor, Vector2.zero, CursorMode.Auto);
+    }
+    public void CloseMensager()
+    {
+        mensager.SetActive(false);
+    }
+    public void ViewNewMensager()
+    {
+        if(!mensager.activeSelf)
+        {
+            mensagerManager.ViewSimbolNewMensage();
+            mensagerManager.ViewMensages();
+        }
+        else
+        {
+            mensagerManager.ViewMensages();
+        }
     }
 
     public void EnterDoc(int p_numDoc)
