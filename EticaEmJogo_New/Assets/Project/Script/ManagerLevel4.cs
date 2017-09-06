@@ -9,9 +9,11 @@ public class ManagerLevel4 : MonoBehaviour
 
     public GameManager gameManager;
     public GameObject arrowJob;
+
     public GameObject placarFinalLevel;
     public GameObject particleFinalLevel;
     public GameObject[] medalForPoints;
+    public GameObject[] exclamationAvatar;
 
     public GameObject feedback;
     public GameObject buttonBackPag;
@@ -35,6 +37,14 @@ public class ManagerLevel4 : MonoBehaviour
 		
 	}
 
+    public void ActiveExclamation(int p_number)
+    {
+        if (exclamationAvatar[p_number].activeSelf)
+            exclamationAvatar[p_number].SetActive(false);
+        else
+            exclamationAvatar[p_number].SetActive(true);
+    }
+
     public void ViewArrowJob()
     {
         if (!arrowJob.activeSelf)
@@ -43,7 +53,6 @@ public class ManagerLevel4 : MonoBehaviour
         }
         else
         {
-            PlayerCanWalk(false);
             arrowJob.SetActive(false);
         }
     }
@@ -167,5 +176,4 @@ public class ManagerLevel4 : MonoBehaviour
         }
         SceneManager.LoadScene("Menu");
     }
-
 }

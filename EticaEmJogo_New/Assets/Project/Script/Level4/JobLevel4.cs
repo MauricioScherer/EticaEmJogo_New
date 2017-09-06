@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class JobLevel4 : MonoBehaviour
 {
-    public bool _stayScreenPc;
-    public bool _stayDoc;
-    public bool _getDocument;
-    public bool _docOpenActive;
-    public int _numArqTemp;
+    private bool _stayDoc;
+    private int _numArqTemp;
 
     public Texture2D pcCursor;
     public Texture2D docCursor;
@@ -17,6 +14,7 @@ public class JobLevel4 : MonoBehaviour
     public GameObject[] docOpen;
 
     public TriggerFolderDoc triggerDocAproved;
+    public TriggerFolderDoc triggerDocReproved;
 
     void Start ()
     {
@@ -30,7 +28,6 @@ public class JobLevel4 : MonoBehaviour
             if(Input.GetMouseButtonDown(1))
             {
                 docOpen[_numArqTemp].SetActive(true);
-                _docOpenActive = true;
             }
             else if(Input.GetMouseButton(0))
             {
@@ -41,12 +38,10 @@ public class JobLevel4 : MonoBehaviour
 
     public void EnterScreenPc()
     {
-        _stayScreenPc = true;
         Cursor.SetCursor(pcCursor, Vector2.zero, CursorMode.Auto);
     }
     public void ExitScreenPc()
     {
-        _stayScreenPc = false;
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 
@@ -69,7 +64,6 @@ public class JobLevel4 : MonoBehaviour
                 docOpen[i].SetActive(false);
         }
         ExitDoc();
-        _docOpenActive = false;
     }
     
     public void GetOutDocument(int p_num)
@@ -78,11 +72,15 @@ public class JobLevel4 : MonoBehaviour
         {
             triggerDocAproved.DeactiveDoc();
         }
+        else if(triggerDocReproved.GetDocStayFolder())
+        {
+            triggerDocReproved.DeactiveDoc();
+        }
+
         if (doc[p_num].localPosition.x > 450 || doc[p_num].localPosition.x < -510 ||
             doc[p_num].localPosition.y > 250 || doc[p_num].localPosition.y < -230)
         {
             doc[p_num].position = docPosition[p_num].position;
         }
-        _getDocument = false;
     }
 }

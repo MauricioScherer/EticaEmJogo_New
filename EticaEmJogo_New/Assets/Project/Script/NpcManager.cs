@@ -138,33 +138,49 @@ public class NpcManager : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if(numberQuestActive == gameManager.numberQuestResolve)
+        if(gameManager.GetNumberScene() != 5)
         {
-            if(!questResolved)
+            if (numberQuestActive == gameManager.numberQuestResolve)
             {
-                if (_stateSelect == 0 && !_waveActive && _stateQuest != 0 ||
-                    _stateSelect == 4 && !_waveActive && _stateQuest != 0 && gameManager.numberQuestResolve == gameManager.managerLevel2.GetNumberQuestResolve())
+                if (!questResolved)
                 {
-                    _waveActive = true;
-                    _anim.SetBool("Wave", _waveActive);
-                    if(!questResolved)
+                    if (_stateSelect == 0 && !_waveActive && _stateQuest != 0 ||
+                        _stateSelect == 4 && !_waveActive && _stateQuest != 0 && gameManager.numberQuestResolve == gameManager.managerLevel2.GetNumberQuestResolve())
+                    {
+                        _waveActive = true;
+                        _anim.SetBool("Wave", _waveActive);
+                        if (!questResolved)
+                            exclamation.GetComponent<Animator>().SetBool("StartAnim", true);
+                        Invoke("SetWaveActivated", 1f);
+                        if (!gameManager.isPlayEffect())
+                            gameManager.PlayEffect(4);
+                    }
+                }
+            }
+            if (_stateSelect == 1 && _stateQuest == 0)
+            {
+                if (!_dialogueBalonActive && !questResolved)
+                {
+                    if (!questResolved)
                         exclamation.GetComponent<Animator>().SetBool("StartAnim", true);
-                    //exclamation.SetActive(true);
-                    Invoke("SetWaveActivated", 1f);
                     if (!gameManager.isPlayEffect())
                         gameManager.PlayEffect(4);
                 }
             }
         }
-        if(_stateSelect == 1 && _stateQuest == 0)
+        else
         {
-            if(!_dialogueBalonActive && !questResolved)
+            if(!questResolved)
             {
-                //exclamation.SetActive(true);
-                if (!questResolved)
+                if(!_waveActive)
+                {
+                    _waveActive = true;
+                    _anim.SetBool("Wave", _waveActive);
                     exclamation.GetComponent<Animator>().SetBool("StartAnim", true);
-                if (!gameManager.isPlayEffect())
-                    gameManager.PlayEffect(4);
+                    Invoke("SetWaveActivated", 1f);
+                    if (!gameManager.isPlayEffect())
+                        gameManager.PlayEffect(4);
+                }
             }
         }
     }
@@ -173,7 +189,6 @@ public class NpcManager : MonoBehaviour
     {
         _waveActive = false;
         _anim.SetBool("Wave", _waveActive);
-        //exclamation.SetActive(false);
         if (!questResolved)
             exclamation.GetComponent<Animator>().SetBool("StartAnim", false);
     }
@@ -259,7 +274,6 @@ public class NpcManager : MonoBehaviour
         _sort = Random.Range(0, 3);
 
         _navMeshAgent.destination = path[_sort].position;
-        //_navMeshAgent.Resume();
         _navMeshAgent.isStopped = false;
         _randomSelectPath = false;
     }

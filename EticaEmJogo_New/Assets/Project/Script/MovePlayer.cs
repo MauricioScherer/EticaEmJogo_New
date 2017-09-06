@@ -103,7 +103,20 @@ public class MovePlayer : MonoBehaviour
                                 Invoke("ActivateClickNpc", 0.05f);
                             }
                         }
-                    }              
+                    }
+                    else if (gameManager.GetNumberScene() == 5)
+                    {
+                        if (!__questResolved)
+                        {
+                            if (gameManager.numberQuestResolve == 0)
+                            {
+                                hit.collider.GetComponent<NpcManager>().questResolved = true;
+                                _numberQuestSelect = hit.collider.GetComponent<NpcManager>().GetQuestStay();
+                                _objTemp = hit.collider.gameObject;
+                                Invoke("ActivateClickNpc", 0.05f);
+                            }
+                        }
+                    }
                 }
                 else if(hit.collider.CompareTag("Wallet"))
                 {                    
@@ -251,6 +264,22 @@ public class MovePlayer : MonoBehaviour
                         {
                             _objTemp.GetComponent<NpcManager>().ballonDialogue[0].SetActive(true);
                             gameManager.managerLevel3.ActiveExclamation(1);
+                            _objTemp = null;
+                        }
+                    }
+                }
+            }
+            else if(gameManager.GetNumberScene() == 5)
+            {
+                if (_npcClicked)
+                {
+                    if (_numberQuestSelect == 0)
+                    {
+                        if (_objTemp != null)
+                        {
+                            _objTemp.GetComponent<NpcManager>().ballonDialogue[0].SetActive(true);
+                            gameManager.managerLevel4.ActiveExclamation(0);
+                            gameManager.numberQuestResolve = 1;
                             _objTemp = null;
                         }
                     }
