@@ -28,13 +28,16 @@ public class JobLevel4 : MonoBehaviour
     {
         if(_stayDoc)
         {
-            if(Input.GetMouseButtonDown(0))
+            if(mensagerManager.finalizeMensage1)
             {
-                docOpen[_numArqTemp].SetActive(true);
-            }
-            else if(Input.GetMouseButton(1))
-            {
-                doc[_numArqTemp].position = Input.mousePosition;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    docOpen[_numArqTemp].SetActive(true);
+                }
+                else if (Input.GetMouseButton(1))
+                {
+                    doc[_numArqTemp].position = Input.mousePosition;
+                }
             }
         }
         else if(_stayMensager)

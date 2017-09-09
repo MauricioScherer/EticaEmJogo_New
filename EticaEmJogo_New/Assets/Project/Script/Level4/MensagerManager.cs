@@ -4,20 +4,11 @@ using UnityEngine;
 
 public class MensagerManager : MonoBehaviour
 {
+    public bool finalizeMensage1;
     public int count;
     public GameObject[] mensage1;
     public GameObject[] mensage2;
     public GameObject newMensager;
-
-    void Start ()
-    {
-		
-	}
-	
-	void Update ()
-    {
-		
-	}
 
     public void ViewMensages()
     {
@@ -26,7 +17,11 @@ public class MensagerManager : MonoBehaviour
             if(!mensage1[i].activeSelf && !mensage1[mensage1.Length - 1].activeSelf)
             {
                 mensage1[i].SetActive(true);
-                mensage1[i].GetComponent<AudioSource>().Play();                
+                mensage1[i].GetComponent<AudioSource>().Play();    
+                if(i >= mensage1.Length - 1)
+                {
+                    finalizeMensage1 = true;
+                }         
                 Invoke("ViewMensages", 4f);
                 break;
             }

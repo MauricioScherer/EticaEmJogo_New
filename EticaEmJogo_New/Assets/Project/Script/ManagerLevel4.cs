@@ -9,12 +9,15 @@ public class ManagerLevel4 : MonoBehaviour
     private int _numberPag;
     private bool _fadeIn;
     private bool _fadeOut;
+    private bool _viewQuest1;
     private Color _colorFade;
 
     public bool selectNpcAna;
     public GameManager gameManager;
     public GameObject arrowJob;
+    public GameObject arrowXerox;
     public GameObject canvasJob;
+    public GameObject[] objDeactive;
     public Image fade;
 
     public GameObject placarFinalLevel;
@@ -94,6 +97,27 @@ public class ManagerLevel4 : MonoBehaviour
             exclamationAvatar[p_number].SetActive(true);
     }
 
+    public void ViewQuest(int p_numQuest)
+    {
+        if(!_viewQuest1)
+        {
+            canvasJob.SetActive(false);
+            ViewArrowXerox();
+            gameManager.SelectQuest(p_numQuest);
+            _viewQuest1 = true;
+        }
+    }
+
+    public void FinalizeQuest1()
+    {
+        //Invoke("ViewCanvasJob", 3f);
+    }
+
+    public void Deactiveobj(int p_num)
+    {
+        objDeactive[p_num].SetActive(false);
+    }
+
     public void ViewArrowJob()
     {
         if (!arrowJob.activeSelf)
@@ -103,6 +127,18 @@ public class ManagerLevel4 : MonoBehaviour
         else
         {
             arrowJob.SetActive(false);
+        }
+    }
+
+    public void ViewArrowXerox()
+    {
+        if (!arrowXerox.activeSelf)
+        {
+            arrowXerox.SetActive(true);
+        }
+        else
+        {
+            arrowXerox.SetActive(false);
         }
     }
 
