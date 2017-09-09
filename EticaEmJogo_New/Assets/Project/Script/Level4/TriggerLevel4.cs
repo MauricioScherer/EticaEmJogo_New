@@ -18,8 +18,6 @@ public class TriggerLevel4 : MonoBehaviour
                 managerLevel.ViewArrowJob();
                 managerLevel.FadeIn();
                 managerLevel.PlayerCanWalk(false);
-                managerLevel.Deactiveobj(0);
-                managerLevel.Deactiveobj(1);
                 initializeJob1 = true;
             }
             else if (managerLevel.gameManager.numberQuestResolve == 3 && !initializeJob2)

@@ -10,6 +10,7 @@ public class ManagerLevel4 : MonoBehaviour
     private bool _fadeIn;
     private bool _fadeOut;
     private bool _viewQuest1;
+    private bool _viewQuest3;
     private Color _colorFade;
 
     public bool selectNpcAna;
@@ -17,6 +18,7 @@ public class ManagerLevel4 : MonoBehaviour
     public GameObject arrowJob;
     public GameObject arrowXerox;
     public GameObject canvasJob;
+    public GameObject canvasJob2;
     public GameObject[] objDeactive;
     public Image fade;
 
@@ -55,6 +57,15 @@ public class ManagerLevel4 : MonoBehaviour
                 if (gameManager.numberQuestResolve == 1)
                 {
                     ViewCanvasJob();
+                    Deactiveobj(0, false);
+                    Deactiveobj(1, false);
+                    Deactiveobj(2, true);
+                    Invoke("FadeOut", 0.5f);
+                }
+                else if(gameManager.numberQuestResolve == 3)
+                {
+                    ViewCanvasJob2();
+                    Deactiveobj(2, false);
                     Invoke("FadeOut", 0.5f);
                 }
                 //else if (gameManager.numberQuestResolve == 6)
@@ -106,6 +117,12 @@ public class ManagerLevel4 : MonoBehaviour
             gameManager.SelectQuest(p_numQuest);
             _viewQuest1 = true;
         }
+        else if(!_viewQuest3)
+        {
+            canvasJob2.SetActive(false);
+            gameManager.SelectQuest(p_numQuest);
+            _viewQuest3 = true;
+        }
     }
 
     public void FinalizeQuest1()
@@ -113,9 +130,9 @@ public class ManagerLevel4 : MonoBehaviour
         //Invoke("ViewCanvasJob", 3f);
     }
 
-    public void Deactiveobj(int p_num)
+    public void Deactiveobj(int p_num, bool p_status)
     {
-        objDeactive[p_num].SetActive(false);
+        objDeactive[p_num].SetActive(p_status);
     }
 
     public void ViewArrowJob()
@@ -151,6 +168,18 @@ public class ManagerLevel4 : MonoBehaviour
         else
         {
             canvasJob.SetActive(false);
+        }
+    }
+
+    public void ViewCanvasJob2()
+    {
+        if (!canvasJob2.activeSelf)
+        {
+            canvasJob2.SetActive(true);
+        }
+        else
+        {
+            canvasJob2.SetActive(false);
         }
     }
 

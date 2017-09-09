@@ -5,6 +5,7 @@ using UnityEngine;
 public class MensagerManager : MonoBehaviour
 {
     public bool finalizeMensage1;
+    public bool visualizeMensage;
     public int count;
     public GameObject[] mensage1;
     public GameObject[] mensage2;
@@ -17,12 +18,13 @@ public class MensagerManager : MonoBehaviour
             if(!mensage1[i].activeSelf && !mensage1[mensage1.Length - 1].activeSelf)
             {
                 mensage1[i].SetActive(true);
-                mensage1[i].GetComponent<AudioSource>().Play();    
+                if (visualizeMensage)
+                    mensage1[i].GetComponent<AudioSource>().Play();    
                 if(i >= mensage1.Length - 1)
                 {
                     finalizeMensage1 = true;
                 }         
-                Invoke("ViewMensages", 4f);
+                Invoke("ViewMensages", 3f);
                 break;
             }
         }        
@@ -34,8 +36,9 @@ public class MensagerManager : MonoBehaviour
             if (!mensage2[i].activeSelf && !mensage2[mensage2.Length - 1].activeSelf)
             {
                 mensage2[i].SetActive(true);
-                mensage2[i].GetComponent<AudioSource>().Play();
-                Invoke("ViewMensage2", 4f);
+                if (visualizeMensage)
+                    mensage2[i].GetComponent<AudioSource>().Play();
+                Invoke("ViewMensage2", 3f);
                 break;
             }
         }
@@ -48,7 +51,7 @@ public class MensagerManager : MonoBehaviour
         {
             DeactiveMensage1();
             Invoke("ViewSimbolNewMensage", 2f);
-            Invoke("ViewMensage2", 2f);
+            Invoke("ViewMensage2", 1f);
         }
     }
 

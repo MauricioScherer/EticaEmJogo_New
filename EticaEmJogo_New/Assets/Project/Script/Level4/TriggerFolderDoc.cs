@@ -10,6 +10,7 @@ public class TriggerFolderDoc : MonoBehaviour
     private int count;
 
     public JobLevel4 job;
+    public Job2Level4 job2;
     public Text countFolder;    
 
     void OnTriggerEnter(Collider other)
@@ -37,9 +38,15 @@ public class TriggerFolderDoc : MonoBehaviour
             count++;
             countFolder.text = count.ToString();
             _stayDocInFolder = false;
-            job.CloseArqDoc();
+            if(job)
+                job.CloseArqDoc();
+            else if(job2)
+                job2.CloseArqDoc();
             doc.SetActive(false);
-            job.mensagerManager.CountNewMensage2();
+            if(job)
+                job.mensagerManager.CountNewMensage2();
+            else if(job2)
+                job2.mensagerManager.CountNewMensage1();
         }
     }
 

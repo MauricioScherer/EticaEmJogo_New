@@ -49,6 +49,7 @@ public class JobLevel4 : MonoBehaviour
                     mensagerManager.ViewSimbolNewMensage();
                 }
                 mensager.SetActive(true);
+                mensagerManager.visualizeMensage = true;
             }
         }
 	}
@@ -74,6 +75,7 @@ public class JobLevel4 : MonoBehaviour
     }
     public void CloseMensager()
     {
+        mensagerManager.visualizeMensage = false;
         mensager.SetActive(false);
     }
     public void ViewNewMensager()
