@@ -323,6 +323,30 @@ public class GameManager : MonoBehaviour
                 missionDescription.text = "HORA DO INTERVALO! Vá até seu armário para guardar seus EPIs";
             }
         }
+        else if(GetNumberScene() == 5)
+        {
+            if (numberQuestResolve == 0)
+            {
+                missionCurrent.text = "Falar com Ana";
+                missionAlert.SetActive(true);
+                missionDescription.text = "Fale com sua colega ana, ele está te esperando";
+
+            }
+            else if (numberQuestResolve == 2)
+            {
+                missionCurrent.text = "Ir na impresora";
+                missionAlert.SetActive(true);
+                missionDescription.text = "Peque as cópias na impressora que a Ana pediu.";
+
+            }
+            else if (numberQuestResolve == 3)
+            {
+                missionCurrent.text = "Retorne para mesa";
+                missionAlert.SetActive(true);
+                missionDescription.text = "Retorne para sua mesa de trabalho pra continuar as analises";
+
+            }
+        }
 
         if(missionAlert.activeSelf)
         {

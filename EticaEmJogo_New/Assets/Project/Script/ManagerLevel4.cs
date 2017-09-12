@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityStandardAssets.ImageEffects;
 
 public class ManagerLevel4 : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class ManagerLevel4 : MonoBehaviour
     public GameObject canvasJob2;
     public GameObject[] objDeactive;
     public Image fade;
+    public MotionBlur motionBlur;
+    public VignetteAndChromaticAberration vignette;
 
     public GameObject placarFinalLevel;
     public GameObject particleFinalLevel;
@@ -68,11 +71,11 @@ public class ManagerLevel4 : MonoBehaviour
                     Deactiveobj(2, false);
                     Invoke("FadeOut", 0.5f);
                 }
-                //else if (gameManager.numberQuestResolve == 6)
-                //{
-                //    ViewFeedback();
-                //    Invoke("FadeOut", 0.5f);
-                //}
+                else if (gameManager.numberQuestResolve == 5)
+                {
+                    ViewFeedback();
+                    Invoke("FadeOut", 0.5f);
+                }
                 _fadeIn = false;
             }
         }
@@ -86,6 +89,11 @@ public class ManagerLevel4 : MonoBehaviour
                 fade.gameObject.SetActive(false);
                 _fadeOut = false;
             }
+        }
+
+        if(gameManager.phone.activeSelf)
+        {
+            gameManager.phone.SetActive(false);
         }
     }
 
@@ -133,6 +141,34 @@ public class ManagerLevel4 : MonoBehaviour
     public void Deactiveobj(int p_num, bool p_status)
     {
         objDeactive[p_num].SetActive(p_status);
+    }
+
+    public void InvokeActiveEffectCam()
+    {
+        Invoke("ActiveEffectCam", 6f);
+        Invoke("ViewLastQuest", 10f);
+    }
+
+    public void ActiveEffectCam()
+    {
+        vignette.enabled = true;
+        motionBlur.enabled = true;
+        gameManager.music.pitch = 0.5f;
+        Time.timeScale = 0.5f;        
+    }
+
+    public void DesativeEffectCam()
+    {
+        vignette.enabled = false;
+        motionBlur.enabled = false;
+        PlayerCanWalk(false);
+        gameManager.music.Stop();
+        Time.timeScale = 1f;
+    }
+
+    void ViewLastQuest()
+    {
+        gameManager.SelectQuest(12);
     }
 
     public void ViewArrowJob()

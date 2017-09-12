@@ -22,6 +22,7 @@ d6c020cc733503ece4ab88abd88be68a Assembly-CSharp.dll:.TriggerFactory
 a30beadf4d109f44144b9a9f42e61cbf Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.BlurOptimized
 d6c020cc733503ece4ab88abd88be68a Assembly-CSharp.dll:.TriggerLocker
 23b50ef73e2c1a8a76860d35bcbbf8fc Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.GlobalFog
+39d409cdef919ca7cd5260bb3e9b3eda Assembly-CSharp.dll:.JobLevel4
 daabd8d8800a87cff11f866c4d06a232 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ContrastStretch
 31ac2865258ddbc8f82525645ca875c2 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.VignetteAndChromaticAberration
 1ad999c1c59cc66b1257b3f9407287bc Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ColorCorrectionCurves
@@ -92,6 +93,7 @@ f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 86d36c43c53541d667100dc90b89cfba UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 1b8c02d0aa82fbf036a2b9b2d713eec3 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
 b4ced43487be7c8009acd13c6f1afd86 Assembly-CSharp.dll:.QuestOptionsManager
+a2af246485507ccef0e0147e7692be0d Assembly-CSharp.dll:.TriggerFolderDoc
 71778c9b45c50a65b865c5bc42204043 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.NoiseAndScratches
 ef006e44a54903fe624f73d881b01f8f Assembly-CSharp.dll:.ManagerLevel
 cc897e31f90a455da1ad6fffc97043f1 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.Antialiasing
@@ -129,9 +131,10 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 7d68c2be12afca1d067d11b3f60bcb33 Assembly-CSharp.dll:.SimpleCharacterControl
 1ca9fd75e20681d87fae2e0e6195e88b Assembly-CSharp.dll:.NpcChicoLevel3
 ef6ba6eb63e77b272c7f63d48eff8c93 Assembly-CSharp.dll:.BallonDialogueStatic
+c6b91b5378796461a5a25abd3ae2a4f0 Assembly-CSharp.dll:.MensagerManagerJob2
 c16cfe746a4e1f979dc79ae380f2a6b1 Assembly-CSharp.dll:.CameraPosition
 22df741b1a3c6d3b215ca28ad83c5a3f Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ScreenSpaceAmbientObscurance
-e2c08836753a0d7d925b3aa37fc48318 Assembly-CSharp.dll:.ManagerLevel3
+eccc84b5d5ddef902a889210bc61b4f6 Assembly-CSharp.dll:.ManagerLevel3
 9865a0db77364f8930077972a1d5efab Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.BloomOptimized
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
@@ -140,13 +143,19 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingRenderer
 d050207d1812c13f28605dcc7b205866 Assembly-CSharp.dll:.DemoPPE
 d27699dfc30c2a21439bbef1ad43c8ea Assembly-CSharp.dll:.FeedBackQuest
+7da0548031e196801808401af603f998 Assembly-CSharp.dll:.MensagerManager
+1ad59559d231a27b1ca9792e3ac6491b Assembly-CSharp.dll:.Job2Level4
 724c7ed5d736165d2ffb1451ab2081f3 Assembly-CSharp.dll:.MovePlayer
+83d884d8f1197652a8652f3a6e8ea00f Assembly-CSharp.dll:.TriggerXerox
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.AnimNpcOffice
 767bf16ecc51911c50d3013c769bc4db Assembly-CSharp.dll:.ColliderFrontCar
 d94ad6e60de5645cdec341a3afc00e74 Assembly-CSharp.dll:.PoolPerson
 88e745da281bc889e248b64cf4d72a54 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.SunShafts
+8ff77d13bb77eac12c443c5f34593ea7 Assembly-CSharp.dll:.DialogueAlberto
 418c3bf6d302a9f02f87725dfbd5ceb3 Assembly-CSharp.dll:.SceneStatusPlayerManager
 cac5093fb1baf037bd671ecbc6727828 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ScreenOverlay
 ec4cd9ebfe3e7a84ef4c9cc19ec91e94 Assembly-CSharp.dll:.ManagerJodLevel3
+263f47c3f48b451204aba1848620cb50 Assembly-CSharp.dll:.TriggerLevel4
 9d58842ca66ef7be2257d8d3e19b6dd9 Assembly-CSharp.dll:.NpcWalk2
 67dcc2f88f5f146ee78d0e1bb253989a Assembly-CSharp.dll:.SceneAvatarCustomManager
 5da8ec7405c296f591e6961c8ede4597 Assembly-CSharp.dll:.IntroBusCollider
@@ -209,7 +218,7 @@ b594ae13cfd5e73c8e529d9a8c23acf6 Assembly-CSharp.dll:.NpcWalk
 949dd2ab87a8ed19164f19a31de11e8b Assembly-CSharp.dll:.ArrowPosition
 cd76c13e46b5baaece940907ac2daa80 Assembly-CSharp.dll:.CelularManager
 695e1680ce84e601f41bd2b69930562a Assembly-CSharp.dll:.TriggerFinalizeLevelMarket
-63aa628bbd882af1d224cb6807ff76e8 Assembly-CSharp.dll:.GameManager
+57f0165e36c1eff29ae6d76c726ab11f Assembly-CSharp.dll:.GameManager
 44a35ddbf5407a4aef3b92b9f8c929d0 Assembly-CSharp.dll:.PranchetaJob2
 53dbd7baa3c8da2f87828dd70d70dae4 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.DepthOfFieldDeprecated
 5f2ad72f2e8c64a1bd914266a65e3d17 Assembly-CSharp.dll:.CarManager
@@ -225,3 +234,4 @@ b3432dfe180f02232d7612fb366593d3 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 9c4d5c8ec8a190483dc7d452819ad5bd Assembly-CSharp.dll:.DemoMove
 ec4cd9ebfe3e7a84ef4c9cc19ec91e94 Assembly-CSharp.dll:.ManagerJod2Level3
 e275b044b7fcfe5b482816e297aaddc0 Assembly-CSharp.dll:.SceneAdminManager
+138e9b10cfbfa00fa9a8e393c0a4b7ca Assembly-CSharp.dll:.ManagerLevel4

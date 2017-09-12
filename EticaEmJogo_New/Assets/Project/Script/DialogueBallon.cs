@@ -85,10 +85,12 @@ public class DialogueBallon : MonoBehaviour
                     {
                         gameManager.managerLevel4.PlayerCanWalk(true);
                         gameManager.managerLevel4.ActiveExclamation(0);
+                        gameManager.SetMissionText();
                     }
                     else if(gameManager.numberQuestResolve == 1)
                     {
                         gameManager.managerLevel4.ViewArrowJob();
+                        gameManager.ResetMissionText();
                         gameManager.player.SetValues();
                     }
                 }

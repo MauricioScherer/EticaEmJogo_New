@@ -25,6 +25,7 @@ public class TriggerLevel4 : MonoBehaviour
                 managerLevel.ViewArrowJob();
                 managerLevel.FadeIn();
                 managerLevel.PlayerCanWalk(false);
+                managerLevel.gameManager.ResetMissionText();
                 initializeJob2 = true;
             }
         }

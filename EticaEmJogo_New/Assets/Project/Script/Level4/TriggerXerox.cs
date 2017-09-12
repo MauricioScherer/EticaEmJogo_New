@@ -18,6 +18,7 @@ public class TriggerXerox : MonoBehaviour
                 managerLevel.ViewArrowJob();
                 managerLevel.PlayerCanWalk(false);
                 managerLevel.ViewArrowXerox();
+                managerLevel.gameManager.ResetMissionText();
                 ballonAlberto.SetActive(true);
                 enterAreaXerox = true;
             }
