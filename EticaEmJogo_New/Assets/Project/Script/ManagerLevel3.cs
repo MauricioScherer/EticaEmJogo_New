@@ -383,6 +383,7 @@ public class ManagerLevel3 : MonoBehaviour
     {
         WokTok.SetActive(false);
         feedback.SetActive(true);
+        gameManager.ActivateAndDeactivateHud();
         PagDefine(gameManager.GetScore());
     }
 
@@ -473,7 +474,7 @@ public class ManagerLevel3 : MonoBehaviour
                 break;
             }
         }
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Scene_04");
     }
 
     public void ActiveExclamation(int p_number)

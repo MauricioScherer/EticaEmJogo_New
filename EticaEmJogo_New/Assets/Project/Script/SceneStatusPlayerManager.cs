@@ -12,8 +12,7 @@ public class SceneStatusPlayerManager : MonoBehaviour
     public Text cpfPlayer;
     public Text namePlayer;
     public Text scorePlayer;
-    public Text[] quest;
-    public GameObject poolAvatar;
+    public GameObject alertDelete;
 
     void Start ()
     {
@@ -25,21 +24,22 @@ public class SceneStatusPlayerManager : MonoBehaviour
 		
 	}
 
-    public void SetStatus(string p_cpf, string p_name, int p_score, int p_avatar)
+    public void SetStatus(string p_cpf, string p_name, int p_score)
     {
         _numberCpf = p_cpf;
-        cpfPlayer.text = "CPF: " + p_cpf;
+        cpfPlayer.text = p_cpf;
         namePlayer.text = p_name;
-        scorePlayer.text = "Pontuação: " + p_score.ToString();
-        poolAvatar.SetActive(true);
-        poolAvatar.GetComponent<PoolPerson>().ActivateViewAvatar(p_avatar);
+        scorePlayer.text = p_score.ToString() + " / 65";
     }
 
     public void BackScreen()
     {
-        poolAvatar.GetComponent<PoolPerson>().ResetPool();
-        poolAvatar.SetActive(false);
         personManager.ReturnAdminScreen();
+    }
+
+    public void ViewAlertDelete(bool p_state)
+    {
+        alertDelete.SetActive(p_state);
     }
 
     public void DeletePerfil()

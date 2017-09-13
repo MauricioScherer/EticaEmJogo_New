@@ -111,7 +111,7 @@ public class PersonManager : MonoBehaviour
     {
         scene[1].SetActive(false);
         scene[7].SetActive(true);
-        statusPlayerManager.SetStatus(cpfplayerArray[p_numberPlayerArray], nameplayerArray[p_numberPlayerArray], pointsPlayerArray[p_numberPlayerArray], avatarPlayerArray[p_numberPlayerArray]);
+        statusPlayerManager.SetStatus(cpfplayerArray[p_numberPlayerArray], nameplayerArray[p_numberPlayerArray], pointsPlayerArray[p_numberPlayerArray]);
     }
 
     public void ReturnAdminScreen()

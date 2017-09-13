@@ -193,6 +193,7 @@ public class ManagerLevel2 : MonoBehaviour
     public void ViewFeedback()
     {        
         feedback.SetActive(true);
+        gameManager.ActivateAndDeactivateHud();
     }
 
     void PagDefine(float p_points)

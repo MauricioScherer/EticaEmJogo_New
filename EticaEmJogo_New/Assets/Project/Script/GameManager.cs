@@ -74,14 +74,16 @@ public class GameManager : MonoBehaviour
 	
 	void Update ()
     {
-        if(Input.GetKeyDown("1"))
+        if (Input.GetKeyDown("0"))
+            SceneManager.LoadScene("Menu");
+        if (Input.GetKeyDown("1"))
             SceneManager.LoadScene("Scene_01");
         if (Input.GetKeyDown("2"))
             SceneManager.LoadScene("Scene_02");
         if (Input.GetKeyDown("3"))
             SceneManager.LoadScene("Scene_03");
-        if (Input.GetKeyDown("0"))
-            SceneManager.LoadScene("Menu");
+        if (Input.GetKeyDown("4"))
+            SceneManager.LoadScene("Scene_04");        
     }
 
     public void SelectQuest(int p_numQuest)
