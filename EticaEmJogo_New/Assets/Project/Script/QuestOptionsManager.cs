@@ -79,4 +79,20 @@ public class QuestOptionsManager : MonoBehaviour
     {
         return _activeSelectQuest;
     }
+
+    public void SetArrayQuest(int p_numberSelect)
+    {
+        int[] temp = new int[13];
+        temp = PlayerPrefsUtility.GetIntArray(PlayerPrefs.GetString("cpfSelect"));
+
+        for (int i = 0; i < 13; i++)
+        {
+            if (temp[i] == 99)
+            {
+                temp[i] = p_numberSelect;
+                PlayerPrefsUtility.SetIntArray(PlayerPrefs.GetString("cpfSelect"), temp);
+                break;
+            }
+        }
+    }
 }
