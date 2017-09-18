@@ -31,7 +31,7 @@ public class IntroMovePlayer : MonoBehaviour
         {
             fade.color = _colorFade;
             _colorFade.a += 0.4f * Time.deltaTime;
-            manager.music.volume -= 0.35f * Time.deltaTime;
+            manager.music.volume -= 0.025f * Time.deltaTime;
 
             if (_colorFade.a >= 1)
             {

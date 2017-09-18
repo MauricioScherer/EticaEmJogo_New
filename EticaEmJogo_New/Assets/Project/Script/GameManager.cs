@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     private int _numberMensagePhone;
     private int _numberScene;
     public bool _stayTriggerFade;
+    private bool _stayInPauseMenu;
     private GameObject _avatarQuestCurrent;
 
     public int numberQuestResolve;
@@ -24,7 +25,6 @@ public class GameManager : MonoBehaviour
     public GameObject[] quest;
     public GameObject canvasGameManger;
     public GameObject help;
-    public GameObject score;
     public GameObject phone;
     public GameObject sprMusicActivate;
     public GameObject painelPause;
@@ -128,36 +128,28 @@ public class GameManager : MonoBehaviour
     public void PauseSelect()
     {
         Time.timeScale = 0;
+        if (player.GetCanWalk())
+        {
+            _stayInPauseMenu = true;
+            player.CanWalk(false);
+        }            
         painelPause.SetActive(true);
         ActivateAndDeactivateHud();
-
-        for (int i = 0; i < quest.Length; i++)
-        {
-            if(quest[i].activeSelf)
-            {
-                _numberQuestStay = i;
-                quest[i].SetActive(false);
-                _avatarQuestCurrent.SetActive(false);
-                break;
-            }
-        }
     } 
 
     public void ReturnPause()
     {
         Time.timeScale = 1;
+        if (_stayInPauseMenu)
+            Invoke("ActiveWalkPlayer", 0.2f);            
         painelPause.SetActive(false);
-        ActivateAndDeactivateHud();
+        ActivateAndDeactivateHud();    
+    }
 
-        if (_stayQuest)
-        {
-            quest[_numberQuestStay].SetActive(true);
-            _avatarQuestCurrent.SetActive(true);
-        }
-        else
-        {
-            player.SetValues();
-        }         
+    void ActiveWalkPlayer()
+    {
+        player.CanWalk(true);
+        _stayInPauseMenu = false;
     }
 
     public void DeactiveHudAndPause()
@@ -172,7 +164,7 @@ public class GameManager : MonoBehaviour
     {
         if(painelMission.activeSelf)
         {
-            //help.SetActive(false);
+            help.SetActive(false);
             if(GetNumberScene() != 4)
             {
                 if(GetNumberScene() == 3)
@@ -187,7 +179,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //help.SetActive(true);
+            help.SetActive(true);
             if (GetNumberScene() != 4)
             {
                 if (GetNumberScene() == 3)
@@ -201,7 +193,19 @@ public class GameManager : MonoBehaviour
             painelMission.SetActive(true);
         }        
     }
-    
+
+    public void ReturnToMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void ExitToGame()
+    {
+        Time.timeScale = 1;
+        Application.Quit();
+    }
+
     float ScoreCalculation()
     {
         quest[_numberQuestStay].SetActive(false);

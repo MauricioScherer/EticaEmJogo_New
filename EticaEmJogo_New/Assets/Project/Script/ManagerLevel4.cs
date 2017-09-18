@@ -27,6 +27,8 @@ public class ManagerLevel4 : MonoBehaviour
 
     public GameObject placarFinalLevel;
     public GameObject particleFinalLevel;
+    public GameObject particleFinalLevel2;
+    public GameObject particleFinalLevel3;
     public GameObject[] medalForPoints;
     public GameObject[] exclamationAvatar;
     public Transform posDialogueNpc;
@@ -223,23 +225,36 @@ public class ManagerLevel4 : MonoBehaviour
     {
         gameManager.player.CanWalk(false);
         placarFinalLevel.SetActive(p_activate);
-        particleFinalLevel.SetActive(p_activate);
         if (p_activate)
         {
             if (gameManager.GetScore() >= 12)
+            {
+                particleFinalLevel.SetActive(p_activate);
                 medalForPoints[0].SetActive(true);
+            }
             else if (gameManager.GetScore() >= 6)
+            {
+                particleFinalLevel2.SetActive(p_activate);
                 medalForPoints[1].SetActive(true);
+            }
             else
+            {
+                particleFinalLevel3.SetActive(p_activate);
                 medalForPoints[2].SetActive(true);
+            }
         }
         else
         {
+            if (particleFinalLevel.activeSelf)
+                particleFinalLevel.SetActive(false);
+            if (particleFinalLevel2.activeSelf)
+                particleFinalLevel2.SetActive(false);
+            if (particleFinalLevel3.activeSelf)
+                particleFinalLevel3.SetActive(false);
             medalForPoints[0].SetActive(false);
             medalForPoints[1].SetActive(false);
             medalForPoints[2].SetActive(false);
         }
-
     }
 
     public void PlayerCanWalk(bool p_canwalk)

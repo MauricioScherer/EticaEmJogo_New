@@ -107,7 +107,7 @@ public class CelularManager : MonoBehaviour
 
     void ViewInstructionPhone(int p_temp)
     {
-        if (gameManager.GetNumberScene() == 1 && p_temp == 0)
+        if (gameManager.GetNumberScene() == 1 && p_temp == 0 && gameManager.numberQuestResolve == 1)
         {
             if (managerLevel.instructionPhone)
             {
