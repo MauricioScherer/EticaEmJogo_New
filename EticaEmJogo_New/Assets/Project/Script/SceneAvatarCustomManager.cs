@@ -8,10 +8,9 @@ public class SceneAvatarCustomManager : MonoBehaviour
     public PersonManager personManager;
 
     public GameObject poolPerson;
-    public GameObject selectColor;
-    public GameObject selectHair;
-    public GameObject selectClothes;
     public Text playerName;
+    public GameObject mensageSelectAvatar;
+    public GameObject buttonPlay;
 
     void Start ()
     {
@@ -26,48 +25,24 @@ public class SceneAvatarCustomManager : MonoBehaviour
     public void EnterScene(string p_name)
     {
         playerName.text = p_name;
-        poolPerson.SetActive(true);
-        poolPerson.GetComponent<PoolPerson>().StandardPool();
+        ViewMensageSelectAvatar(true);
     }
 
     public void ExitScene()
     {
-        poolPerson.SetActive(false);
-    }
-
-    public void Selectcolor()
-    {
-        if (!selectColor.activeSelf)
-            selectColor.SetActive(true);
-        if (selectHair.activeSelf)
-            selectHair.SetActive(false);
-        if (selectClothes.activeSelf)
-            selectClothes.SetActive(false);
-    }
-
-    public void SelectHair()
-    {
-        if (selectColor.activeSelf)
-            selectColor.SetActive(false);
-        if (!selectHair.activeSelf)
-            selectHair.SetActive(true);
-        if (selectClothes.activeSelf)
-            selectClothes.SetActive(false);
-    }
-
-    public void SelectClothes()
-    {
-        if (selectColor.activeSelf)
-            selectColor.SetActive(false);
-        if (selectHair.activeSelf)
-            selectHair.SetActive(false);
-        if (!selectClothes.activeSelf)
-            selectClothes.SetActive(true);
+        poolPerson.GetComponent<PoolPerson>().ResetPool();
+        ViewMensageSelectAvatar(true);
     }
 
     public void FinalizeAvatar()
     {
         ExitScene();
         personManager.ButtonViewIntructions(poolPerson.GetComponent<PoolPerson>().GetAvatarSelect());
+    }
+
+    public void ViewMensageSelectAvatar(bool p_status)
+    {
+        mensageSelectAvatar.SetActive(p_status);
+        buttonPlay.SetActive(!p_status);
     }
 }

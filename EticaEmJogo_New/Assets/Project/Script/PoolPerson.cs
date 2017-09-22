@@ -17,53 +17,14 @@ public class PoolPerson : MonoBehaviour
 		
 	}
 
-    public void NextAvatar()
-    {
-        for (int i=0; i < avatar.Length; i++)
-        {
-            if(avatar[i].activeSelf)
-            {
-                avatar[i].SetActive(false);
-                if (i != avatar.Length - 1)
-                {
-                    avatarNumberSelect++;
-                    avatar[i + 1].SetActive(true);
-                }
-                else
-                {
-                    avatarNumberSelect = 0;
-                    avatar[0].SetActive(true);
-                }
-                break;
-            }
-        }
-    }
-
-    public void BackAvatar()
-    {
-        for (int i = 0; i < avatar.Length; i++)
-        {
-            if (avatar[i].activeSelf)
-            {
-                avatar[i].SetActive(false);
-                if (i != 0)
-                {
-                    avatarNumberSelect--;
-                    avatar[i - 1].SetActive(true);
-                }
-                else
-                {
-                    avatarNumberSelect = avatar.Length - 1;
-                    avatar[avatar.Length - 1].SetActive(true);
-                }
-                break;
-            }
-        }
-    }
-
     public int GetAvatarSelect()
     {
         return avatarNumberSelect;
+    }
+
+    public void SetAvatarSelect(int p_num)
+    {
+        avatarNumberSelect = p_num;
     }
 
     public void ActivateViewAvatar(int p_numAvatar)
@@ -84,8 +45,12 @@ public class PoolPerson : MonoBehaviour
         }
     }
 
-    public void StandardPool()
+    public void ViewMask(GameObject p_mask)
     {
-        avatar[0].SetActive(true);
+        p_mask.SetActive(true);
+    }
+    public void NoViewMask(GameObject p_mask)
+    {
+        p_mask.SetActive(false);
     }
 }
