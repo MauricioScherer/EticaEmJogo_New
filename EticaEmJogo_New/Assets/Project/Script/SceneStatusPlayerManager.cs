@@ -14,6 +14,7 @@ public class SceneStatusPlayerManager : MonoBehaviour
     public Text cpfPlayer;
     public Text namePlayer;
     public Text scorePlayer;
+    public Text answerPlayer;
     public Text numberPagStr;
     public GameObject alertDelete;
     public GameObject buttonNext;
@@ -27,12 +28,13 @@ public class SceneStatusPlayerManager : MonoBehaviour
 
     }
 
-    public void SetStatus(string p_cpf, string p_name, int p_score)
+    public void SetStatus(string p_cpf, string p_name, int p_score, string p_answer)
     {
         _numberCpf = p_cpf;
         cpfPlayer.text = p_cpf;
         namePlayer.text = p_name;
         scorePlayer.text = p_score.ToString() + " / 65";
+        answerPlayer.text = p_answer;
         _questSelectLocal = PlayerPrefsUtility.GetIntArray(p_cpf);
         ResetStatusPag();
         ViewQuestSelect();

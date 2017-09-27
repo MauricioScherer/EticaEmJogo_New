@@ -7,10 +7,27 @@ public class BallonDialogueBigBoss : MonoBehaviour
     public GameObject[] textDialogue;
     public GameObject npc;
     public TextMesh ballon1;
+    public TextMesh ballon2;
+    public GameObject player;
+    public ManagerLevel5 managerLevel5;
 
     void Start()
     {
-        ballon1.text = "Olá " + PlayerPrefs.GetString("nameSelect") + "!" + "\n Você teve uma jornada \n e tanto até aqui em!";
+        ballon1.text = "Olá " + PlayerPrefs.GetString("nameSelect") + "!" + "\n Você teve uma jornada \n e tanto até em!";
+
+        if(PlayerPrefs.GetInt("pointsSelect") <= 21)
+        {
+            ballon2.text = "balão fala para jogador \n com até 21 pontos(33%)";
+        }
+        else if (PlayerPrefs.GetInt("pointsSelect") <= 43)
+        {
+            ballon2.text = "balão fala para jogador \n com até 43 pontos(66%)";
+        }
+        else
+        {
+            ballon2.text = "balão fala para jogador \n com mais de 43 pontos";
+        }
+        player = player.GetComponent<ManagerPlayerLV5>().playerSelect;
     }
 
     public void NextDialogue()
@@ -25,13 +42,24 @@ public class BallonDialogueBigBoss : MonoBehaviour
                     textDialogue[i + 1].SetActive(true);
                     if (!npc.GetComponent<AudioSource>().isPlaying)
                         npc.GetComponent<AudioSource>().Play();
+                    if(i == 2)
+                    {
+                        player.GetComponent<Animator>().SetBool("Victory", true);
+                        Invoke("ResetAnimVictory", 0.5f);
+                    }
                     break;
                 }
             }
             else
             {
+                managerLevel5.ViewCanvasQuest();
                 gameObject.SetActive(false);
             }
         }
+    }
+
+    void ResetAnimVictory()
+    {
+        player.GetComponent<Animator>().SetBool("Victory", false);
     }
 }

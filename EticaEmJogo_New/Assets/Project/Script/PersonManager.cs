@@ -25,6 +25,7 @@ public class PersonManager : MonoBehaviour
     
     public string[] nameplayerArray;
     public string[] cpfplayerArray;
+    public string[] answerPlayerArray;
     public int[] avatarPlayerArray;
     public int[] pointsPlayerArray;   
     public GameObject[] poolAvatar;
@@ -40,12 +41,14 @@ public class PersonManager : MonoBehaviour
         {
             nameplayerArray = new string[numberPag];
             cpfplayerArray = new string[numberPag];
+            answerPlayerArray = new string[numberPag];
             avatarPlayerArray = new int[numberPag];
             pointsPlayerArray = new int[numberPag];
             for (int i = 0; i < cpfplayerArray.Length; i++)
             {
                 nameplayerArray[i] = "name";
                 cpfplayerArray[i] = "0";
+                answerPlayerArray[i] = "empty";
                 avatarPlayerArray[i] = 99;
                 pointsPlayerArray[i] = 0;
             }
@@ -53,6 +56,7 @@ public class PersonManager : MonoBehaviour
             PlayerPrefsUtility.SetStringArray("nameArray", nameplayerArray);
             PlayerPrefsUtility.SetIntArray("avatarArray", avatarPlayerArray);
             PlayerPrefsUtility.SetIntArray("pointsArray", pointsPlayerArray);
+            PlayerPrefsUtility.SetStringArray("answerArray", answerPlayerArray);
         }
     }
 
@@ -81,11 +85,13 @@ public class PersonManager : MonoBehaviour
                 cpfplayerArray[i] = _cpfTemp;
                 nameplayerArray[i] = _nameTemp;
                 avatarPlayerArray[i] = _avatarTemp;
+                answerPlayerArray[i] = "Active";
                 PlayerPrefsUtility.SetStringArray("cpfArray", cpfplayerArray);
                 PlayerPrefsUtility.SetStringArray("nameArray", nameplayerArray);
                 PlayerPrefsUtility.SetIntArray("avatarArray", avatarPlayerArray);
                 PlayerPrefsUtility.SetIntArray("pointsArray", pointsPlayerArray);
-                
+                PlayerPrefsUtility.SetStringArray("answerArray", answerPlayerArray);
+
                 PlayerPrefs.SetInt("avatarSelect", avatarPlayerArray[i]);
                 PlayerPrefs.SetString("cpfSelect", cpfplayerArray[i]);
                 PlayerPrefs.SetString("nameSelect", nameplayerArray[i]);
@@ -105,6 +111,7 @@ public class PersonManager : MonoBehaviour
         nameplayerArray = PlayerPrefsUtility.GetStringArray("nameArray");
         avatarPlayerArray = PlayerPrefsUtility.GetIntArray("avatarArray");
         pointsPlayerArray = PlayerPrefsUtility.GetIntArray("pointsArray");
+        answerPlayerArray = PlayerPrefsUtility.GetStringArray("answerArray");
         PlayerPrefs.SetInt("avatarSelect", 0);
         PlayerPrefs.SetString("cpfSelect", "");
         PlayerPrefs.SetString("nameSelect", "");
@@ -115,7 +122,7 @@ public class PersonManager : MonoBehaviour
     {
         scene[1].SetActive(false);
         scene[7].SetActive(true);
-        statusPlayerManager.SetStatus(cpfplayerArray[p_numberPlayerArray], nameplayerArray[p_numberPlayerArray], pointsPlayerArray[p_numberPlayerArray]);
+        statusPlayerManager.SetStatus(cpfplayerArray[p_numberPlayerArray], nameplayerArray[p_numberPlayerArray], pointsPlayerArray[p_numberPlayerArray], answerPlayerArray[p_numberPlayerArray]);
     }
 
     public void ReturnAdminScreen()
@@ -137,11 +144,13 @@ public class PersonManager : MonoBehaviour
                     nameplayerArray[i] = nameplayerArray[i + 1];
                     avatarPlayerArray[i] = avatarPlayerArray[i + 1];
                     pointsPlayerArray[i] = pointsPlayerArray[i + 1];
+                    answerPlayerArray[i] = answerPlayerArray[i + 1];
 
                     nameplayerArray[i + 1] = "name";
                     cpfplayerArray[i + 1] = "0";
                     avatarPlayerArray[i + 1] = 99;
                     pointsPlayerArray[i + 1] = 0;
+                    answerPlayerArray[i + 1] = "empty";
                 }
             }
         }
@@ -149,6 +158,7 @@ public class PersonManager : MonoBehaviour
         PlayerPrefsUtility.SetStringArray("nameArray", nameplayerArray);
         PlayerPrefsUtility.SetIntArray("avatarArray", avatarPlayerArray);
         PlayerPrefsUtility.SetIntArray("pointsArray", pointsPlayerArray);
+        PlayerPrefsUtility.SetStringArray("answerArray", answerPlayerArray);
         if (PlayerPrefsUtility.GetIntArray(p_cpf + "quest") != null)
         {
             PlayerPrefs.DeleteKey(p_cpf + "quest");

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ManagerPlayerLV5 : MonoBehaviour
 {
     public GameObject[] poolAvatar;
+    public GameObject playerSelect;
 
     void Awake()
     {
@@ -20,15 +21,17 @@ public class ManagerPlayerLV5 : MonoBehaviour
         {
             int __tempNumberPool = PlayerPrefs.GetInt("avatarSelect");
             poolAvatar[__tempNumberPool].SetActive(true);
+            playerSelect = poolAvatar[__tempNumberPool];
         }
         else
         {
             poolAvatar[0].SetActive(true);
-        }
+            playerSelect = poolAvatar[0];
+        }        
     }
 
     public void LoadNewScene()
     {
-        SceneManager.LoadScene("Scene_02");
+        //SceneManager.LoadScene("Scene_02");
     }
 }
