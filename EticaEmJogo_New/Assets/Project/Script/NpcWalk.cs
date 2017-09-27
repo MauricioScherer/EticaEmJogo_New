@@ -104,7 +104,6 @@ public class NpcWalk : MonoBehaviour
     void SelectNewPath()
     {
         _navMeshAgent.destination = path[_numPath].position;
-        //_navMeshAgent.Resume();
         _navMeshAgent.isStopped = false;
         _SelectPath = false;
     }

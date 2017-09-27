@@ -29,9 +29,4 @@ public class ManagerPlayerLV5 : MonoBehaviour
             playerSelect = poolAvatar[0];
         }        
     }
-
-    public void LoadNewScene()
-    {
-        //SceneManager.LoadScene("Scene_02");
-    }
 }

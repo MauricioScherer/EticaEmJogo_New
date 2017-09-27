@@ -15,17 +15,13 @@ public class BallonDialogueBigBoss : MonoBehaviour
     {
         ballon1.text = "Olá " + PlayerPrefs.GetString("nameSelect") + "!" + "\n Você teve uma jornada \n e tanto até em!";
 
-        if(PlayerPrefs.GetInt("pointsSelect") <= 21)
+        if(PlayerPrefs.GetInt("pointsSelect") < 39)
         {
-            ballon2.text = "balão fala para jogador \n com até 21 pontos(33%)";
-        }
-        else if (PlayerPrefs.GetInt("pointsSelect") <= 43)
-        {
-            ballon2.text = "balão fala para jogador \n com até 43 pontos(66%)";
+            ballon2.text = "balão fala para jogador \n com até 38 pontos";
         }
         else
         {
-            ballon2.text = "balão fala para jogador \n com mais de 43 pontos";
+            ballon2.text = "balão fala para jogador \n com mais de 38 pontos";
         }
         player = player.GetComponent<ManagerPlayerLV5>().playerSelect;
     }
