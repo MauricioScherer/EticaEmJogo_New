@@ -9,10 +9,10 @@ public class ManagerLevel5 : MonoBehaviour
     private bool _stayInQuest;
     public GameObject canvasQuest;
     public Text quest1;
-    public Text quest2;
-    public Text quest3;
-    public Text quest4;
     public GameObject buttonInviteQuest;
+    public GameObject ballonDialogueGod;
+    public GameObject ballonDialogueBad;
+    public Text numCaracter;
 
     void Start ()
     {
@@ -23,7 +23,7 @@ public class ManagerLevel5 : MonoBehaviour
     {
         if(_stayInQuest)
         {
-            if(quest1.text != "" && quest2.text != "" && quest3.text != "" && quest4.text != "")
+            if(quest1.text.Length >= 200)
             {
                 if(!buttonInviteQuest.activeSelf)
                     buttonInviteQuest.SetActive(true);
@@ -33,13 +33,15 @@ public class ManagerLevel5 : MonoBehaviour
                 if (buttonInviteQuest.activeSelf)
                     buttonInviteQuest.SetActive(false);
             }
+
+            numCaracter.text = quest1.text.Length.ToString() + " / " + "600";
         }
     }
 
-    public void ViewCanvasQuest()
+    public void ViewCanvasQuest(bool p_status)
     {
-        canvasQuest.SetActive(true);
-        _stayInQuest = true;
+        canvasQuest.SetActive(p_status);
+        _stayInQuest = p_status;
     }
 
     public void RegisterAnswer()
@@ -51,14 +53,25 @@ public class ManagerLevel5 : MonoBehaviour
         {
             if(tempArray[i] == "Active")
             {
-                tempArray[i] = "O que o jogo significou pra você? \n" + quest1.text + "\n";
-                tempArray[i] += "O que você aprendeu com este jogo? \n" + quest2.text + "\n";
-                tempArray[i] += "O que você achou do jogo? \n" + quest3.text + "\n";
-                tempArray[i] += "O que você pode tirar de bom deste jogo? \n" + quest4.text;
+                tempArray[i] = "O que você aprendeu durante essa experiência aqui no Suprema Compra? \n" + quest1.text;
                 PlayerPrefsUtility.SetStringArray("answerArray", tempArray);
                 break;
             }
         }
-        SceneManager.LoadScene("Menu");
+
+        if(PlayerPrefs.GetInt("pointsSelect") < 39)
+        {
+            ballonDialogueBad.SetActive(true);
+        }
+        else
+        {
+            ballonDialogueGod.SetActive(true);
+        }
+        ViewCanvasQuest(false);
+    }
+
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene("Scene_Anim_FinalLevel");
     }
 }

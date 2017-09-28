@@ -5,6 +5,7 @@ using UnityEngine;
 public class SelectPlayerStandard : MonoBehaviour
 {
     public GameObject[] poolAvatar;
+    public GameObject playerSelect;
 
     void Awake()
     {
@@ -20,10 +21,12 @@ public class SelectPlayerStandard : MonoBehaviour
         {
             int __tempNumberPool = PlayerPrefs.GetInt("avatarSelect");
             poolAvatar[__tempNumberPool].SetActive(true);
+            playerSelect = poolAvatar[__tempNumberPool];
         }
         else
         {
             poolAvatar[0].SetActive(true);
+            playerSelect = poolAvatar[0];
         }
     }
 }

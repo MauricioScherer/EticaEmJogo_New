@@ -9,6 +9,7 @@ public class MovePlayerStandard : MonoBehaviour
     private NavMeshAgent _navMeshAgent;
 
     public Transform path;
+    public bool finalCutScene;
 
     void Start ()
     {
@@ -19,13 +20,16 @@ public class MovePlayerStandard : MonoBehaviour
 
     void Update()
     {
-        if (_navMeshAgent.remainingDistance > 0.05f)
+        if(!finalCutScene)
         {
-            _anim.SetFloat("MoveSpeed", _navMeshAgent.speed);
-        }
-        else
-        {
-            _anim.SetFloat("MoveSpeed", 0);
+            if (_navMeshAgent.remainingDistance > 0.05f)
+            {
+                _anim.SetFloat("MoveSpeed", _navMeshAgent.speed);
+            }
+            else
+            {
+                _anim.SetFloat("MoveSpeed", 0);
+            }
         }
     }
 

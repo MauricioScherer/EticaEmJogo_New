@@ -7,23 +7,11 @@ public class BallonDialogueBigBoss : MonoBehaviour
     public GameObject[] textDialogue;
     public GameObject npc;
     public TextMesh ballon1;
-    public TextMesh ballon2;
-    public GameObject player;
     public ManagerLevel5 managerLevel5;
 
     void Start()
     {
-        ballon1.text = "Olá " + PlayerPrefs.GetString("nameSelect") + "!" + "\n Você teve uma jornada \n e tanto até em!";
-
-        if(PlayerPrefs.GetInt("pointsSelect") < 39)
-        {
-            ballon2.text = "balão fala para jogador \n com até 38 pontos";
-        }
-        else
-        {
-            ballon2.text = "balão fala para jogador \n com mais de 38 pontos";
-        }
-        player = player.GetComponent<ManagerPlayerLV5>().playerSelect;
+        ballon1.text = "Olá " + PlayerPrefs.GetString("nameSelect") + "!" + "\n Sou o Bernardo, \n gestor do RH";
     }
 
     public void NextDialogue()
@@ -38,24 +26,14 @@ public class BallonDialogueBigBoss : MonoBehaviour
                     textDialogue[i + 1].SetActive(true);
                     if (!npc.GetComponent<AudioSource>().isPlaying)
                         npc.GetComponent<AudioSource>().Play();
-                    if(i == 2)
-                    {
-                        player.GetComponent<Animator>().SetBool("Victory", true);
-                        Invoke("ResetAnimVictory", 0.5f);
-                    }
                     break;
                 }
             }
             else
             {
-                managerLevel5.ViewCanvasQuest();
+                managerLevel5.ViewCanvasQuest(true);
                 gameObject.SetActive(false);
             }
         }
-    }
-
-    void ResetAnimVictory()
-    {
-        player.GetComponent<Animator>().SetBool("Victory", false);
     }
 }
