@@ -50,9 +50,6 @@ public class ManagerLevel : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown("2"))
-            SceneManager.LoadScene("Scene_02");
-
         if (_fadeIn)
         {
             fade.color = _colorFade;            
@@ -259,6 +256,7 @@ public class ManagerLevel : MonoBehaviour
             if(tempArray[i] == PlayerPrefs.GetString("cpfSelect"))
             {
                 tempPoint[i] += (int)gameManager.GetScore();
+                PlayerPrefs.SetInt("pointsSelect", tempPoint[i]);
                 PlayerPrefsUtility.SetIntArray("pointsArray", tempPoint);
                 break;
             }

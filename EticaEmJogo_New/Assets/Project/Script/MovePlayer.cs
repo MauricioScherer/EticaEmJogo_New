@@ -282,6 +282,12 @@ public class MovePlayer : MonoBehaviour
                         }
                     }
                 }
+                else if (_viewMural)
+                {
+                    gameManager.managerLevel3.ViewCanvasMural(true);
+                    gameManager.DeactiveHudAndPause();
+                    _viewMural = false;
+                }
             }
             else if(gameManager.GetNumberScene() == 5)
             {
@@ -297,6 +303,12 @@ public class MovePlayer : MonoBehaviour
                             _objTemp = null;
                         }
                     }
+                }
+                else if (_viewMural)
+                {
+                    gameManager.managerLevel4.ViewCanvasMural(true);
+                    gameManager.DeactiveHudAndPause();
+                    _viewMural = false;
                 }
             }
         }

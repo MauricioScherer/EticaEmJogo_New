@@ -16,6 +16,7 @@ public class ManagerLevel4 : MonoBehaviour
 
     public bool selectNpcAna;
     public GameManager gameManager;
+    public GameObject canvasMural;
     public GameObject arrowJob;
     public GameObject arrowXerox;
     public GameObject canvasJob;
@@ -348,10 +349,28 @@ public class ManagerLevel4 : MonoBehaviour
             if (tempArray[i] == PlayerPrefs.GetString("cpfSelect"))
             {
                 tempPoint[i] += (int)gameManager.GetScore();
+                PlayerPrefs.SetInt("pointsSelect", tempPoint[i]);
                 PlayerPrefsUtility.SetIntArray("pointsArray", tempPoint);
                 break;
             }
         }
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Scene_05");
+    }
+
+    public void ViewCanvasMural(bool p_view)
+    {
+        canvasMural.SetActive(p_view);
+    }
+
+    public void ReturnToGame()
+    {
+        ViewCanvasMural(false);
+        gameManager.ActivateAndDeactivateHud();
+        Invoke("PlayerCanWalk", 0.5f);
+    }
+
+    void PlayerCanWalk()
+    {
+        gameManager.player.SetValues();
     }
 }

@@ -29,6 +29,7 @@ public class ManagerLevel3 : MonoBehaviour
     public GameObject epiImageEmpty;
     public ManagerJodLevel3 managerJob;
     public ManagerJod2Level3 managerJob2;
+    public GameObject canvasMural;
     public GameObject NpcChico;
     public GameObject NpcSandro;
     public GameObject WokTok;
@@ -485,6 +486,7 @@ public class ManagerLevel3 : MonoBehaviour
             if (tempArray[i] == PlayerPrefs.GetString("cpfSelect"))
             {
                 tempPoint[i] += (int)gameManager.GetScore();
+                PlayerPrefs.SetInt("pointsSelect", tempPoint[i]);
                 PlayerPrefsUtility.SetIntArray("pointsArray", tempPoint);
                 break;
             }
@@ -498,5 +500,22 @@ public class ManagerLevel3 : MonoBehaviour
             exclamationAvatar[p_number].SetActive(false);
         else
             exclamationAvatar[p_number].SetActive(true);
+    }
+
+    public void ViewCanvasMural(bool p_view)
+    {
+        canvasMural.SetActive(p_view);
+    }
+
+    public void ReturnToGame()
+    {
+        ViewCanvasMural(false);
+        gameManager.ActivateAndDeactivateHud();
+        Invoke("PlayerCanWalk", 0.5f);
+    }
+
+    void PlayerCanWalk()
+    {
+        gameManager.player.SetValues();
     }
 }

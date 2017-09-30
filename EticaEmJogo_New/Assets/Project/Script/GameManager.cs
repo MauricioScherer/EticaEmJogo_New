@@ -285,9 +285,9 @@ public class GameManager : MonoBehaviour
             else if (numberQuestResolve == 3)
             {
                 if (missionCurrent.text == "")
-                    missionCurrent.text = "Chegar ao ponto de ônibus";
+                    missionCurrent.text = "Ponto de ônibus";
                 missionAlert.SetActive(true);
-                missionDescription.text = "Pegar o ônibus para iniciar o seu primeiro dia de trabalho no mercado “Tudo Tem”";
+                missionDescription.text = "Pegar o ônibus para iniciar o seu primeiro dia de trabalho no mercado “Suprema Compra”";
             }
         }
         else if(GetNumberScene() == 3)
@@ -312,7 +312,7 @@ public class GameManager : MonoBehaviour
         {
             if (numberQuestResolve == 0 || numberQuestResolve == 3)
             {
-                missionCurrent.text = "Pegar EPI's";
+                missionCurrent.text = "Pegar EPIs.";
                 missionAlert.SetActive(true);
                 missionDescription.text = "Vá até seu armario e pegue seus equipamentos de proteção individual";
             }
@@ -320,7 +320,7 @@ public class GameManager : MonoBehaviour
             {
                 missionCurrent.text = "Falar com Pedro";
                 missionAlert.SetActive(true);
-                missionDescription.text = "Fale com seu colega pedro, ele ira ajudar nas suas novas tarefas";
+                missionDescription.text = "Fale com o Pedro, ele irá lhe auxiliar nas tarefas.";
             }
             else if (numberQuestResolve == 2)
             {
@@ -335,7 +335,7 @@ public class GameManager : MonoBehaviour
             {
                 missionCurrent.text = "Falar com Ana";
                 missionAlert.SetActive(true);
-                missionDescription.text = "Fale com sua colega ana, ele está te esperando";
+                missionDescription.text = "Fale com sua colega Ana, ela está lhe esperando";
 
             }
             else if (numberQuestResolve == 2)
@@ -378,9 +378,9 @@ public class GameManager : MonoBehaviour
 
     public void SetMissionRefectory()
     {
-        missionCurrent.text = "Ir para Refeitório";
+        missionCurrent.text = "Ir ao refeitório";
         missionAlert.SetActive(true);
-        missionDescription.text = "Vá até o refeitório para o horário de almoço";
+        missionDescription.text = "HORA DO ALMOÇO! Vá até o refeitório.";
         player.CanWalk(true);
 
         if (missionAlert.activeSelf)
