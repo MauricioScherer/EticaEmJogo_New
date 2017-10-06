@@ -27,6 +27,8 @@ public class ManagerLevel3 : MonoBehaviour
     public GameObject arrowPedro;
     public GameObject epiImage;
     public GameObject epiImageEmpty;
+    public GameObject canvasJob1;
+    public GameObject canvasJob2;
     public ManagerJodLevel3 managerJob;
     public ManagerJod2Level3 managerJob2;
     public GameObject canvasMural;
