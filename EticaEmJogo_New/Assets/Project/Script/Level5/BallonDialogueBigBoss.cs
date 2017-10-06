@@ -11,7 +11,7 @@ public class BallonDialogueBigBoss : MonoBehaviour
 
     void Start()
     {
-        ballon1.text = "Olá " + PlayerPrefs.GetString("nameSelect") + "!" + "\n Sou o Bernardo, \n gestor do RH";
+        ballon1.text = "Olá " + PlayerPrefs.GetString("nameSelect") + "." + "\n Sou o Bernardo, \n gestor de RH.";
     }
 
     public void NextDialogue()

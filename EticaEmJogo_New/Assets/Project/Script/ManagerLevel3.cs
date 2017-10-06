@@ -43,6 +43,7 @@ public class ManagerLevel3 : MonoBehaviour
     public Image fade;
     public GameObject textFade;
     public GameObject npcCarla;
+    public TextMesh dialogueCarla1;
     public GameObject[] objectDeactive;
     public GameObject[] LightJob;
     public GameObject[] exclamationAvatar;
@@ -67,6 +68,7 @@ public class ManagerLevel3 : MonoBehaviour
         {
             PlayerCanWalk(false);
         }
+        dialogueCarla1.text = "Parabéns, " + PlayerPrefs.GetString("nameSelect") + "!" + "\n Durante seu contrato \n de experiência, você...";
     }
 
     void Update()

@@ -312,7 +312,7 @@ public class GameManager : MonoBehaviour
         {
             if (numberQuestResolve == 0 || numberQuestResolve == 3)
             {
-                missionCurrent.text = "Pegar EPIs.";
+                missionCurrent.text = "Pegar EPIs";
                 missionAlert.SetActive(true);
                 missionDescription.text = "Vá até seu armario e pegue seus equipamentos de proteção individual";
             }
@@ -320,7 +320,7 @@ public class GameManager : MonoBehaviour
             {
                 missionCurrent.text = "Falar com Pedro";
                 missionAlert.SetActive(true);
-                missionDescription.text = "Fale com o Pedro, ele irá lhe auxiliar nas tarefas.";
+                missionDescription.text = "Fale com o Pedro, ele irá lhe auxiliar nas tarefas";
             }
             else if (numberQuestResolve == 2)
             {
@@ -342,14 +342,14 @@ public class GameManager : MonoBehaviour
             {
                 missionCurrent.text = "Ir na impresora";
                 missionAlert.SetActive(true);
-                missionDescription.text = "Peque as cópias na impressora que a Ana pediu.";
+                missionDescription.text = "Peque as cópias na impressora que a Ana pediu";
 
             }
             else if (numberQuestResolve == 3)
             {
                 missionCurrent.text = "Retorne para mesa";
                 missionAlert.SetActive(true);
-                missionDescription.text = "Retorne para sua mesa de trabalho pra continuar as analises";
+                missionDescription.text = "Retorne para sua mesa de trabalho pra continuar as análises";
 
             }
         }
@@ -368,10 +368,10 @@ public class GameManager : MonoBehaviour
     public void SetMissionFinalLevelMarket()
     {
         if (missionCurrent.text == "")
-            missionCurrent.text = "Ir até o Estoque";
+            missionCurrent.text = "Ir até o estoque";
         missionAlert.SetActive(true);
         Invoke("DeactveMissionAlert", 4f);
-        missionDescription.text = "Você teve um ótimo desempenho e será contratado, Parabéns! Vá até o estoque para finalizar o dia.";
+        missionDescription.text = "Você teve um ótimo desempenho como aprendiz. Encontre a Carla no estoque";
         player.CanWalk(true);
         managerLevel2.viewFinalLevel();
     }
@@ -380,7 +380,7 @@ public class GameManager : MonoBehaviour
     {
         missionCurrent.text = "Ir ao refeitório";
         missionAlert.SetActive(true);
-        missionDescription.text = "HORA DO ALMOÇO! Vá até o refeitório.";
+        missionDescription.text = "HORA DO ALMOÇO! Vá até o refeitório";
         player.CanWalk(true);
 
         if (missionAlert.activeSelf)
