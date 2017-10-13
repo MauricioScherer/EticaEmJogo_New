@@ -173,20 +173,12 @@ public class ManagerLevel : MonoBehaviour
 
     void PagDefine(float p_points)
     {
-        if (p_points >= 12)
-        {
-            pagCurrent = new GameObject[1] { pag[0] };            
-            if (buttonNextPag.activeSelf)
-                buttonNextPag.SetActive(false);
-            if (buttonBackPag.activeSelf)
-                buttonBackPag.SetActive(false);
-            if (!buttonContinue.activeSelf)
-                buttonContinue.SetActive(true);
-        }
+        if (p_points >= 12)        
+            pagCurrent = new GameObject[2] { pag[0], pag[1] };            
         else if(p_points >= 6)
-            pagCurrent = new GameObject[2] { pag[1], pag[2] };
+            pagCurrent = new GameObject[2] { pag[2], pag[3] };
         else
-            pagCurrent = new GameObject[2] { pag[3], pag[4] };
+            pagCurrent = new GameObject[4] { pag[4], pag[5], pag[6], pag[7] };
 
         pagCurrent[0].SetActive(true);
     }

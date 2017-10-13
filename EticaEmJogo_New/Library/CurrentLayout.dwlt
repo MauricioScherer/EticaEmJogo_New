@@ -170,7 +170,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &8
 MonoBehaviour:
@@ -535,33 +535,33 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets
+    - Assets/Project/Script
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets
+  - Assets/Project/Script
   m_LastFoldersGridSize: 96
   m_LastProjectPath: D:\GITHUB\Senac\EticaEmJogo_New\EticaEmJogo_New
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: de270000
-    m_LastClickedID: 10206
-    m_ExpandedIDs: 00000000de270000d23b0000364300003e470000f0470000544800008e4a0000c2510000bc550000f45700009058000034af0000ffffff7f
+    m_SelectedIDs: bc550000
+    m_LastClickedID: 21948
+    m_ExpandedIDs: 00000000de270000364300003e470000f0470000544800008e4a0000c2510000f457000090580000f8320100ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: HUD
-      m_OriginalName: HUD
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 21072
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 6}
     m_SearchString: 
@@ -575,7 +575,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000de270000364300003e470000f04700008e4a0000c2510000f45700009058000034af0000
+    m_ExpandedIDs: 00000000de270000364300003e470000f0470000544800008e4a0000c2510000f457000090580000f8320100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -627,7 +627,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 171}
+    m_ScrollPosition: {x: 0, y: 335.5}
     m_GridSize: 96
   m_DirectoriesAreaWidth: 268
 --- !u!114 &20
@@ -691,9 +691,9 @@ MonoBehaviour:
     height: 643
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ae910800
-    m_LastClickedID: 561582
-    m_ExpandedIDs: b65df3ff1c88f7ff2288f7ff7a73f8fffaf3f9ff787bfaff08c6faff56c6faff3a0efbfff2e7fcff2c1efdffb29cfdff8c9dfdffc800feffcc00feff1a01feffa267feffe28ffeff7e15ffff2859ffff169affffd29cffff0c9fffff4ec7ffff40fbffff1afcffff00000000beca040036210500909a0800
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: a4f6ffff1afcffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -712,7 +712,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 5}
     m_SearchString: 
   m_ExpandedScenes:
-  - Scene_Anim_FinalLevel
+  - Menu
   m_CurrenRootInstanceID: 0
   m_Locked: 1
   m_CurrentSortingName: TransformSorting
@@ -743,14 +743,14 @@ MonoBehaviour:
     width: 1281
     height: 643
   m_SceneLighting: 1
-  lastFramingTime: 6276.315817098541
+  lastFramingTime: 408.86525814997026
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.8609003, y: 0.43778712, z: 100}
+    m_Target: {x: 0.001253128, y: 0.99282646, z: 99.78241}
     speed: 2
-    m_Value: {x: 0.8609003, y: 0.43778712, z: 100}
+    m_Value: {x: 0.001253128, y: 0.99282646, z: 99.78241}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -777,14 +777,14 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 8.622579
+    m_Target: 33.720184
     speed: 2
-    m_Value: 8.622579
+    m_Value: 33.720184
   m_Ortho:
     m_Target: 1
     speed: 2
     m_Value: 1
-  m_LastSceneViewRotation: {x: -0.3062833, y: -0.1737675, z: 0.05697001, w: -0.93421084}
+  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 

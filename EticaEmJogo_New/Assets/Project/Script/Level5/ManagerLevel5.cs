@@ -34,7 +34,7 @@ public class ManagerLevel5 : MonoBehaviour
                     buttonInviteQuest.SetActive(false);
             }
 
-            numCaracter.text = quest1.text.Length.ToString() + " / " + "600";
+            numCaracter.text = quest1.text.Length.ToString() + " / " + "500";
         }
     }
 
