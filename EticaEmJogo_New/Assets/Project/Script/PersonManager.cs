@@ -179,6 +179,18 @@ public class PersonManager : MonoBehaviour
         scene[3].SetActive(true);
     }
 
+    public void ButtonUpdateLoginPassword()
+    {
+        scene[1].SetActive(false);
+        scene[8].SetActive(true);
+    }
+
+    public void ButtonExitUpdateLogin()
+    {
+        scene[8].SetActive(false);
+        scene[1].SetActive(true);
+    }
+
     public void ButtonCheckLogin()
     {
         loginManager.CheckInputs();

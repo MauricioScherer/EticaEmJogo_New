@@ -70,16 +70,28 @@ public class SceneLoginManager : MonoBehaviour
         }
         else if(GetLogin() == login && GetPassword() == password)
         {
-            warning[0].SetActive(false);
-            warning[1].SetActive(false);
-            if (warning[2].activeSelf)
-                warning[2].SetActive(false);
-            SetvalueInputs();
-            personManager.LoginAcess();
+            CheckStatusLogin();
+        }
+        else if(PlayerPrefs.HasKey("loginAdmin"))
+        {
+            if(GetLogin() == PlayerPrefs.GetString("loginAdmin") && GetPassword() == PlayerPrefs.GetString("passwordAdmin"))
+            {
+                CheckStatusLogin();
+            }
         }
         else
         {
             warning[2].SetActive(true);
         }
+    }
+
+    void CheckStatusLogin()
+    {
+        warning[0].SetActive(false);
+        warning[1].SetActive(false);
+        if (warning[2].activeSelf)
+            warning[2].SetActive(false);
+        SetvalueInputs();
+        personManager.LoginAcess();
     }
 }
