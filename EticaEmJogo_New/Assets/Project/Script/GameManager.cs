@@ -83,7 +83,9 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown("3"))
             SceneManager.LoadScene("Scene_03");
         if (Input.GetKeyDown("4"))
-            SceneManager.LoadScene("Scene_04");        
+            SceneManager.LoadScene("Scene_04");
+        if (Input.GetKeyDown("5"))
+            SceneManager.LoadScene("Scene_05");
     }
 
     public void SelectQuest(int p_numQuest)

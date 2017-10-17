@@ -129,6 +129,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 40d41f498420a9b3985f6fc7e5763447 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.Bloom
 7d68c2be12afca1d067d11b3f60bcb33 Assembly-CSharp.dll:.SimpleCharacterControl
+5f89e057901e603a8e192a9c1b4413dd Assembly-CSharp.dll:.SceneUpdateLogin
 1ca9fd75e20681d87fae2e0e6195e88b Assembly-CSharp.dll:.NpcChicoLevel3
 ef6ba6eb63e77b272c7f63d48eff8c93 Assembly-CSharp.dll:.BallonDialogueStatic
 c6b91b5378796461a5a25abd3ae2a4f0 Assembly-CSharp.dll:.MensagerManagerJob2

@@ -29,11 +29,16 @@ public class SceneAdminManager : MonoBehaviour
         _numberPage = 1;
         _tempCount = 0;
         numberPageText.text = "Pagina: " + _numberPage + "/" + (personManager.cpfplayerArray.Length / name.Length);
-        for(int i = 0; i < name.Length; i++)
+        ResetSlot();
+        SetSlot();
+    }
+
+    void ResetSlot()
+    {
+        for (int i = 0; i < name.Length; i++)
         {
             avatar[i].GetComponent<PoolPerson>().ResetPool();
         }
-        SetSlot();
     }
 
     public void NextPage()
@@ -43,6 +48,7 @@ public class SceneAdminManager : MonoBehaviour
             _numberPage += 1;
             _tempCount += 10;
             numberPageText.text = "Pagina: " + _numberPage + "/" + (personManager.cpfplayerArray.Length / name.Length);
+            ResetSlot();
             SetSlot();
         }
     }
@@ -54,6 +60,7 @@ public class SceneAdminManager : MonoBehaviour
             _numberPage -= 1;
             _tempCount -= 10;
             numberPageText.text = "Pagina: " + _numberPage + "/" + (personManager.cpfplayerArray.Length / name.Length);
+            ResetSlot();
             SetSlot();
         }
     }

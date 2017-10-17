@@ -46,9 +46,17 @@ public class SceneStatusPlayerManager : MonoBehaviour
         {
             if(pag[i].activeSelf)
             {
-                selectQuest1[_questSelectLocal[i + i]].SetActive(true);
-                if(i < 6)
-                    selectQuest2[_questSelectLocal[i + i + 1]].SetActive(true);
+                if(_questSelectLocal[i + 1] != 99)
+                {
+                    selectQuest1[_questSelectLocal[i + i]].SetActive(true);
+                }
+                if (i < 6)
+                {
+                    if (_questSelectLocal[i + i + 1] != 99)
+                    {
+                        selectQuest2[_questSelectLocal[i + i + 1]].SetActive(true);
+                    }
+                }
                 break;
             }
         }

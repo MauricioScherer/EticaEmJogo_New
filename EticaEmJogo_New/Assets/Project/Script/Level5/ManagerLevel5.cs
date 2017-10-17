@@ -34,7 +34,7 @@ public class ManagerLevel5 : MonoBehaviour
                     buttonInviteQuest.SetActive(false);
             }
 
-            numCaracter.text = quest1.text.Length.ToString() + " / " + "500";
+            numCaracter.text = quest1.text.Length.ToString() + " / " + "300";
         }
     }
 
@@ -48,12 +48,13 @@ public class ManagerLevel5 : MonoBehaviour
     {
         int tempSize = PlayerPrefsUtility.GetStringArray("cpfArray").Length;
         string[] tempArray = PlayerPrefsUtility.GetStringArray("answerArray");
+        string[] cpfTempArray = PlayerPrefsUtility.GetStringArray("cpfArray");
 
-        for(int i = 0; i < tempSize; i++)
+        for (int i = 0; i < tempSize; i++)
         {
-            if(tempArray[i] == "Active")
+            if(cpfTempArray[i] == PlayerPrefs.GetString("cpfSelect"))
             {
-                tempArray[i] = "O que você aprendeu durante essa experiência aqui no Suprema Compra? \n" + quest1.text;
+                tempArray[i] = quest1.text;
                 PlayerPrefsUtility.SetStringArray("answerArray", tempArray);
                 break;
             }

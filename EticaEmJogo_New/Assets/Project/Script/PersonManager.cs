@@ -32,32 +32,40 @@ public class PersonManager : MonoBehaviour
     
     void Awake()
     {
-        LoadArrayPlayers();
+        if (PlayerPrefs.HasKey("cpfSelect"))
+            LoadArrayPlayers();
+        else
+            CreateDados();
     }
 	
 	void Update ()
     {
         if(Input.GetKeyDown(KeyCode.Home))
         {
-            nameplayerArray = new string[numberPag];
-            cpfplayerArray = new string[numberPag];
-            answerPlayerArray = new string[numberPag];
-            avatarPlayerArray = new int[numberPag];
-            pointsPlayerArray = new int[numberPag];
-            for (int i = 0; i < cpfplayerArray.Length; i++)
-            {
-                nameplayerArray[i] = "name";
-                cpfplayerArray[i] = "0";
-                answerPlayerArray[i] = "empty";
-                avatarPlayerArray[i] = 99;
-                pointsPlayerArray[i] = 0;
-            }
-            PlayerPrefsUtility.SetStringArray("cpfArray", cpfplayerArray);
-            PlayerPrefsUtility.SetStringArray("nameArray", nameplayerArray);
-            PlayerPrefsUtility.SetIntArray("avatarArray", avatarPlayerArray);
-            PlayerPrefsUtility.SetIntArray("pointsArray", pointsPlayerArray);
-            PlayerPrefsUtility.SetStringArray("answerArray", answerPlayerArray);
+            CreateDados();
         }
+    }
+
+    void CreateDados()
+    {
+        nameplayerArray = new string[numberPag];
+        cpfplayerArray = new string[numberPag];
+        answerPlayerArray = new string[numberPag];
+        avatarPlayerArray = new int[numberPag];
+        pointsPlayerArray = new int[numberPag];
+        for (int i = 0; i < cpfplayerArray.Length; i++)
+        {
+            nameplayerArray[i] = "name";
+            cpfplayerArray[i] = "0";
+            answerPlayerArray[i] = "empty";
+            avatarPlayerArray[i] = 99;
+            pointsPlayerArray[i] = 0;
+        }
+        PlayerPrefsUtility.SetStringArray("cpfArray", cpfplayerArray);
+        PlayerPrefsUtility.SetStringArray("nameArray", nameplayerArray);
+        PlayerPrefsUtility.SetIntArray("avatarArray", avatarPlayerArray);
+        PlayerPrefsUtility.SetIntArray("pointsArray", pointsPlayerArray);
+        PlayerPrefsUtility.SetStringArray("answerArray", answerPlayerArray);
     }
 
     public void LoginAcess()
@@ -85,7 +93,7 @@ public class PersonManager : MonoBehaviour
                 cpfplayerArray[i] = _cpfTemp;
                 nameplayerArray[i] = _nameTemp;
                 avatarPlayerArray[i] = _avatarTemp;
-                answerPlayerArray[i] = "Active";
+                answerPlayerArray[i] = "";
                 PlayerPrefsUtility.SetStringArray("cpfArray", cpfplayerArray);
                 PlayerPrefsUtility.SetStringArray("nameArray", nameplayerArray);
                 PlayerPrefsUtility.SetIntArray("avatarArray", avatarPlayerArray);
